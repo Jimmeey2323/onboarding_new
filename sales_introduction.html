@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Physique 57: A Journey of Transformation</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet"/>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f9fafb;
+            color: #333;
+            transition: margin-left 0.3s;
+        }
+
+        .hero-section {
+            background: linear-gradient(120deg, #007bff, #000608);
+            padding: 0px 10px;
+            color: #fff;
+            text-align: left;
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            max-height: 80px;
+            transition: margin-left 0.3s;
+        }
+
+        .hero-section h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            letter-spacing: 0.5rem;
+            animation: fadeInDown 1.5s ease-in-out;
+            margin-left: 30px;
+        }
+
+        .hero-section i {
+            font-size: 2.5rem;
+            margin-right: 1px;
+            margin-left: 40px;
+            animation: fadeInDown 1.5s ease-in-out;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-section h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-section i {
+                font-size: 2.5rem;
+            }
+        }
+
+        .card {
+            background-color: #fff;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .card img {
+            width: 100%;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .card img:hover {
+            transform: scale(1.05);
+        }
+
+        .quote {
+            font-size: 1.5rem;
+            font-style: italic;
+            color: #007bff;
+            margin-top: 30px;
+            animation: fadeInText 2.5s ease-in-out;
+        }
+
+        .quote-author {
+            font-size: 1rem;
+            color: #555;
+            margin-top: 10px;
+            animation: fadeInText 2.5s ease-in-out;
+        }
+
+        @keyframes fadeInText {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .icon-list {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            gap: 10px;
+        }
+
+        .icon-list i {
+            color: #a80000;
+            font-size: 1.5rem;
+        }
+
+        .pdf-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+        }
+
+        .pdf-card {
+            background-color: #fff;
+            border: 2px solid #000000;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            height: 450px;
+            padding: 10px;
+            transition: transform 0.3s;
+            cursor: pointer;
+        }
+
+        .pdf-card:hover {
+            transform: scale(1.05);
+        }
+
+        .pdf-card i {
+            font-size: 20px;
+            color: #7c0000;
+        }
+
+        .pdf-title {
+            margin-top: 10px;
+            font-weight: bold;
+            font-size: 20px;
+            text-transform: uppercase;
+        }
+
+        .main-menu {
+            transition: width 0.3s, transform 0.3s;
+            box-shadow: 2px 0 15px rgba(0, 0, 0, 0.1);
+            overflow-y: auto;
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100%;
+            background-color: white;
+            z-index: 1000;
+        }
+
+        .main-menu ul li a .nav-text {
+            display: none;
+            transition: opacity 0.3s;
+        }
+
+        .main-menu:hover ul li a .nav-text {
+            display: inline;
+            opacity: 1;
+        }
+
+        .main-menu ul li a {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            color: black;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+
+        .main-menu ul li a:hover {
+            background-color: rgba(0, 0, 0, 0.1);
+        }
+
+        .main-menu ul li a .nav-icon {
+            margin-right: 10px;
+            font-size: 1.5rem;
+        }
+
+        .submenu {
+            display: none;
+        }
+
+        .has-subnav:hover .submenu {
+            display: block;
+        }
+
+        .submenu li a {
+            background-color: #f0f0f0;
+        }
+
+        .submenu li a:hover {
+            background-color: #e0e0e0;
+        }
+
+        .main-menu ul {
+            padding-left: 0;
+        }
+
+        .main-menu ul li {
+            list-style: none;
+        }
+
+        .main-menu ul li a {
+            justify-content: center;
+        }
+
+        .main-menu:hover ul li a {
+            justify-content: flex-start;
+        }
+
+        .main-menu:hover ~ .hero-section h1 i {
+            margin-left: 0;
+
+        }
+
+        .main-menu:hover ~ .container,
+        .main-menu:hover ~ .hero-section {
+            margin-left: 14rem;
+        }
+    </style>
+    <script>
+        // Load the navbar from navbar.html
+        fetch('navbar.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('navbar-container').innerHTML = data;
+                initNavbar(); // Initialize the navbar functionality after loading
+            })
+            .catch(error => console.error('Error loading navbar:', error));
+        
+        function openPDF(pdfUrl) {
+            const newWindow = window.open(pdfUrl, '_blank');
+            newWindow.focus();
+        }
+
+        let timeout;
+        const navbar = document.getElementById('navbar');        
+    </script>
+</head>
+<body>
+    <div id="navbar-container" class="main-menu w-16 hover:w-64"></div>
+    <div class="hero-section bg-gradient-to-r from-blue-900 to-gray-900 text-white text-left py-5 shadow-lg">
+        <h1 class="text-4xl font-bold animate-fadeInDown">
+            <i class="fa-solid fa-sack-dollar"></i> Introduction to Sales
+        </h1>
+    </div>
+    <div class="container max-w-full mr-36 pr-20 p-6 content">        
+        <section class="mb-8">
+            <div class="bg-white p-6 rounded-lg shadow-lg fade-in">
+                <h2 class="text-2xl font-bold mb-4"><i class="fas fa-info-circle text-blue-500"></i> Introduction to Sales at Physique 57</h2>
+                <p class="mb-4">At Physique 57, sales isn’t just about memberships—it’s about creating transformative experiences. Every interaction is an opportunity to make a lasting impression and build relationships that embody our mission: <strong>to empower clients through fitness and community</strong>.</p>
+                <p class="mb-4"><strong>Fun Fact:</strong> Did you know that 85% of our members start as referrals from satisfied clients? This means happy clients are our best ambassadors!</p>
+                <blockquote class="border-l-4 border-blue-500 pl-4 italic mb-4">"People will forget what you said, people will forget what you did, but people will never forget how you made them feel." — Maya Angelou</blockquote>
+            </div>
+        </section>
+
+        <section class="mb-8">
+            <div class="bg-white shadow-md rounded-lg p-6 mb-6">
+                <h2 class="text-2xl font-bold mb-4">A. The Five-Step Physique 57 Sales Flow</h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="flex flex-col items-center text-center">
+                        <div class="w-16 h-16 bg-blue-500 text-white rounded-full flex items-center justify-center mb-2">
+                            <i class="fas fa-handshake fa-2x"></i>
+                        </div>
+                        <h3 class="font-bold text-lg mb-1">Introduction</h3>
+                        <p class="text-gray-600">Warmly greet the client and make them feel welcome. Use their name often.</p>
+                    </div>
+                    <div class="flex flex-col items-center text-center">
+                        <div class="w-16 h-16 bg-green-500 text-white rounded-full flex items-center justify-center mb-2">
+                            <i class="fas fa-question fa-2x"></i>
+                        </div>
+                        <h3 class="font-bold text-lg mb-1">Needs Analysis</h3>
+                        <p class="text-gray-600">Ask questions to understand their goals, fitness level, and concerns.</p>
+                    </div>
+                    <div class="flex flex-col items-center text-center">
+                        <div class="w-16 h-16 bg-yellow-500 text-white rounded-full flex items-center justify-center mb-2">
+                            <i class="fas fa-dumbbell fa-2x"></i>
+                        </div>
+                        <h3 class="font-bold text-lg mb-1">Studio Tour</h3>
+                        <p class="text-gray-600">Highlight unique features like our barre method, expert instructors, and community vibe.</p>
+                    </div>
+                    <div class="flex flex-col items-center text-center">
+                        <div class="w-16 h-16 bg-red-500 text-white rounded-full flex items-center justify-center mb-2">
+                            <i class="fas fa-user-check fa-2x"></i>
+                        </div>
+                        <h3 class="font-bold text-lg mb-1">Personalized Recommendations</h3>
+                        <p class="text-gray-600">Suggest packages tailored to their goals.</p>
+                    </div>
+                    <div class="flex flex-col items-center text-center">
+                        <div class="w-16 h-16 bg-purple-500 text-white rounded-full flex items-center justify-center mb-2">
+                            <i class="fas fa-check fa-2x"></i>
+                        </div>
+                        <h3 class="font-bold text-lg mb-1">Closing</h3>
+                        <p class="text-gray-600">Address any objections and encourage them to commit.</p>
+                    </div>
+                </div>
+            </div>
+    
+        </section>
+
+        <section class="mb-8">
+            <div class="bg-white p-6 rounded-lg shadow-lg fade-in">
+                <h2 class="text-2xl font-bold mb-4"><i class="fas fa-user-plus text-purple-500"></i> Handling First-Time Visitors</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <h3 class="text-xl font-semibold mb-2">What to Do When a New Member Enters the Studio</h3>
+                        <ol class="list-decimal list-inside mb-4">
+                            <li class="mb-2"><strong>Warm Welcome</strong>:
+                                <ul class="list-disc list-inside ml-6">
+                                    <li class="mb-2">Smile and greet them by name if known.</li>
+                                    <li class="mb-2">Offer a quick introduction about yourself and the studio.</li>
+                                </ul>
+                            </li>
+                            <li class="mb-2"><strong>Check-In Process</strong>:
+                                <ul class="list-disc list-inside ml-6">
+                                    <li class="mb-2">Confirm their trial or appointment details.</li>
+                                    <li class="mb-2">Provide them with a welcome kit if applicable (brochure, class schedule, etc.).</li>
+                                </ul>
+                            </li>
+                            <li class="mb-2"><strong>Studio Tour</strong>:
+                                <ul class="list-disc list-inside ml-6">
+                                    <li class="mb-2">Highlight:
+                                        <ul class="list-disc list-inside ml-6">
+                                            <li class="mb-2">The barre studio and equipment.</li>
+                                            <li class="mb-2">Locker facilities and amenities.</li>
+                                            <li class="mb-2">Instructors’ credentials.</li>
+                                        </ul>
+                                    </li>
+                                    <li class="mb-2">End the tour by positioning the barre method as the solution to their fitness goals.</li>
+                                </ul>
+                            </li>
+                        </ol>
+                    </div>
+                    <div>
+                        <ol class="list-decimal list-inside mb-4">
+                            <li class="mb-2"><strong>Pre-Class Preparation</strong>:
+                                <ul class="list-disc list-inside ml-6">
+                                    <li class="mb-2">Guide them on what to expect.</li>
+                                    <li class="mb-2">Provide support in selecting the right spot and any necessary equipment.</li>
+                                </ul>
+                            </li>
+                            <li class="mb-2"><strong>Post-Class Follow-Up</strong>:
+                                <ul class="list-disc list-inside ml-6">
+                                    <li class="mb-2">Ask how they felt after the class.</li>
+                                    <li class="mb-2">Share next steps and recommend packages based on their feedback.</li>
+                                </ul>
+                            </li>
+                        </ol>
+                        <p class="mb-4"><strong>Fun Fact:</strong> Physique 57’s barre method burns up to 500 calories in a single session!</p>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-white shadow-md rounded-lg p-6">
+                <h2 class="text-2xl font-bold mb-4 flex items-center">
+                    <i class="fas fa-phone-alt text-red-500 mr-2"></i> Telephonic Conversations
+                </h2>
+                <p class="mb-4">Questions to Ask During the First Call:</p>
+                <ul class="list-disc pl-6 space-y-2">
+                    <li class="flex items-start">
+                        <i class="fas fa-question-circle text-green-500 mr-2 mt-1"></i>
+                        <span>"Hi [Name], what got you interested in Physique 57?"</span>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="fas fa-question-circle text-green-500 mr-2 mt-1"></i>
+                        <span>"Have you had the chance to try barre or group fitness classes before?"</span>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="fas fa-question-circle text-green-500 mr-2 mt-1"></i>
+                        <span>"What’s your main fitness goal right now?"</span>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="fas fa-question-circle text-green-500 mr-2 mt-1"></i>
+                        <span>"Are there any specific challenges you’ve faced in your fitness journey?"</span>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="fas fa-question-circle text-green-500 mr-2 mt-1"></i>
+                        <span>"How often do you envision working out in a typical week?"</span>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="fas fa-question-circle text-green-500 mr-2 mt-1"></i>
+                        <span>"What’s most important to you in a fitness studio—is it the results, the atmosphere, or the schedule flexibility?"</span>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="fas fa-question-circle text-green-500 mr-2 mt-1"></i>
+                        <span>"Do you prefer working out solo or in a group environment?"</span>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="fas fa-question-circle text-green-500 mr-2 mt-1"></i>
+                        <span>"Would you be open to a trial session to experience the difference for yourself?"</span>
+                    </li>
+                </ul>
+                <div class="mt-4 p-4 bg-blue-100 rounded-lg flex items-start">
+                    <i class="fas fa-lightbulb text-yellow-500 mr-2 mt-1"></i>
+                    <p class="text-blue-700">Pro Tip: Over the phone, focus on establishing trust and sparking curiosity about what Physique 57 offers. Keep the tone conversational and warm.</p>
+                </div>
+        </section>
+
+        <section class="mb-8">
+            <div class="bg-white shadow-md rounded-lg p-6 mb-6">
+                <h2 class="text-2xl font-bold mb-4 flex items-center">
+                    <i class="fas fa-snowflake text-blue-500 mr-2"></i> Icebreaker Questions
+                </h2>
+                <p class="mb-4">Use open-ended questions to build rapport and discover client needs:</p>
+                <ul class="list-disc pl-6 space-y-2">
+                    <li class="flex items-start">
+                        <i class="fas fa-question-circle text-green-500 mr-2 mt-1"></i>
+                        <span>"What inspired you to try Physique 57?"</span>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="fas fa-question-circle text-green-500 mr-2 mt-1"></i>
+                        <span>"What’s your fitness journey been like so far?"</span>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="fas fa-question-circle text-green-500 mr-2 mt-1"></i>
+                        <span>"What’s one thing you’re hoping to achieve with us?"</span>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="fas fa-question-circle text-green-500 mr-2 mt-1"></i>
+                        <span>"Have you tried barre before, or is this your first time?"</span>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="fas fa-question-circle text-green-500 mr-2 mt-1"></i>
+                        <span>"How do you typically stay active?"</span>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="fas fa-question-circle text-green-500 mr-2 mt-1"></i>
+                        <span>"What’s your favorite way to reward yourself after a great workout?"</span>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="fas fa-question-circle text-green-500 mr-2 mt-1"></i>
+                        <span>"What’s one thing you look for in a fitness studio?"</span>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="fas fa-question-circle text-green-500 mr-2 mt-1"></i>
+                        <span>"What motivated you to focus on fitness right now?"</span>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="fas fa-question-circle text-green-500 mr-2 mt-1"></i>
+                        <span>"Are there specific areas you’d like to improve, such as strength, flexibility, or endurance?"</span>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="fas fa-question-circle text-green-500 mr-2 mt-1"></i>
+                        <span>"What kind of workouts have you enjoyed in the past?"</span>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="fas fa-question-circle text-green-500 mr-2 mt-1"></i>
+                        <span>"What does your ideal workout routine look like?"</span>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="fas fa-question-circle text-green-500 mr-2 mt-1"></i>
+                        <span>"How do you usually track your progress or stay motivated?"</span>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="fas fa-question-circle text-green-500 mr-2 mt-1"></i>
+                        <span>"Are there any challenges or barriers that have prevented you from sticking to a routine before?"</span>
+                    </li>
+                </ul>
+                <div class="mt-4 p-4 bg-blue-100 rounded-lg flex items-start">
+                    <i class="fas fa-lightbulb text-yellow-500 mr-2 mt-1"></i>
+                    <p class="text-blue-700">Pro Tip: Listen attentively and take mental or written notes to use in your recommendations.</p>
+                </div>        
+        </section>
+
+        <section class="mb-8">
+            <div class="bg-white p-6 rounded-lg shadow-lg fade-in">
+                <h2 class="text-2xl font-bold mb-4"><i class="fas fa-exclamation-circle text-red-500"></i> Handling Objections</h2>
+                <h3 class="text-xl font-semibold mb-2">Common Objections and Responses:</h3>
+                <ul class="list-disc list-inside mb-4">
+                    <li class="mb-2"><strong>"I’m not sure if this is for me."</strong>
+                        <p class="ml-6">Response: "That’s totally understandable! What specific concerns do you have? Let’s address them together."</p>
+                    </li>
+                    <li class="mb-2"><strong>"I’ll think about it."</strong>
+                        <p class="ml-6">Response: "Of course. May I follow up with you in a day or two to answer any questions that come up?"</p>
+                    </li>
+                    <li class="mb-2"><strong>"It’s too expensive."</strong>
+                        <p class="ml-6">Response: "Our programs are designed to provide maximum value by delivering visible results. Let’s explore a package that fits your goals and budget."</p>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="mb-8">
+            <div class="bg-white shadow-md rounded-lg p-6 mb-6">
+                <h2 class="text-2xl font-bold mb-4 flex items-center">
+                    <i class="fas fa-comments text-purple-500 mr-2"></i> Post-Trial Session Questions
+                </h2>
+                <p class="mb-4">Key Questions to Ask to Close the Deal:</p>
+                <ul class="list-disc pl-6 space-y-2">
+                    <li class="flex items-start">
+                        <i class="fas fa-question-circle text-green-500 mr-2 mt-1"></i>
+                        <span>"How did you feel during the class?"</span>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="fas fa-question-circle text-green-500 mr-2 mt-1"></i>
+                        <span>"What did you enjoy the most about today’s session?"</span>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="fas fa-question-circle text-green-500 mr-2 mt-1"></i>
+                        <span>"Can you see this becoming part of your fitness routine?"</span>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="fas fa-question-circle text-green-500 mr-2 mt-1"></i>
+                        <span>"What would achieving your fitness goals mean to you?"</span>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="fas fa-question-circle text-green-500 mr-2 mt-1"></i>
+                        <span>"Do you have any specific goals we can help you work toward?"</span>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="fas fa-question-circle text-green-500 mr-2 mt-1"></i>
+                        <span>"How did you find the instructor’s guidance and the class structure?"</span>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="fas fa-question-circle text-green-500 mr-2 mt-1"></i>
+                        <span>"Would you like to try a few more classes before committing to a package?"</span>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="fas fa-question-circle text-green-500 mr-2 mt-1"></i>
+                        <span>"Were there any moments during the session that particularly stood out to you?"</span>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="fas fa-question-circle text-green-500 mr-2 mt-1"></i>
+                        <span>"Is there anything you would like more of in your fitness experience?"</span>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="fas fa-question-circle text-green-500 mr-2 mt-1"></i>
+                        <span>"What’s your ideal frequency for workouts?"</span>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="fas fa-question-circle text-green-500 mr-2 mt-1"></i>
+                        <span>"Would you prefer focusing on group classes or private sessions?"</span>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="fas fa-question-circle text-green-500 mr-2 mt-1"></i>
+                        <span>"Do you feel our studio environment aligns with your fitness needs?"</span>
+                    </li>
+                </ul>
+                <div class="mt-4 p-4 bg-blue-100 rounded-lg flex items-start">
+                    <i class="fas fa-lightbulb text-yellow-500 mr-2 mt-1"></i>
+                    <p class="text-blue-700">Pro Tip: Always ask open-ended questions to encourage conversation and uncover concerns or motivations.</p>
+                </div>
+            </div>    
+        </section>
+        <section class="mb-8">
+            <div class="bg-white p-6 rounded-lg shadow-lg fade-in">
+                <h2 class="text-2xl font-bold mb-4"><i class="fas fa-box-open text-teal-500"></i> Suggesting the Right Package</h2>
+                <h3 class="text-xl font-semibold mb-2">How to Suggest Better:</h3>
+                <ul class="list-disc list-inside mb-4">
+                    <li class="mb-2"><strong>Align Packages with Goals:</strong>
+                        <ul class="list-disc list-inside ml-6">
+                            <li class="mb-2">If the client wants quick results: Suggest an unlimited package.</li>
+                            <li class="mb-2">If they have a busy schedule: Recommend class packs for flexibility.</li>
+                            <li class="mb-2">For beginners: Start with smaller packs to build consistency.</li>
+                        </ul>
+                    </li>
+                    <li class="mb-2"><strong>Highlight Value:</strong>
+                        <ul class="list-disc list-inside ml-6">
+                            <li class="mb-2">Break down the cost per class for packages to show savings.</li>
+                            <li class="mb-2">Example: "With this package, each session costs less than a coffee at your favorite café!"</li>
+                        </ul>
+                    </li>
+                    <li class="mb-2"><strong>Use Testimonials:</strong>
+                        <ul class="list-disc list-inside ml-6">
+                            <li class="mb-2">Share success stories of clients with similar goals.</li>
+                        </ul>
+                    </li>
+                    <li class="mb-2"><strong>Create Urgency:</strong>
+                        <ul class="list-disc list-inside ml-6">
+                            <li class="mb-2">Example: "This offer is only available until the end of the week."</li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="mb-8">
+            <div class="bg-white p-6 rounded-lg shadow-lg fade-in">
+                <h2 class="text-2xl font-bold mb-4"><i class="fas fa-dollar-sign text-orange-500"></i> Navigating the Price Objection</h2>
+                <h3 class="text-xl font-semibold mb-2">Detailed Steps:</h3>
+                <ul class="list-disc list-inside mb-4">
+                    <li class="mb-2"><strong>Acknowledge Their Concern:</strong>
+                        <p class="ml-6">"I completely understand. Investing in yourself can feel like a big step."</p>
+                    </li>
+                    <li class="mb-2"><strong>Reframe the Value:</strong>
+                        <p class="ml-6">Highlight the benefits they’ll gain, such as improved energy, confidence, and results.</p>
+                        <p class="ml-6">Example: "Think of it as an investment in your health and happiness."</p>
+                    </li>
+                    <li class="mb-2"><strong>Break Down the Cost:</strong>
+                        <p class="ml-6">Show them how the package fits their budget:</p>
+                        <p class="ml-6">"This package breaks down to just ₹X per class, which is less than most fitness studios of this caliber."</p>
+                    </li>
+                    <li class="mb-2"><strong>Offer Flexible Options:</strong>
+                        <p class="ml-6">Suggest entry-level packages or payment plans if available.</p>
+                        <p class="ml-6">Example: "We also have smaller packs that give you the same benefits to start with."</p>
+                    </li>
+                    <li class="mb-2"><strong>Use Comparisons:</strong>
+                        <p class="ml-6">"You’d spend the same amount on dining out twice a month, but this gives you lasting benefits."</p>
+                    </li>
+                    <li class="mb-2"><strong>Trial Close:</strong>
+                        <p class="ml-6">"If we could make this work within your budget, would you be ready to start?"</p>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="mb-8">
+            <div class="bg-white p-6 rounded-lg shadow-lg fade-in">
+                <h2 class="text-2xl font-bold mb-4"><i class="fas fa-cogs text-pink-500"></i> Service Delivery Cycle</h2>
+                <h3 class="text-xl font-semibold mb-2">The Ideal Service Delivery Process</h3>
+                <ol class="list-decimal list-inside mb-4">
+                    <li class="mb-2"><strong>Pre-Class Engagement</strong>:
+                        <ul class="list-disc list-inside ml-6">
+                            <li class="mb-2">Confirm bookings and send reminders via email or text.</li>
+                            <li class="mb-2">Provide a warm welcome upon arrival.</li>
+                        </ul>
+                    </li>
+                    <li class="mb-2"><strong>During Class</strong>:
+                        <ul class="list-disc list-inside ml-6">
+                            <li class="mb-2">Ensure the instructor provides personalized attention.</li>
+                            <li class="mb-2">Address any client concerns in real-time.</li>
+                        </ul>
+                    </li>
+                    <li class="mb-2"><strong>Post-Class Engagement</strong>:
+                        <ul class="list-disc list-inside ml-6">
+                            <li class="mb-2">Ask for immediate feedback.</li>
+                            <li class="mb-2">Suggest relevant packages or upcoming events.</li>
+                        </ul>
+                    </li>
+                    <li class="mb-2"><strong>Ongoing Engagement</strong>:
+                        <ul class="list-disc list-inside ml-6">
+                            <li class="mb-2">Schedule regular follow-ups.</li>
+                            <li class="mb-2">Celebrate milestones (e.g., "You’ve completed 10 classes!").</li>
+                        </ul>
+                    </li>
+                </ol>
+            </div>
+        </section>
+
+        <section class="mb-8">
+            <div class="bg-white p-6 rounded-lg shadow-lg fade-in">
+                <h2 class="text-2xl font-bold mb-4"><i class="fas fa-tools text-gray-500"></i> Service Recovery</h2>
+                <p class="mb-4">Service recovery is about turning a negative experience into a positive one. Follow these steps:</p>
+                <ol class="list-decimal list-inside mb-4">
+                    <li class="mb-2"><strong>Acknowledge the Issue</strong>:
+                        <p class="ml-6">Listen empathetically to the client’s concern without interrupting.</p>
+                    </li>
+                    </ol>
+                    <li class="mb-2"><strong>Apologize Sincerely</strong>:
+                        <p class="ml-6">Example: "I’m truly sorry you had this experience. Let’s make it right."</p>
+                    </li>
+                    <li class="mb-2"><strong>Take Action</strong>:
+                        <p class="ml-6">Offer a solution (e.g., complimentary class, extended validity, or priority booking).</p>
+                    </li>
+                    <li class="mb-2"><strong>Follow Up</strong>:
+                        <p class="ml-6">Check back to ensure the client is satisfied.</p>
+                    </li>
+                </ol>
+                <p class="mb-4"><strong>Pro Tip:</strong> Empower your team to resolve minor issues on the spot to avoid escalation.</p>
+                <blockquote class="border-l-4 border-blue-500 pl-4 italic mb-4">"A complaint is a gift. It’s an opportunity to learn and improve." — Janelle Barlow</blockquote>
+            </div>
+        </section>
+
+        <section class="mb-8">
+            <div class="bg-white p-6 rounded-lg shadow-lg fade-in">
+                <h2 class="text-2xl font-bold mb-4"><i class="fas fa-lightbulb text-yellow-500"></i> Fun Facts and Quotes to Inspire</h2>
+                <ul class="list-disc list-inside mb-4">
+                    <li class="mb-2"><strong>Fun Fact:</strong> Physique 57’s barre method is scientifically proven to tone muscles without adding bulk.</li>
+                    <li class="mb-2"><strong>Quote to Remember:</strong> "The best salespeople are those who genuinely want to help." — Zig Ziglar</li>
+                </ul>
+            </div>
+        </section>
+    </div>
+        <footer class="bg-gray-800 text-white py-1 mt-auto">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+             <div class="flex justify-between items-center">
+              <p class="text-sm">
+               © 2025 Physique 57 India. All rights reserved.
+              </p>
+              <div class="flex space-x-4">
+               <a class="text-white hover:text-gray-400" href="https://facebook.com/physique57india">
+                <i class="fab fa-facebook-f">
+                </i>
+               </a>
+               <a class="text-white hover:text-gray-400" href="https://twitter.com/physique57india">
+                <i class="fab fa-twitter">
+                </i>
+               </a>
+               <a class="text-white hover:text-gray-400" href="https://instagram.com/physique57india">
+                <i class="fab fa-instagram">
+                </i>
+               </a>
+              </div>
+             </div>
+            </div>
+           </footer>    
+</body>
+</html>

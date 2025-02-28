@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Physique 57: A Journey of Transformation</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <style>
+         body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f9fafb;
+            color: #333;
+        }
+
+        .hero-section {
+            background: linear-gradient(120deg, #007bff, #000608);
+            color: #fff;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: slideIn 1.5s ease-out forwards;
+        }
+    
+        .hero-section h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin: 0;
+            opacity: 0;
+            transform: translateY(-20px);
+            animation: fadeIn 1s ease-in-out 0.5s forwards;
+        }
+    
+        .hero-section i {
+            font-size: 3rem;
+            margin-right: 10px;
+            animation: bounceIn 1s ease-in-out 1s forwards;
+        }
+    
+        /* Keyframes */
+        @keyframes slideIn {
+            0% {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+    
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    
+        @keyframes bounceIn {
+            0%,
+            20%,
+            40%,
+            60%,
+            80%,
+            100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+    
+        @media (max-width: 768px) {
+            .hero-section h1 {
+                font-size: 2.5rem;
+            }
+            .hero-section i {
+                font-size: 2.5rem;
+            }
+        }
+
+        .animate-character {
+            text-transform: uppercase;
+            background-image: linear-gradient(
+                -225deg,
+                #000000 0%,
+                #ffd900 29%,
+                #ffea00 67%,
+                #ffffff 100%
+            );
+            background-size: 200% auto;            
+            color: transparent; /* Set text color to transparent */
+            background-clip: text;            
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent; /* Ensure text fill is transparent */
+            animation: textclip 2s linear infinite, marquee 15s linear infinite;
+            display: inline-block;            
+            white-space: nowrap;            
+            letter-spacing: 0.4rem;
+        }
+
+        @keyframes textclip {
+            to {
+                background-position: 200% center;
+            }
+        }
+
+        .card {
+            background-color: #fff;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .card img {
+            width: 100%;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .card img:hover {
+            transform: scale(1.05);
+        }
+
+        .quote {
+            font-size: 1.5rem;
+            font-style: italic;
+            color: #007bff;
+            margin-top: 30px;
+            animation: fadeInText 2.5s ease-in-out;
+        }
+
+        .quote-author {
+            font-size: 1rem;
+            color: #555;
+            margin-top: 10px;
+            animation: fadeInText 2.5s ease-in-out;
+        }
+
+        @keyframes fadeInText {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .icon-list {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            gap: 10px;
+        }
+
+        .icon-list i {
+            color: #a80000;
+            font-size: 1.5rem;
+        }
+        .pdf-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .pdf-card {
+            background-color: #fff;
+            border: 2px solid #000000;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 200px;
+            height: 250px;
+            padding: 10px;
+            transition: transform 0.3s;
+            cursor: pointer;
+        }
+
+        .pdf-card:hover {
+            transform: scale(1.05);
+        }
+
+        .pdf-card i {
+            font-size: 50px;
+            color: #7c0000;
+        }
+
+        .pdf-title {
+            margin-top: 10px;
+            font-weight: bold;
+            font-size: 20px;
+        }       
+    </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            fetch('navbar.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('navbar-container').innerHTML = data;
+                })
+                .catch(error => console.error('Error loading the navbar:', error));
+        });
+        function openPDF(pdfUrl) {
+            const newWindow = window.open(pdfUrl, '_blank');
+            newWindow.focus();
+        }
+    </script>
+</head>
+<body>
+  <!-- Hero Section -->
+  <div class="bg-gradient-to-r from-gray-900 to-gray-900 text-white text-center pt-3 pb-3 shadow-lg">
+    <div class="container mx-auto flex items-end space-x-4">
+        <i class="fa-solid fa-list-check fa-fade fa-3x mr-1 mb-0 pb-1" style="color: #ffffff;"></i>
+        <h1 class="animate-character text-5xl uppercase">Studio Operations & Procedures</h1>
+    </div>        
+</div>
+
+<div class="container mx-auto max-w-full pb-0 pl-20 pr-20 pt-5">
+    <div id="navbar-container"></div> <!-- This is where the navbar will be loaded -->   
+            <section class="bg-white p-6 rounded-lg shadow-lg mb-8">
+            <div class="flex items-center mb-4">
+                <i class="fas fa-user-tie text-blue-600 text-3xl mr-4"></i>
+                <h2 class="text-2xl font-bold">Professional Appearance</h2>
+            </div>
+            <p>All CSTs are expected to maintain a professional appearance with well-groomed attire, light makeup, and neat hair while wearing the Physique 57 Mumbai uniform. Nail polish should be free of chips, and each CST member is responsible for promoting good health and hygiene. The front desk area is designated as a mobile phone-free zone. Our clients are of utmost importance, and you are the first impression they have of Physique 57 Mumbai.</p><br>
+        
+            <div class="flex items-center mb-4">
+                <i class="fas fa-tasks text-blue-600 text-3xl mr-4"></i>
+                <h2 class="text-2xl font-bold">Front Desk Duties</h2>
+            </div>
+            <p>It is your duty to ensure the front desk remains clean, organized, and presentable. CST staff handle confidential client information, so client forms and outreach materials must be neatly filed and readily available. Pens and stationery should be kept in an orderly manner within the designated professional and luxurious space, as this is where we meet our clients. There should be no food, empty wrappers, or empty mugs cluttering the workspace, as it is meant to uphold a professional and luxurious atmosphere for our clients.</p>
+        </section>
+        
+        <section class="bg-white p-6 rounded-lg shadow-lg mb-8 border-l-8 border-blue-800">
+            <div class="flex items-center mb-4">
+                <i class="fas fa-list-ol text-blue-600 text-3xl mr-4"></i>
+                <h2 class="text-2xl font-bold">Opening Shift Tasks</h2>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="flex items-start">
+                    <i class="fas fa-lock text-blue-600 text-2xl mr-4"></i>
+                    <p>Securely lock the cash drawer upon the studio's opening and verify the cash balance, ensuring it matches the closing balance in the petty cash report.</p>
+                </div>
+                <div class="flex items-start">
+                    <i class="fas fa-broom text-blue-600 text-2xl mr-4"></i>
+                    <p>Inspect the front desk, locker rooms, washrooms, pantry area, and studios for any housekeeping issues and promptly notify the housekeeping staff of any necessary work or restocking requirements.</p>
+                </div>
+                <div class="flex items-start">
+                    <i class="fas fa-dumbbell text-blue-600 text-2xl mr-4"></i>
+                    <p>Ensure that mats, blue bands, and balls are correctly placed or folded in the appropriate studio.</p>
+                </div>
+                <div class="flex items-start">
+                    <i class="fas fa-thermometer-half text-blue-600 text-2xl mr-4"></i>
+                    <p>Monitor the temperature throughout the facility and activate the air conditioning and TFA systems in the studios 20 minutes before the first class of the day.</p>
+                </div>
+                <div class="flex items-start">
+                    <i class="fas fa-store text-blue-600 text-2xl mr-4"></i>
+                    <p>Maintain a clean, well-organized boutique area with ample stock.</p>
+                </div>
+                <div class="flex items-start">
+                    <i class="fas fa-user-shield text-blue-600 text-2xl mr-4"></i>
+                    <p>Ensure that at least one CST team member is always present at the front desk.</p>
+                </div>
+                <div class="flex items-start">
+                    <i class="fas fa-fingerprint text-blue-600 text-2xl mr-4"></i>
+                    <p>Use your biometric access key to enter the studio.</p>
+                </div>
+                <div class="flex items-start">
+                    <i class="fas fa-lightbulb text-blue-600 text-2xl mr-4"></i>
+                    <p>Assist housekeeping staff with studio access, and activate the studio lighting, music system, air conditioning, and position the iPad on its stand if needed.</p>
+                </div>
+                <div class="flex items-start">
+                    <i class="fas fa-calendar-check text-blue-600 text-2xl mr-4"></i>
+                    <p>Review the day's schedule and cross-check attendance records from the previous evening's classes. Ensure clients are accurately marked and address any missed client entries or unpaid classes promptly.</p>
+                </div>
+                <div class="flex items-start">
+                    <i class="fas fa-exclamation-circle text-blue-600 text-2xl mr-4"></i>
+                    <p>Investigate any unpaid classes, and if not documented in the DSR, report this to your reporting manager immediately.</p>
+                </div>
+                <div class="flex items-start">
+                    <i class="fas fa-towel text-blue-600 text-2xl mr-4"></i>
+                    <p>Verify that towels are correctly and neatly folded and ensure an adequate supply for the day. Notify housekeeping if additional towels are required.</p>
+                </div>
+                <div class="flex items-start">
+                    <i class="fas fa-coins text-blue-600 text-2xl mr-4"></i>
+                    <p>Confirm that you have sufficient change in the cash till to begin the day; if not, request assistance from the on-duty office staff to obtain change before the first member arrives.</p>
+                </div>
+                <div class="flex items-start">
+                    <i class="fas fa-user-clock text-blue-600 text-2xl mr-4"></i>
+                    <p>Ensure trainers arrive on time for their scheduled classes and activate the 'Emergency Call List' in case of any deviations from the schedule.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="bg-white p-6 rounded-lg shadow-lg mb-8 border-l-8 border-red-800">
+            <div class="flex items-center mb-10">
+                <i class="fas fa-door-closed text-gray-900 text-3xl mr-4"></i>
+                <h2 class="text-2xl font-bold">Studio Closing Procedure</h2>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="flex items-start">
+                    <i class="fas fa-envelope text-red-600 text-2xl mr-4"></i>
+                    <p>Fill out the closing template and email the information to the Head of Sales, Sr Operations Manager & COO.</p>
+                </div>
+                <div class="flex items-start">
+                    <i class="fas fa-vacuum text-red-600 text-2xl mr-4"></i>
+                    <p>Oversee the housekeeping staff and ensure they have vacuumed the studios to the Physique 57 standard (lawn mower effect), the equipment is set neatly and correctly, and the barres have been disinfected.</p>
+                </div>
+                <div class="flex items-start">
+                    <i class="fas fa-mirror text-red-600 text-2xl mr-4"></i>
+                    <p>Check that they have cleaned mirrors in the entire location, including the locker rooms and boutique; no smudges, dust, or finger marks!</p>
+                </div>
+                <div class="flex items-start">
+                    <i class="fas fa-restroom text-red-600 text-2xl mr-4"></i>
+                    <p>Check that the locker rooms and washrooms are clean, and the amenities are fully stocked; inform housekeeping where necessary.</p>
+                </div>
+                <div class="flex items-start">
+                    <i class="fas fa-cash-register text-red-600 text-2xl mr-4"></i>
+                    <p>Tally the cash & CC Slips against actual invoices and share the cash report with Operations Manager & Head of Sales & Client Experiences.</p>
+                </div>
+                <div class="flex items-start">
+                    <i class="fas fa-file-alt text-red-600 text-2xl mr-4"></i>
+                    <p>Update the DSR, cash Report, Lead Gen & Boutique Tally Sheets & share it with all concerned.</p>
+                </div>
+                <div class="flex items-start">
+                    <i class="fas fa-store text-red-600 text-2xl mr-4"></i>
+                    <p>The boutique should be clean, tidy and fully stocked, check the socks/water bottles and refill where necessary.</p>
+                </div>
+                <div class="flex items-start">
+                    <i class="fas fa-clipboard-list text-red-600 text-2xl mr-4"></i>
+                    <p>Make a note of any apparel/accessories that are out of stock and email the Studio Coordinator with a CC to others.</p>
+                </div>
+                <div class="flex items-start">
+                    <i class="fas fa-towel text-red-600 text-2xl mr-4"></i>
+                    <p>Ensure housekeeping completes the laundry and refills the towels in reception and the locker rooms.</p>
+                </div>
+                <div class="flex items-start">
+                    <i class="fas fa-check-circle text-red-600 text-2xl mr-4"></i>
+                    <p>Check Momence for class discrepancies and rectify any unpaid entries where required.</p>
+                </div>
+                <div class="flex items-start">
+                    <i class="fas fa-user-check text-red-600 text-2xl mr-4"></i>
+                    <p>Ensure that there is no member left behind in the studio premises before you exit the studio. Under no circumstances can you leave before the last member has exited the studio.</p>
+                </div>
+                <div class="flex items-start">
+                    <i class="fas fa-door-closed text-red-600 text-2xl mr-4"></i>
+                    <p>Close and lock the studio safely and securely!</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="bg-white p-6 rounded-lg shadow-lg mb-8 border-l-8 border-green-800">
+            <div class="flex items-center mb-4">
+                <i class="fas fa-wind text-green-600 text-3xl mr-4"></i>
+                <h2 class="text-2xl font-bold">Treated Fresh Air System (T.F.A.)</h2>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="flex items-start">
+                    <i class="fas fa-building text-green-600 text-2xl mr-4"></i>
+                    <p>Sick Building Syndrome (SBS), an outcome of poor IAQ (Indoor Air Quality), is the condition of a building in which more than 20% of the occupants suffer from adverse health effects, but with no clinically diagnosable disease present. IAQ refers to the physical, chemical and biological characteristics of air in the indoor environment within an occupied building. IAQ relates to the quality of air that we breathe for almost 80% of our life-the time we spend indoors.</p>
+                </div>
+                <div class="flex items-start">
+                    <i class="fas fa-exclamation-triangle text-green-600 text-2xl mr-4"></i>
+                    <p>Poor IAQ and SBS reports adverse consequences, other than occupational health problems, as loss of productivity and legal liability.</p>
+                </div>
+                <div class="flex items-start">
+                    <i class="fas fa-chart-line text-green-600 text-2xl mr-4"></i>
+                    <p>Productivity loss of around 10% is identified in buildings with poor IAQ.</p>
+                </div>
+                <div class="flex items-start">
+                    <i class="fas fa-gavel text-green-600 text-2xl mr-4"></i>
+                    <p>Legal challenges are on the rise, the onus being on facility owners, design consultants, architects etc.</p>
+                </div>
+                <div class="flex items-start">
+                    <i class="fas fa-wind text-green-600 text-2xl mr-4"></i>
+                    <p>Pre-conditions incoming fresh air.</p>
+                </div>
+                <div class="flex items-start">
+                    <i class="fas fa-fan text-green-600 text-2xl mr-4"></i>
+                    <p>Delivers fresh air throughout the year at conditions very near inside conditions.</p>
+                </div>
+                <div class="flex items-start">
+                    <i class="fas fa-thermometer-half text-green-600 text-2xl mr-4"></i>
+                    <p>Helps meet ventilation standards without raising energy cost.</p>
+                </div>
+                <div class="flex items-start">
+                    <i class="fas fa-tint text-green-600 text-2xl mr-4"></i>
+                    <p>Maintains humidity conditions at no additional cost.</p>
+                </div>
+                <div class="flex items-start">
+                    <i class="fas fa-compress-arrows-alt text-green-600 text-2xl mr-4"></i>
+                    <p>Allows reduction in system capacity by 30 to 65%.</p>
+                </div>
+            </div>
+        </div>
+        </section>
+        <footer class="bg-gray-800 text-white py-1 mt-auto">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+             <div class="flex justify-between items-center">
+              <p class="text-sm">
+               © 2025 Physique 57 India. All rights reserved.
+              </p>
+              <div class="flex space-x-4">
+               <a class="text-white hover:text-gray-400" href="https://facebook.com/physique57india">
+                <i class="fab fa-facebook-f">
+                </i>
+               </a>
+               <a class="text-white hover:text-gray-400" href="https://twitter.com/physique57india">
+                <i class="fab fa-twitter">
+                </i>
+               </a>
+               <a class="text-white hover:text-gray-400" href="https://instagram.com/physique57india">
+                <i class="fab fa-instagram">
+                </i>
+               </a>
+              </div>
+             </div>
+            </div>
+           </footer>        
+</body>
+</html>

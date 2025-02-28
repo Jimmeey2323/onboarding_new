@@ -1,0 +1,1032 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Physique 57: A Journey of Transformation</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+    <link href='https://fonts.googleapis.com/css?family=Play:wght@400;500;700&display=swap' rel='stylesheet'>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&amp;display=swap" rel="stylesheet"/>
+
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f9fafb;
+            color: #333;
+        }
+
+        .hero-section {
+            background: linear-gradient(120deg, #007bff, #000608);
+            color: #fff;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: slideIn 1.5s ease-out forwards;
+        }
+    
+        .hero-section h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin: 0;
+            opacity: 0;
+            transform: translateY(-20px);
+            animation: fadeIn 1s ease-in-out 0.5s forwards;
+        }
+    
+        .hero-section i {
+            font-size: 3rem;
+            margin-right: 10px;
+            animation: bounceIn 1s ease-in-out 1s forwards;
+        }
+    
+        /* Keyframes */
+        @keyframes slideIn {
+            0% {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+    
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    
+        @keyframes bounceIn {
+            0%,
+            20%,
+            40%,
+            60%,
+            80%,
+            100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+    
+        @media (max-width: 768px) {
+            .hero-section h1 {
+                font-size: 2.5rem;
+            }
+            .hero-section i {
+                font-size: 2.5rem;
+            }
+        }
+
+        .animate-character {
+            text-transform: uppercase;
+            background-image: linear-gradient(
+                -225deg,
+                #000000 0%,
+                #ffd900 29%,
+                #ffea00 67%,
+                #ffffff 100%
+            );
+            background-size: 200% auto;            
+            color: transparent; /* Set text color to transparent */
+            background-clip: text;            
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent; /* Ensure text fill is transparent */
+            animation: textclip 2s linear infinite, marquee 15s linear infinite;
+            display: inline-block;            
+            white-space: nowrap;            
+            letter-spacing: 0.4rem;
+        }
+
+        @keyframes textclip {
+            to {
+                background-position: 200% center;
+            }
+        }
+
+        .card {
+            background-color: #fff;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            padding-right: 15px;
+            padding-left: 15px;
+        }
+
+        .card:hover {
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .card img {
+            width: 100%;
+            border-radius: 12px;
+            margin-bottom: 20px;            
+        }
+
+        .quote {
+            font-size: 1.5rem;
+            font-style: italic;
+            color: #007bff;
+            margin-top: 30px;
+            animation: fadeInText 2.5s ease-in-out;
+        }
+
+        .quote-author {
+            font-size: 1rem;
+            color: #555;
+            margin-top: 10px;
+            animation: fadeInText 2.5s ease-in-out;
+        }
+
+        @keyframes fadeInText {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .icon-list {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            gap: 10px;
+        }
+
+        .icon-list i {
+            color: #007bff;
+            font-size: 1.5rem;
+        }
+        .main-menu {
+            transition: width 0.3s, transform 0.3s;
+            box-shadow: 2px 0 15px rgba(0, 0, 0, 0.1);
+            overflow-y: auto;
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100%;
+            background-color: white;
+            z-index: 1000;
+        }
+
+        .main-menu ul li a .nav-text {
+            display: none;
+            transition: opacity 0.3s;
+        }
+
+        .main-menu:hover ul li a .nav-text {
+            display: inline;
+            opacity: 1;
+        }
+
+        .main-menu ul li a {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            color: black;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+
+        .main-menu ul li a:hover {
+            background-color: rgba(0, 0, 0, 0.1);
+        }
+
+        .main-menu ul li a .nav-icon {
+            margin-right: 10px;
+            font-size: 1.5rem;
+        }
+
+        .submenu {
+            display: none;
+        }
+
+        .has-subnav:hover .submenu {
+            display: block;
+        }
+
+        .submenu li a {
+            background-color: #f0f0f0;
+        }
+
+        .submenu li a:hover {
+            background-color: #e0e0e0;
+        }
+
+        .main-menu ul {
+            padding-left: 0;
+        }
+
+        .main-menu ul li {
+            list-style: none;
+        }
+
+        .main-menu ul li a {
+            justify-content: center;
+        }
+
+        .main-menu:hover ul li a {
+            justify-content: flex-start;
+        }
+
+        .main-menu:hover ~ .hero-section h1 i {
+            margin-left: 0;
+
+        }
+
+        .main-menu:hover ~ .container,
+        .main-menu:hover ~ .hero-section {
+            margin-left: 14rem;
+        }
+    </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            fetch('navbar.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('navbar-container').innerHTML = data;
+                })
+                .catch(error => console.error('Error loading the navbar:', error));
+        });
+    </script>
+</head>   
+<body class="bg-white font-roboto">
+     <!-- Hero Section -->
+     <div class="bg-gradient-to-r from-gray-900 to-gray-900 text-white text-center pt-3 pb-3 shadow-lg">
+        <div class="container mx-auto flex items-end space-x-4">
+            <i class="fa-solid fa-socks fa-fade fa-3x mr-1 mb-0 pb-1" style="color: #ffffff;"></i>
+            <h1 class="animate-character text-5xl uppercase">Retail Standards And Compliance</h1>
+        </div>        
+    </div>
+
+    <div class="container mx-auto max-w-full pb-0 pl-20 pr-5 pt-5">
+        <div id="navbar-container"></div> <!-- This is where the navbar will be loaded -->   
+            <section class="mb-8">
+                <div class="bg-white shadow-md rounded-lg p-6">
+                 <h2 class="text-2xl font-bold text-gray-800 mb-4 flex items-center">
+                  <i class="fas fa-bullseye mr-2 text-blue-500">
+                  </i>
+                  To Be Successful:
+                 </h2>
+                 <ul class="list-disc list-inside text-gray-700">
+                  <li>
+                   1st Ammunition
+                  </li>
+                  <li>
+                   The right product &amp; receiving it at the right time.
+                  </li>
+                  <li>
+                   Refresh merchandise constantly.
+                  </li>
+                  <li>
+                   Exciting evolution of product shipping monthly.
+                  </li>
+                 </ul>
+                </div>
+               </section>
+               <section class="mb-8">
+                <div class="bg-white shadow-md rounded-lg p-6">
+                 <h2 class="text-2xl font-bold text-gray-800 mb-4 flex items-center">
+                  <i class="fas fa-tools mr-2 text-green-500">
+                  </i>
+                  Key Elements and Tools:
+                 </h2>
+                 <ul class="list-disc list-inside text-gray-700">
+                  <li>
+                   Know your product.
+                  </li>
+                  <li>
+                   Understand the key elements of each brand.
+                  </li>
+                  <li>
+                   Know your sales goals.
+                  </li>
+                  <li>
+                   Communicate your sales goals.
+                  </li>
+                  <li>
+                   Excite your team.
+                  </li>
+                  <li>
+                   Incentives – motivating, involving and exciting CST’s. Create games and sales competitions. Monthly 50% off employee sale rack.
+                  </li>
+                  <li>
+                   Keeping racks replenished is critical for success. Less is more approach.
+                  </li>
+                  <li>
+                   Designated VM days. Designated number of hanger to a Hanging Rack.
+                  </li>
+                  <li>
+                   Turn shipments around in 24hr period.
+                  </li>
+                 </ul>
+                </div>
+               </section>
+               <section class="mb-8">
+                <div class="bg-white shadow-md rounded-lg p-6">
+                 <h2 class="text-2xl font-bold text-gray-800 mb-4 flex items-center">
+                  <i class="fas fa-map-marked-alt mr-2 text-red-500">
+                  </i>
+                  Studio Floor Plan Guidelines:
+                 </h2>
+                 <ul class="list-disc list-inside text-gray-700">
+                  <li>
+                   Maintaining stocked racks is imperative for success.
+                  </li>
+                  <li>
+                   Simplify whenever possible.
+                  </li>
+                  <li>
+                   Organize merchandise by vendor for clarity.
+                  </li>
+                  <li>
+                   Floor plans detail the placement of Face outs, H Racks, Hot Spots, and Walls by designated numbers.
+                  </li>
+                  <li>
+                   Hot Spots, focal areas that capture attention, should be refreshed every few days.
+                  </li>
+                  <li>
+                   Flag deliveries for efficient placement.
+                  </li>
+                  <li>
+                   Utilize the Retail Guidelines for CST training and effective merchandise presentation.
+                  </li>
+                  <li>
+                   Optimize space in the Front Desk area.
+                  </li>
+                 </ul>
+                </div>
+               </section>
+               <section class="mb-8">
+                <div class="bg-white shadow-md rounded-lg p-6">
+                 <h2 class="text-2xl font-bold text-gray-800 mb-4 flex items-center">
+                  <i class="fas fa-chart-line mr-2 text-purple-500">
+                  </i>
+                  Units Per Transaction (UPT) Insights:
+                 </h2>
+                 <ul class="list-disc list-inside text-gray-700">
+                  <li>
+                   UPT measures the average number of items purchased per transaction: Total Items Sold / Total Paying Customers.
+                  </li>
+                  <li>
+                   Higher UPT reflects increased customer purchasing, a powerful tool for boosting sales.
+                  </li>
+                  <li>
+                   Emphasize add-on items, as they're easier to sell than convincing a non-buyer.
+                  </li>
+                  <li>
+                   Focus on best sellers, new products, and socks for effective suggestive selling.
+                  </li>
+                  <li>
+                   Aim for a minimum of 2 units per transaction to maximize sales potential.
+                  </li>
+                 </ul>
+                </div>
+               </section>
+               <section class="mb-8">
+                <div class="bg-white shadow-md rounded-lg p-6">
+                 <h2 class="text-2xl font-bold text-gray-800 mb-4 flex items-center">
+                  <i class="fas fa-palette mr-2 text-yellow-500">
+                  </i>
+                  Visual Merchandising
+                 </h2>
+                 <p class="text-gray-700 mb-4">
+                  At Physique 57 we follow certain standards and best practices to create a powerful guest experience and representation of our brand. Visual Merchandising is an important part of creating that powerful experience as it helps attract, engage, and motivate our customer towards our product.
+                 </p>
+                 <ul class="list-disc list-inside text-gray-700">
+                  <li>
+                   Each Boutique has its own needs and space constraints. Everything we merchandise should be intentional, tell a story and easy to shop.
+                  </li>
+                  <li>
+                   A clean, well-organized space is inviting, keeps product from being damaged and is essential for loss prevention.
+                  </li>
+                  <li>
+                   Maintaining the established vision, requires replenishing/restocking and tending to all items in boutiques.
+                  </li>
+                  <li>
+                   Merchandise is hung as you would read a book- left to right/ metal hooks hang left.
+                  </li>
+                  <li>
+                   Complete size run of each garment is displayed smallest to largest with one in each size. (As items sell, back stock may call for duplicate sizes)
+                  </li>
+                  <li>
+                   Each product must hang at an equal distance apart with no hangers overlapping or forced on rack. (18-25 hangers on small rack/35-50 hangers on a larger rack.)
+                  </li>
+                  <li>
+                   Folded items are stacked and folded in the same direction.
+                  </li>
+                  <li>
+                   Pant Hangers, i.e. Bottoms &amp; Bras hang tags must be clipped to the backside of the garment with the price facing out. (Garment must be pulled taut to avoid sagging/gathering.)
+                  </li>
+                  <li>
+                   Hang Tags must be tucked into the product to eliminate dangling.
+                  </li>
+                 </ul>
+                </div>
+               </section>
+               <section class="mb-8">
+                <div class="bg-white shadow-md rounded-lg p-6">
+                 <h2 class="text-2xl font-bold text-gray-800 mb-4 flex items-center">
+                  <i class="fas fa-box-open mr-2 text-teal-500">
+                  </i>
+                  Receiving Merchandise
+                 </h2>
+                 <ul class="list-disc list-inside text-gray-700">
+                  <li>
+                   Packages must be opened and counted/matched up to shipping invoice. (If shipping invoice does not match physical shipment, the studio director must be notified.)
+                  </li>
+                  <li>
+                   Branded Clothing or any item without a hang tag needs a Physique 57 hang tag when it arrives. They can be attached with the retail gun.
+                  </li>
+                  <li>
+                   Security Tag clothing on the right-side bottom seam including bras. (Except FIDI which will be the left side bottom.)
+                  </li>
+                  <li>
+                   Accessories i.e.: Bags, Underwear, and Shoes should be security tagged with the black accessory security tags.
+                  </li>
+                  <li>
+                   Socks should be barcode labeled on the back side of the tag to be hung in the same direction.
+                  </li>
+                  <li>
+                   Clothing should be barcode labeled over the vendor’s barcode.
+                  </li>
+                  <li>
+                   After counting/security tagging and labeling please leave items in the studio director’s designated area of choice.
+                  </li>
+                 </ul>
+                </div>
+               </section>
+               <section class="mb-8">
+                <div class="bg-white shadow-md rounded-lg p-6">
+                 <h2 class="text-2xl font-bold text-gray-800 mb-4 flex items-center">
+                  <i class="fas fa-cogs mr-2 text-indigo-500">
+                  </i>
+                  Retail Maintenance
+                 </h2>
+                 <ul class="list-disc list-inside text-gray-700">
+                  <li>
+                   If replenishing, make sure you check inventory on hand first in Momence instead of searching the cabinets for an item that may not be there.
+                  </li>
+                  <li>
+                   Please keep everything clean and organized for the next person if cabinets are opened.
+                  </li>
+                  <li>
+                   When restocking/cleaning make sure standards are followed. The display should have the shortest sleeve in front and get longer towards the back. If the item has rolled sleeves or sleeves tucked into the pocket, please replicate.
+                  </li>
+                  <li>
+                   Always try to be aware of the best sellers and the 'hotspots' in the studio where the clients shop most often — these hotspots should always be restocked with the best sellers OR with new styles received in that you feel will be strong sellers'. Why? These are easy wins for you and for the client.
+                  </li>
+                 </ul>
+                </div>
+               </section>
+               <section class="mb-8">
+                <div class="bg-white shadow-md rounded-lg p-6">
+                 <h2 class="text-2xl font-bold text-gray-800 mb-4 flex items-center">
+                  <i class="fas fa-handshake mr-2 text-pink-500">
+                  </i>
+                  Some of our Retail Partners
+                 </h2>
+                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                  <div class="bg-gray-50 p-4 rounded-lg shadow-md">
+                   <h3 class="text-xl font-bold text-gray-800 mb-2">
+                    Baller Athletik
+                   </h3>
+                   <p class="text-gray-700 mb-2">
+                    An Indian premium athleisure brand focusing on high-performance sportswear for men. Known for their innovative fabric technology and urban design aesthetics.
+                   </p>
+                   <p class="text-gray-700 mb-2">
+                    <strong>
+                     Best Seller:
+                    </strong>
+                    Performance Shorts
+                   </p>
+                   <p class="text-gray-700 mb-2">
+                    <strong>
+                     Average MRP:
+                    </strong>
+                    ₹1,499
+                   </p>
+                   <img alt="Placeholder image for Baller Athletik" height="200" src="https://storage.googleapis.com/a1aa/image/Llnd8kGyRyL3JpgkRpsiNAl7a21036fZ99PPxse7PnEtVsHUA.jpg" width="300"/>
+                  </div>
+                  <div class="bg-gray-50 p-4 rounded-lg shadow-md">
+                   <h3 class="text-xl font-bold text-gray-800 mb-2">
+                    Mezmo
+                   </h3>
+                   <p class="text-gray-700 mb-2">
+                    A wellness brand offering adaptogenic supplements and functional beverages. Combines modern science with traditional wellness practices for urban professionals.
+                   </p>
+                   <p class="text-gray-700 mb-2">
+                    <strong>
+                     Best Seller:
+                    </strong>
+                    Immunity Booster
+                   </p>
+                   <p class="text-gray-700 mb-2">
+                    <strong>
+                     Average MRP:
+                    </strong>
+                    ₹2,999
+                   </p>
+                   <img alt="Placeholder image for Mezmo" height="200" src="https://storage.googleapis.com/a1aa/image/ZdkrykaI63ZYCRPlMJlboOYKcJdjVjXqjonaXftgVGT6K2DKA.jpg" width="300"/>
+                  </div>
+                  <div class="bg-gray-50 p-4 rounded-lg shadow-md">
+                   <h3 class="text-xl font-bold text-gray-800 mb-2">
+                    MISA
+                   </h3>
+                   <p class="text-gray-700 mb-2">
+                    A clean beauty brand focusing on natural skincare solutions. Uses botanical ingredients and scientific formulations for effective skin treatments.
+                   </p>
+                   <p class="text-gray-700 mb-2">
+                    <strong>
+                     Best Seller:
+                    </strong>
+                    Face Serum
+                   </p>
+                   <p class="text-gray-700 mb-2">
+                    <strong>
+                     Average MRP:
+                    </strong>
+                    ₹3,499
+                   </p>
+                   <img alt="Placeholder image for MISA" height="200" src="https://storage.googleapis.com/a1aa/image/v4oqv7Ao3KLzEF210faSTG7EfD6Gpac5efc0YpVeXMiYui9gC.jpg" width="300"/>
+                  </div>
+                  <div class="bg-gray-50 p-4 rounded-lg shadow-md">
+                   <h3 class="text-xl font-bold text-gray-800 mb-2">
+                    Myriad Active
+                   </h3>
+                   <p class="text-gray-700 mb-2">
+                    Contemporary activewear brand designed specifically for Indian body types. Emphasizes comfort and style in their workout apparel.
+                   </p>
+                   <p class="text-gray-700 mb-2">
+                    <strong>
+                     Best Seller:
+                    </strong>
+                    Sports Bra
+                   </p>
+                   <p class="text-gray-700 mb-2">
+                    <strong>
+                     Average MRP:
+                    </strong>
+                    ₹1,799
+                   </p>
+                   <img alt="Placeholder image for Myriad Active" height="200" src="https://storage.googleapis.com/a1aa/image/7SAx5yKw8kJcNBx0aW2r3PxKlMyJknUamfa1fjYKRc0rVsHUA.jpg" width="300"/>
+                  </div>
+                  <div class="bg-gray-50 p-4 rounded-lg shadow-md">
+                   <h3 class="text-xl font-bold text-gray-800 mb-2">
+                    Namaskar Ayurveda
+                   </h3>
+                   <p class="text-gray-700 mb-2">
+                    Traditional Ayurvedic beauty and wellness brand offering authentic formulations. Uses time-tested ingredients and modern manufacturing processes.
+                   </p>
+                   <p class="text-gray-700 mb-2">
+                    <strong>
+                     Best Seller:
+                    </strong>
+                    Hair Oil
+                   </p>
+                   <p class="text-gray-700 mb-2">
+                    <strong>
+                     Average MRP:
+                    </strong>
+                    ₹899
+                   </p>
+                   <img alt="Placeholder image for Namaskar Ayurveda" height="200" src="https://storage.googleapis.com/a1aa/image/bSkLpBYKg05eNKpgjzTVKwKEzl6qarKIAgqp8Ok5bUJ7K2DKA.jpg" width="300"/>
+                  </div>
+                  <div class="bg-gray-50 p-4 rounded-lg shadow-md">
+                   <h3 class="text-xl font-bold text-gray-800 mb-2">
+                    Nomada Accessories
+                   </h3>
+                   <p class="text-gray-700 mb-2">
+                    Sustainable fashion accessories brand creating handcrafted products. Focuses on ethical production and timeless design.
+                   </p>
+                   <p class="text-gray-700 mb-2">
+                    <strong>
+                     Best Seller:
+                    </strong>
+                    Leather Wallet
+                   </p>
+                   <p class="text-gray-700 mb-2">
+                    <strong>
+                     Average MRP:
+                    </strong>
+                    ₹1,299
+                   </p>
+                   <img alt="Placeholder image for Nomada Accessories" height="200" src="https://storage.googleapis.com/a1aa/image/sa6mnPOxsfVIBiFbacbzgF7u3eBVw0UKJueeCSrZDnb8WxegC.jpg" width="300"/>
+                  </div>
+                  <div class="bg-gray-50 p-4 rounded-lg shadow-md">
+                   <h3 class="text-xl font-bold text-gray-800 mb-2">
+                    Physique 57
+                   </h3>
+                   <p class="text-gray-700 mb-2">
+                    International barre fitness method now in India, offering high-intensity low-impact workouts. Known for their signature sculpting exercises.
+                   </p>
+                   <p class="text-gray-700 mb-2">
+                    <strong>
+                     Best Seller:
+                    </strong>
+                    Class Membership
+                   </p>
+                   <p class="text-gray-700 mb-2">
+                    <strong>
+                     Average MRP:
+                    </strong>
+                    ₹999/class
+                   </p>
+                   <img alt="Placeholder image for Physique 57" height="200" src="https://storage.googleapis.com/a1aa/image/lO1dsb0CIcKdBd8eTqTCf0Fb8V7H4DgfbnxhH7Le1sWXXxegC.jpg" width="300"/>
+                  </div>
+                  <div class="bg-gray-50 p-4 rounded-lg shadow-md">
+                   <h3 class="text-xl font-bold text-gray-800 mb-2">
+                    River Apothecary
+                   </h3>
+                   <p class="text-gray-700 mb-2">
+                    Clean beauty brand focusing on natural skincare solutions. Emphasizes sustainable packaging and potent natural ingredients.
+                   </p>
+                   <p class="text-gray-700 mb-2">
+                    <strong>
+                     Best Seller:
+                    </strong>
+                    Face Moisturizer
+                   </p>
+                   <p class="text-gray-700 mb-2">
+                    <strong>
+                     Average MRP:
+                    </strong>       ₹1,999
+                   </p>
+                   <img alt="Placeholder image for River Apothecary" height="200" src="https://storage.googleapis.com/a1aa/image/ChfX0BNj2vyjXadfBDggIoP0zmUjG6rKzM2ixVHUSgOxVsHUA.jpg" width="300"/>
+                  </div>
+                  <div class="bg-gray-50 p-4 rounded-lg shadow-md">
+                   <h3 class="text-xl font-bold text-gray-800 mb-2">
+                    SALT
+                   </h3>
+                   <p class="text-gray-700 mb-2">
+                    Premium skincare brand offering science-backed formulations. Focuses on addressing Indian skin concerns with global ingredients.
+                   </p>
+                   <p class="text-gray-700 mb-2">
+                    <strong>
+                     Best Seller:
+                    </strong>
+                    Face Cream
+                   </p>
+                   <p class="text-gray-700 mb-2">
+                    <strong>
+                     Average MRP:
+                    </strong>
+                    ₹2,499
+                   </p>
+                   <img alt="Placeholder image for SALT" height="200" src="https://storage.googleapis.com/a1aa/image/placeholder.jpg" width="300"/>
+                  </div>
+                  <div class="bg-gray-50 p-4 rounded-lg shadow-md">
+                   <h3 class="text-xl font-bold text-gray-800 mb-2">
+                    SEEQ
+                   </h3>
+                   <p class="text-gray-700 mb-2">
+                    Sports equipment brand offering professional-grade fitness accessories. Known for their innovative design and durability.
+                   </p>
+                   <p class="text-gray-700 mb-2">
+                    <strong>
+                     Best Seller:
+                    </strong>
+                    Resistance Bands
+                   </p>
+                   <p class="text-gray-700 mb-2">
+                    <strong>
+                     Average MRP:
+                    </strong>
+                    ₹1,899
+                   </p>
+                   <img alt="Placeholder image for SEEQ" height="200" src="https://storage.googleapis.com/a1aa/image/placeholder.jpg" width="300"/>
+                  </div>
+                  <div class="bg-gray-50 p-4 rounded-lg shadow-md">
+                   <h3 class="text-xl font-bold text-gray-800 mb-2">
+                    Sequel
+                   </h3>
+                   <p class="text-gray-700 mb-2">
+                    Health food brand reimagining everyday staples with better nutrition. Uses clean ingredients and transparent labeling.
+                   </p>
+                   <p class="text-gray-700 mb-2">
+                    <strong>
+                     Best Seller:
+                    </strong>
+                    Cereal
+                   </p>
+                   <p class="text-gray-700 mb-2">
+                    <strong>
+                     Average MRP:
+                    </strong>
+                    ₹149
+                   </p>
+                   <img alt="Placeholder image for Sequel" height="200" src="https://storage.googleapis.com/a1aa/image/placeholder.jpg" width="300"/>
+                  </div>
+                  <div class="bg-gray-50 p-4 rounded-lg shadow-md">
+                   <h3 class="text-xl font-bold text-gray-800 mb-2">
+                    Steezy
+                   </h3>
+                   <p class="text-gray-700 mb-2">
+                    Online dance fitness platform offering various dance styles and levels. Provides structured learning programs with professional instructors.
+                   </p>
+                   <p class="text-gray-700 mb-2">
+                    <strong>
+                     Best Seller:
+                    </strong>
+                    Online Classes
+                   </p>
+                   <p class="text-gray-700 mb-2">
+                    <strong>
+                     Average MRP:
+                    </strong>
+                    ₹799/month
+                   </p>
+                   <img alt="Placeholder image for Steezy" height="200" src="https://storage.googleapis.com/a1aa/image/placeholder.jpg" width="300"/>
+                  </div>
+                  <div class="bg-gray-50 p-4 rounded-lg shadow-md">
+                   <h3 class="text-xl font-bold text-gray-800 mb-2">
+                    The Good Bug
+                   </h3>
+                   <p class="text-gray-700 mb-2">
+                    Artisanal probiotic beverage brand focusing on gut health. Produces small-batch fermented drinks using natural ingredients.
+                   </p>
+                   <p class="text-gray-700 mb-2">
+                    <strong>
+                     Best Seller:
+                    </strong>
+                    Kombucha
+                   </p>
+                   <p class="text-gray-700 mb-2">
+                    <strong>
+                     Average MRP:
+                    </strong>
+                    ₹599
+                   </p>
+                   <img alt="Placeholder image for The Good Bug" height="200" src="https://storage.googleapis.com/a1aa/image/placeholder.jpg" width="300"/>
+                  </div>
+                  <div class="bg-gray-50 p-4 rounded-lg shadow-md">
+                   <h3 class="text-xl font-bold text-gray-800 mb-2">
+                    TUNA LONDON
+                   </h3>
+                   <p class="text-gray-700 mb-2">
+                    Contemporary fashion brand with a focus on premium basics. Known for their minimalist aesthetic and quality materials.
+                   </p>
+                   <p class="text-gray-700 mb-2">
+                    <strong>
+                     Best Seller:
+                    </strong>
+                    Classic T-shirt
+                   </p>
+                   <p class="text-gray-700 mb-2">
+                    <strong>
+                     Average MRP:
+                    </strong>
+                    ₹2,999
+                   </p>
+                   <img alt="Placeholder image for TUNA LONDON" height="200" src="https://storage.googleapis.com/a1aa/image/placeholder.jpg" width="300"/>
+                  </div>
+                  <div class="bg-gray-50 p-4 rounded-lg shadow-md">
+                   <h3 class="text-xl font-bold text-gray-800 mb-2">
+                    Whole Truth Foods
+                   </h3>
+                   <p class="text-gray-700 mb-2">
+                    Clean-label food brand offering 100% natural protein bars and snacks. Emphasizes transparency in ingredients and minimal processing.
+                   </p>
+                   <p class="text-gray-700 mb-2">
+                    <strong>
+                     Best Seller:
+                    </strong>
+                    Protein Bars
+                   </p>
+                   <p class="text-gray-700 mb-2">
+                    <strong>
+                     Average MRP:
+                    </strong>
+                    ₹299
+                   </p>
+                   <img alt="Placeholder image for Whole Truth Foods" height="200" src="https://storage.googleapis.com/a1aa/image/placeholder.jpg" width="300"/>
+                  </div>
+                  <div class="bg-gray-50 p-4 rounded-lg shadow-md">
+                   <h3 class="text-xl font-bold text-gray-800 mb-2">
+                    Bare Necessities
+                   </h3>
+                   <p class="text-gray-700 mb-2">
+                    Zero-waste lifestyle brand offering sustainable alternatives to everyday products. Promotes plastic-free living and conscious consumption.
+                   </p>
+                   <p class="text-gray-700 mb-2">
+                    <strong>
+                     Best Seller:
+                    </strong>
+                    Bamboo Toothbrush
+                   </p>
+                   <p class="text-gray-700 mb-2">
+                    <strong>
+                     Average MRP:
+                    </strong>
+                    ₹399
+                   </p>
+                   <img alt="Placeholder image for Bare Necessities" height="200" src="https://storage.googleapis.com/a1aa/image/placeholder.jpg" width="300"/>
+                  </div>
+                  <div class="bg-gray-50 p-4 rounded-lg shadow-md">
+                   <h3 class="text-xl font-bold text-gray-800 mb-2">
+                    CAVA
+                   </h3>
+                   <p class="text-gray-700 mb-2">
+                    Modern Mediterranean fast-casual restaurant chain offering customizable meals. Focuses on fresh ingredients and authentic flavors.
+                   </p>
+                   <p class="text-gray-700 mb-2">
+                    <strong>
+                     Best Seller:
+                    </strong>
+                    Hummus Bowl
+                   </p>
+                   <p class="text-gray-700 mb-2">
+                    <strong>
+                     Average MRP:
+                    </strong>
+                    ₹2,499
+                   </p>
+                   <img alt="Placeholder image for CAVA" height="200" src="https://storage.googleapis.com/a1aa/image/placeholder.jpg" width="300"/>
+                  </div>
+                  <div class="bg-gray-50 p-4 rounded-lg shadow-md">
+                   <h3 class="text-xl font-bold text-gray-800 mb-2">
+                    COSMIX
+                   </h3>
+                   <p class="text-gray-700 mb-2">
+                    Wellness supplement brand combining Ayurvedic wisdom with modern nutrition. Offers customized blends for various health goals.
+                   </p>
+                   <p class="text-gray-700 mb-2">
+                    <strong>
+                     Best Seller:
+                    </strong>
+                    Adaptogenic Blend
+                   </p>
+                   <p class="text-gray-700 mb-2">
+                    <strong>
+                     Average MRP:
+                    </strong>
+                    ₹1,499
+                   </p>
+                   <img alt="Placeholder image for COSMIX" height="200" src="https://storage.googleapis.com/a1aa/image/placeholder.jpg" width="300"/>
+                  </div>
+                  <div class="bg-gray-50 p-4 rounded-lg shadow-md">
+                   <h3 class="text-xl font-bold text-gray-800 mb-2">
+                    EIRA
+                   </h3>
+                   <p class="text-gray-700 mb-2">
+                    Premium activewear brand focusing on performance and style. Uses technical fabrics and ergonomic designs for maximum comfort.
+                   </p>
+                   <p class="text-gray-700 mb-2">
+                    <strong>
+                     Best Seller:
+                    </strong>
+                    Leggings
+                   </p>
+                   <p class="text-gray-700 mb-2">
+                    <strong>
+                     Average MRP:
+                    </strong>
+                    ₹2,999
+                   </p>
+                   <img alt="Placeholder image for EIRA" height="200" src="https://storage.googleapis.com/a1aa/image/placeholder.jpg" width="300"/>
+                  </div>
+                  <div class="bg-gray-50 p-4 rounded-lg shadow-md">
+                   <h3 class="text-xl font-bold text-gray-800 mb-2">
+                    India Hemp Organics
+                   </h3>
+                   <p class="text-gray-700 mb-2">
+                    Pioneer in hemp-based wellness products in India. Offers nutritional supplements and personal care items derived from hemp.
+                   </p>
+                   <p class="text-gray-700 mb-2">
+                    <strong>
+                     Best Seller:
+                    </strong>
+                    Hemp Seeds
+                   </p>
+                   <p class="text-gray-700 mb-2">
+                    <strong>
+                     Average MRP:
+                    </strong>
+                    ₹1,299
+                   </p>
+                   <img alt="Placeholder image for India Hemp Organics" height="200" src="https://storage.googleapis.com/a1aa/image/placeholder.jpg" width="300"/>
+                  </div>
+                  <div class="bg-gray-50 p-4 rounded-lg shadow-md">
+                   <h3 class="text-xl font-bold text-gray-800 mb-2">
+                    Physique 57 Merchandise
+                   </h3>
+                   <p class="text-gray-700 mb-2">
+                    Official merchandise line of Physique 57 fitness studios. Offers branded workout apparel and accessories.
+                   </p>
+                   <p class="text-gray-700 mb-2">
+                    <strong>
+                     Best Seller:
+                    </strong>
+                    Workout Top
+                   </p>
+                   <p class="text-gray-700 mb-2">
+                    <strong>
+                     Average MRP:
+                    </strong>
+                    ₹1,499
+                   </p>
+                   <img alt="Placeholder image for Physique 57 Merchandise" height="200" src="https://storage.googleapis.com/a1aa/image/placeholder.jpg" width="300"/>
+                  </div>
+                  <div class="bg-gray-50 p-4 rounded-lg shadow-md">
+                   <h3 class="text-xl font-bold text-gray-800 mb-2">
+                    Pace Active
+                   </h3>
+                   <p class="text-gray-700 mb-2">
+                    Performance activewear brand designed for Indian athletes. Combines functionality with affordable pricing.
+                   </p>
+                   <p class="text-gray-700 mb-2">
+                    <strong>
+                     Best Seller:
+                    </strong>
+                    Running Shorts
+                   </p>
+                   <p class="text-gray-700 mb-2">
+                    <strong>
+                     Average MRP:
+                    </strong>
+                    ₹1,799
+                   </p>
+                   <img alt="Placeholder image for Pace Active" height="200" src="https://storage.googleapis.com/a1aa/image/placeholder.jpg" width="300"/>
+                  </div>
+                  <div class="bg-gray-50 p-4 rounded-lg shadow-md">
+                   <h3 class="text-xl font-bold text-gray-800 mb-2">
+                    RIVER APOTHECARY
+                   </h3>
+                   <p class="text-gray-700 mb-2">
+                    Natural skincare brand focused on clean beauty solutions. Uses botanical ingredients and sustainable packaging.
+                   </p>
+                   <p class="text-gray-700 mb-2">
+                    <strong>
+                     Best Seller:
+                    </strong>
+                    Face Moisturizer
+                   </p>
+                   <p class="text-gray-700 mb-2">
+                    <strong>
+                     Average MRP:
+                    </strong>
+                    ₹1,999
+                   </p>
+                   <img alt="Placeholder image for RIVER APOTHECARY" height="200" src="https://storage.googleapis.com/a1aa/image/placeholder.jpg" width="300"/>
+                  </div>
+                  <div class="bg-gray-50 p-4 rounded-lg shadow-md">
+                   <h3 class="text-xl font-bold text-gray-800 mb-2">
+                    The Huda Bar
+                   </h3>
+                   <p class="text-gray-700 mb-2">
+                    Healthy snack brand offering nutritious protein bars. Uses natural ingredients with no artificial additives.
+                   </p>
+                   <p class="text-gray-700 mb-2">
+                    <strong>
+                     Best Seller:
+                    </strong>
+                    Protein Bar
+                   </p>
+                   <p class="text-gray-700 mb-2">
+                    <strong>
+                     Average MRP:
+                    </strong>
+                    ₹199
+                   </p>
+                   <img alt="Placeholder image for The Huda Bar" height="200" src="https://storage.googleapis.com/a1aa/image/placeholder.jpg" width="300"/>
+                  </div>
+                 </div>
+                </div>
+               </section>
+            </div>
+               <footer class="bg-gray-800 text-white py-1 mt-auto">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                 <div class="flex justify-between items-center">
+                  <p class="text-sm">
+                   © 2025 Physique 57 India. All rights reserved.
+                  </p>
+                  <div class="flex space-x-4">
+                   <a class="text-white hover:text-gray-400" href="https://facebook.com/physique57india">
+                    <i class="fab fa-facebook-f">
+                    </i>
+                   </a>
+                   <a class="text-white hover:text-gray-400" href="https://twitter.com/physique57india">
+                    <i class="fab fa-twitter">
+                    </i>
+                   </a>
+                   <a class="text-white hover:text-gray-400" href="https://instagram.com/physique57india">
+                    <i class="fab fa-instagram">
+                    </i>
+                   </a>
+                  </div>
+                 </div>                        
+               </footer>                                            
+</body>
+</html>

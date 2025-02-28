@@ -1,0 +1,360 @@
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Physique 57: A Journey of Transformation</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet"/>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f9fafb;
+            color: #333;
+        }
+        .demo-card {
+            width: 100%;
+            max-width: 600px;
+        }
+    </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            fetch('navbar.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('navbar-container').innerHTML = data;
+                })
+                .catch(error => console.error('Error loading the navbar:', error));
+        });
+    </script>
+</head>
+<body class="bg-white font-roboto">
+    <!-- Hero Section -->
+    <div class="bg-gradient-to-r from-red-900 to-orange-700 text-white text-center py-2 shadow-lg">
+        <div class="container mx-auto flex items-end space-x-4">
+            <i class="fa-solid fa-chalkboard-teacher fa-fade fa-2x p-1" style="color: #ffffff;"></i>
+            <h1 class="text-4xl font-bold uppercase tracking-wider">Training Schedule</h1>            
+        </div>        
+    </div>    
+    <div id="navbar-container"></div> <!-- This is where the navbar will be loaded -->   
+    <!-- Main Content -->
+    <div class="container mx-auto py-8">
+        <section id="timeline">
+            <h1 class="text-3xl font-light text-center mb-6">A Flexbox Timeline</h1>
+            <p class="leader text-center max-w-2xl mx-auto mb-12">All cards must be the same height and width for space calculations on large screens.</p>
+            <div class="demo-card-wrapper flex flex-col lg:flex-row lg:flex-wrap lg:justify-center">
+                <div class="demo-card demo-card--step1 bg-blue-500 text-white rounded-lg shadow-lg mb-8 lg:mb-0 lg:mr-4">
+                    <div class="head flex items-center p-4">
+                        <div class="number-box bg-black bg-opacity-25 p-2 rounded-full mr-4">
+                            <span class="text-2xl font-bold">01</span>
+                        </div>
+                        <h2 class="text-lg font-semibold">
+                            <span class="block text-sm">Day 1</span>
+                            Welcome and Introduction
+                        </h2>
+                    </div>
+                    <div class="body bg-white text-gray-800 p-4 rounded-b-lg">
+                        <h3 class="text-lg font-semibold text-gray-700 flex items-center mb-2">
+                            <i class="fas fa-gift mr-2 text-green-500"></i>
+                            Handover Welcome Kit
+                        </h3>
+                        <ul class="list-disc list-inside text-gray-600 text-sm mb-4">
+                            <li>Notebooks</li>
+                            <li>Pens</li>
+                        </ul>
+                        <h3 class="text-lg font-semibold text-gray-700 flex items-center mb-2">
+                            <i class="fas fa-history mr-2 text-yellow-500"></i>
+                            History of Physique
+                        </h3>
+                        <ul class="list-disc list-inside text-gray-600 text-sm mb-4">
+                            <li>Company history, ethos, and vision</li>
+                            <li>About the owner</li>
+                            <li>Core Values</li>
+                            <li>Unique selling points of the brand</li>
+                        </ul>
+                        <h3 class="text-lg font-semibold text-gray-700 flex items-center mb-2">
+                            <i class="fas fa-users mr-2 text-red-500"></i>
+                            Introduce Yourself to the Team
+                        </h3>
+                        <ul class="list-disc list-inside text-gray-600 text-sm">
+                            <li>Meet and greet with team members</li>
+                            <li>Team building activities</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="demo-card demo-card--step2 bg-green-500 text-white rounded-lg shadow-lg mb-8 lg:mb-0 lg:ml-4 lg:mr-4">
+                    <div class="head flex items-center p-4">
+                        <div class="number-box bg-black bg-opacity-25 p-2 rounded-full mr-4">
+                            <span class="text-2xl font-bold">02</span>
+                        </div>
+                        <h2 class="text-lg font-semibold">
+                            <span class="block text-sm">Day 2</span>
+                            Operations and Policies
+                        </h2>
+                    </div>
+                    <div class="body bg-white text-gray-800 p-4 rounded-b-lg">
+                        <h3 class="text-lg font-semibold text-gray-700 flex items-center mb-2">
+                            <i class="fas fa-undo-alt mr-2 text-green-500"></i>
+                            Recap of Day 1
+                        </h3>
+                        <h3 class="text-lg font-semibold text-gray-700 flex items-center mb-2">
+                            <i class="fas fa-cogs mr-2 text-yellow-500"></i>
+                            Basics of Operations at Physique
+                        </h3>
+                        <ul class="list-disc list-inside text-gray-600 text-sm mb-4">
+                            <li>Daily operations overview</li>
+                            <li>Front desk responsibilities</li>
+                        </ul>
+                        <h3 class="text-lg font-semibold text-gray-700 flex items-center mb-2">
+                            <i class="fas fa-sitemap mr-2 text-red-500"></i>
+                            Company Structure
+                        </h3>
+                        <ul class="list-disc list-inside text-gray-600 text-sm mb-4">
+                            <li>Organizational hierarchy</li>
+                            <li>Roles and responsibilities</li>
+                        </ul>
+                        <h3 class="text-lg font-semibold text-gray-700 flex items-center mb-2">
+                            <i class="fas fa-briefcase-medical mr-2 text-purple-500"></i>
+                            MTP (Medical Training Program)
+                        </h3>
+                        <ul class="list-disc list-inside text-gray-600 text-sm mb-4">
+                            <li>Introduction to MTP</li>
+                            <li>Importance and benefits</li>
+                        </ul>
+                        <h3 class="text-lg font-semibold text-gray-700 flex items-center mb-2">
+                            <i class="fas fa-dumbbell mr-2 text-blue-500"></i>
+                            Benefits of the Workout
+                        </h3>
+                        <ul class="list-disc list-inside text-gray-600 text-sm mb-4">
+                            <li>Physical benefits</li>
+                            <li>Mental benefits</li>
+                        </ul>
+                        <h3 class="text-lg font-semibold text-gray-700 flex items-center mb-2">
+                            <i class="fas fa-video mr-2 text-green-500"></i>
+                            Videos from Anisha
+                        </h3>
+                        <ul class="list-disc list-inside text-gray-600 text-sm mb-4">
+                            <li>Introduction to Physique 57</li>
+                            <li>Unique aspects of the workout</li>
+                        </ul>
+                        <h3 class="text-lg font-semibold text-gray-700 flex items-center mb-2">
+                            <i class="fas fa-file-video mr-2 text-yellow-500"></i>
+                            Company Policies Videos
+                        </h3>
+                        <ul class="list-disc list-inside text-gray-600 text-sm">
+                            <li>Code of Conduct</li>
+                            <li>Dress code</li>
+                            <li>Studio policies</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="demo-card demo-card--step3 bg-purple-500 text-white rounded-lg shadow-lg mb-8 lg:mb-0 lg:ml-4 lg:mr-4">
+                    <div class="head flex items-center p-4">
+                        <div class="number-box bg-black bg-opacity-25 p-2 rounded-full mr-4">
+                            <span class="text-2xl font-bold">03</span>
+                        </div>
+                        <h2 class="text-lg font-semibold">
+                            <span class="block text-sm">Day 3</span>
+                            Class Levels and Schedule
+                        </h2>
+                    </div>
+                    <div class="body bg-white text-gray-800 p-4 rounded-b-lg">
+                        <h3 class="text-lg font-semibold text-gray-700 flex items-center mb-2">
+                            <i class="fas fa-layer-group mr-2 text-green-500"></i>
+                            Intro to Class Levels
+                        </h3>
+                        <ul class="list-disc list-inside text-gray-600 text-sm mb-4">
+                            <li>Different class levels</li>
+                            <li>Criteria for each level</li>
+                        </ul>
+                        <h3 class="text-lg font-semibold text-gray-700 flex items-center mb-2">
+                            <i class="fas fa-calendar-alt mr-2 text-yellow-500"></i>
+                            Schedules
+                        </h3>
+                        <ul class="list-disc list-inside text-gray-600 text-sm mb-4">
+                            <li>Class schedules</li>
+                            <li>Booking and cancellations</li>
+                        </ul>
+                        <h3 class="text-lg font-semibold text-gray-700 flex items-center mb-2">
+                            <i class="fas fa-undo-alt mr-2 text-red-500"></i>
+                            Recap of Day 2 and 3
+                        </h3>
+                    </div>
+                </div>
+                <div class="demo-card demo-card--step4 bg-red-500 text-white rounded-lg shadow-lg mb-8 lg:mb-0 lg:ml-4 lg:mr-4">
+                    <div class="head flex items-center p-4">
+                        <div class="number-box bg-black bg-opacity-25 p-2 rounded-full mr-4">
+                            <span class="text-2xl font-bold">04</span>
+                        </div>
+                        <h2 class="text-lg font-semibold">
+                            <span class="block text-sm">Day 4</span>
+                            Memberships and Policies
+                        </h2>
+                    </div>
+                    <div class="body bg-white text-gray-800 p-4 rounded-b-lg">
+                        <h3 class="text-lg font-semibold text-gray-700 flex items-center mb-2">
+                            <i class="fas fa-undo-alt mr-2 text-green-500"></i>
+                            Recap of the Week So Far
+                        </h3>
+                        <h3 class="text-lg font-semibold text-gray-700 flex items-center mb-2">
+                            <i class="fas fa-id-card mr-2 text-yellow-500"></i>
+                            Memberships and Packs
+                        </h3>
+                        <ul class="list-disc list-inside text-gray-600 text-sm mb-4">
+                            <li>Types of memberships</li>
+                            <li>Benefits of each pack</li>
+                        </ul>
+                        <h3 class="text-lg font-semibold text-gray-700 flex items-center mb-2">
+                            <i class="fas fa-calendar-check mr-2 text-red-500"></i>
+                            Validities and Freezes
+                        </h3>
+                        <ul class="list-disc list-inside text-gray-600 text-sm mb-4">
+                            <li>Membership validity periods</li>
+                            <li>Freezing memberships</li>
+                        </ul>
+                        <h3 class="text-lg font-semibold text-gray-700 flex items-center mb-2">
+                            <i class="fas fa-sync-alt mr-2 text-purple-500"></i>
+                            Extensions and Rollover Policies
+                        </h3>
+                        <ul class="list-disc list-inside text-gray-600 text-sm">
+                            <li>Extending memberships</li>
+                            <li>Rollover policies</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="demo-card demo-card--step5 bg-yellow-500 text-white rounded-lg shadow-lg mb-8 lg:mb-0 lg:ml-4">
+                    <div class="head flex items-center p-4">
+                        <div class="number-box bg-black bg-opacity-25 p-2 rounded-full mr-4">
+                            <span class="text-2xl font-bold">05</span>
+                        </div>
+                        <h2 class="text-lg font-semibold">
+                            <span class="block text-sm">Day 5</span>
+                            Momence Basics
+                        </h2>
+                    </div>
+                    <div class="body bg-white text-gray-800 p-4 rounded-b-lg">
+                        <h3 class="text-lg font-semibold text-gray-700 flex items-center mb-2">
+                            <i class="fas fa-desktop mr-2 text-green-500"></i>
+                            Momence Basics
+                        </h3>
+                        <ul class="list-disc list-inside text-gray-600 text-sm mb-4">
+                            <li>Create an account</li>
+                            <li>Signing the waiver</li>
+                            <li>Schedules</li>
+                            <li>Adding clients to class</li>
+                            <li>Checking clients in</li>
+                            <li>Moving clients to different classes</li>
+                            <li>Cancellations and no-shows</li>
+                        </ul>
+                        <h3 class="text-lg font-semibold text-gray-700 flex items-center mb-2">
+                            <i class="fas fa-door-closed mr-2 text-yellow-500"></i>
+                            Class Door Policy and Cancellations
+                        </h3>
+                        <ul class="list-disc list-inside text-gray-600 text-sm">
+                            <li>Class door policy</li>
+                            <li>Class cancellations policy</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="demo-card demo-card--step6 bg-blue-500 text-white rounded-lg shadow-lg mb-8 lg:mb-0 lg:ml-4">
+                    <div class="head flex items-center p-4">
+                        <div class="number-box bg-black bg-opacity-25 p-2 rounded-full mr-4">
+                            <span class="text-2xl font-bold">06</span>
+                        </div>
+                        <h2 class="text-lg font-semibold">
+                            <span class="block text-sm">Day 8</span>
+                            Advanced Momence Training
+                        </h2>
+                    </div>
+                    <div class="body bg-white text-gray-800 p-4 rounded-b-lg">
+                        <h3 class="text-lg font-semibold text-gray-700 flex items-center mb-2">
+                            <i class="fas fa-undo-alt mr-2 text-green-500"></i>
+                            Recap of Week 1
+                        </h3>
+                        <h3 class="text-lg font-semibold text-gray-700 flex items-center mb-2">
+                            <i class="fas fa-desktop mr-2 text-yellow-500"></i>
+                            Momence Training Continues
+                        </h3>
+                        <ul class="list-disc list-inside text-gray-600 text-sm">
+                            <li>Advanced features</li>
+                            <li>Reporting and analytics</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="demo-card demo-card--step7 bg-green-500 text-white rounded-lg shadow-lg mb-8 lg:mb-0 lg:ml-4">
+                    <div class="head flex items-center p-4">
+                        <div class="number-box bg-black bg-opacity-25 p-2 rounded-full mr-4">
+                            <span class="text-2xl font-bold">07</span>
+                        </div>
+                        <h2 class="text-lg font-semibold">
+                            <span class="block text-sm">Day 9</span>
+                            Brand Language and Core Values
+                        </h2>
+                    </div>
+                    <div class="body bg-white text-gray-800 p-4 rounded-b-lg">
+                        <h3 class="text-lg font-semibold text-gray-700 flex items-center mb-2">
+                            <i class="fas fa-language mr-2 text-green-500"></i>
+                            Brand Language
+                        </h3>
+                        <ul class="list-disc list-inside text-gray-600 text-sm mb-4">
+                            <li>Understanding brand language</li>
+                            <li>Consistent messaging</li>
+                        </ul>
+                        <h3 class="text-lg font-semibold text-gray-700 flex items-center mb-2">
+                            <i class="fas fa-comments mr-2 text-yellow-500"></i>
+                            How to Speak to Clients
+                        </h3>
+                        <ul class="list-disc list-inside text-gray-600 text-sm mb-4">
+                            <li>Effective communication techniques</li>
+                            <li>Handling client queries</li>
+                        </ul>
+                        <h3 class="text-lg font-semibold text-gray-700 flex items-center mb-2">
+                            <i class="fas fa-heart mr-2 text-red-500"></i>
+                            Core Values
+                        </h3>
+                        <ul class="list-disc list-inside text-gray-600 text-sm">
+                            <li>Company core values</li>
+                            <li>Incorporating values into daily work</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="demo-card demo-card--step8 bg-purple-500 text-white rounded-lg shadow-lg mb-8 lg:mb-0 lg:ml-4">
+                    <div class="head flex items-center p-4">
+                        <div class="number-box bg-black bg-opacity-25 p-2 rounded-full mr-4">
+                            <span class="text-2xl font-bold">08</span>
+                        </div>
+                        <h2 class="text-lg font-semibold">
+                            <span class="block text-sm">Day 10</span>
+                            Role Plays
+                        </h2>
+                    </div>
+                    <div class="body bg-white text-gray-800 p-4 rounded-b-lg">
+                        <!-- Content for Day 10 -->
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer class="bg-gray-800 text-white py-1 mt-auto">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center">
+                <p class="text-sm">
+                    © 2025 Physique 57 India. All rights reserved.
+                </p>
+                <div class="flex space-x-4">
+                    <a class="text-white hover:text-gray-400" href="https://facebook.com/physique57india">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a class="text-white hover:text-gray-400" href="https://twitter.com/physique57india">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a class="text-white hover:text-gray-400" href="https://instagram.com/physique57india">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

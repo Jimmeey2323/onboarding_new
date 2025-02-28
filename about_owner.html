@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>About the Owner</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet"/>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f9fafb;
+            color: #333;
+            font-size: 15.5px;
+        }
+
+        .hero-section {
+            background: linear-gradient(120deg, #007bff, #000608);
+            color: #fff;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: slideIn 1.5s ease-out forwards;
+        }
+    
+        .hero-section h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin: 0;
+            opacity: 0;
+            transform: translateY(-20px);
+            animation: fadeIn 1s ease-in-out 0.5s forwards;
+        }
+    
+        .hero-section i {
+            font-size: 3rem;
+            margin-right: 10px;
+            animation: bounceIn 1s ease-in-out 1s forwards;
+        }
+    
+        /* Keyframes */
+        @keyframes slideIn {
+            0% {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+    
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    
+        @keyframes bounceIn {
+            0%,
+            20%,
+            40%,
+            60%,
+            80%,
+            100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+    
+        @media (max-width: 768px) {
+            .hero-section h1 {
+                font-size: 2.5rem;
+            }
+            .hero-section i {
+                font-size: 2.5rem;
+            }
+        }
+
+        .animate-character {
+            text-transform: uppercase;
+            background-image: linear-gradient(
+                -225deg,
+                #000000 0%,
+                #ffd900 29%,
+                #ffea00 67%,
+                #ffffff 100%
+            );
+            background-size: 200% auto;            
+            color: transparent; /* Set text color to transparent */
+            background-clip: text;            
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent; /* Ensure text fill is transparent */
+            animation: textclip 2s linear infinite, marquee 15s linear infinite;
+            display: inline-block;            
+            white-space: nowrap;            
+            letter-spacing: 1rem;
+        }
+
+        @keyframes textclip {
+            to {
+                background-position: 200% center;
+            }
+        }
+
+        .content {
+            display: flex; /* Use flexbox for layout */
+            margin-top: 20px; /* Add some space above the content */
+        }
+
+        .card img {
+            width: 100%;
+            transition: transform 0.7s ease-in-out;
+        }
+
+        .card img:hover {
+            transform: scale(1);
+        }
+
+        .image-section {
+            flex: 0 0 55%; /* Image occupies 40% of the width */
+            padding-right: 10px; /* Space between image and text */
+        }
+
+        .text-section {
+            flex: 1; /* Text occupies the remaining space */
+            line-height: 2rem;
+            margin-top: 50px;
+            padding-right: 20px;
+        }
+    </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            fetch('navbar.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('navbar-container').innerHTML = data;
+                })
+                .catch(error => console.error('Error loading the navbar:', error));
+        });
+    </script>
+</head>
+<body>
+    <body class="bg-gray-100 font-roboto">
+        <!-- Hero Section -->
+    <div class="bg-gradient-to-r from-gray-900 to-gray-900 text-white text-center pt-3 pb-3 shadow-lg">
+        <div class="container mx-auto flex items-end space-x-4">
+            <i class="fa-solid fa-crown fa-fade fa-3x mr-1 mb-0 pb-1" style="color: #ffffff;"></i>
+            <h1 class="animate-character text-5xl uppercase">About the Owner</h1>
+        </div>        
+    </div>
+
+    <div class="container mx-auto max-w-full pb-0 pt-0">
+        <div id="navbar-container"></div> <!-- This is where the navbar will be loaded -->           
+        <!-- Main Content -->        
+        <div class="content">
+            <!-- Image Section -->
+            <div class="image-section">
+                <div class="card">
+                    <img src="Images/Photoroom_20250126_135041.png" alt="Physique 57 Founders"/>
+                </div>
+            </div>
+
+            <!-- Text Section -->
+            <div class="text-section">
+                <div class="card flex flex-col justify-center space-y-6">
+                    <p>
+                        <i class="fas fa-quote-left text-pink-700"></i> Mallika Parekh, an accomplished entrepreneur with a profound dedication to health and wellness, is the driving force behind the introduction of Physique 57 to the Indian fitness landscape. With an educational background that merges the disciplines of public health and business, Parekh has always been passionate about empowering individuals through wellness and preventive health measures. Her journey to revolutionize the fitness industry in India began after witnessing the transformative effects of Physique 57, a New York-based barre fitness company known for its innovative and effective workout programs.
+                    </p>
+                    <p>
+                        Recognizing the potential for such a holistic and empowering fitness regimen in India, where the wellness market was ripe for a high-intensity, yet low-impact workout option, Parekh embarked on her mission to bring Physique 57 to her home country. In [year], after meticulous planning and collaboration with Physique 57's founders, Parekh successfully opened the first studio in Mumbai, marking a significant milestone in India's fitness industry.
+                    </p>
+                    <p>
+                        Parekh's vision extended beyond just introducing a new workout to the market; she aimed to create a community centered around wellness, where individuals could come together to work on their physical fitness while also embracing a healthier lifestyle. Her efforts have not only popularized barre fitness in India but also cultivated a space where clients feel supported and motivated in their fitness journeys.
+                    </p>
+                    <p>
+                        Through her leadership, Physique 57 India has flourished, offering a diverse range of classes that cater to different fitness levels and preferences, making the studio a beloved destination for those seeking a unique, effective, and enjoyable workout experience. Mallika Parekh's story is one of passion, perseverance, and the pursuit of wellness, illustrating how visionary leadership can introduce innovative health solutions to new markets.                                    
+                    </p>
+                    <p>
+                        Since 2005, Parekh has worked on the cutting edge of science and healthcare. Beginning her career in research at New York Presbyterian Hospital and Massachusetts General Hospital, Parekh earned a double Masters in Medical Science and Public Health. Parekh then served as an advisor to healthcare systems and hospitals in the US, as well as worked on strategy in healthcare finance.<i class="fas fa-quote-right text-pink-700"></i>
+                    </p>
+                </div>
+            </div>
+        </div>
+            </div>
+            <footer class="bg-gray-800 text-white">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                 <div class="flex justify-between items-center">
+                  <p class="text-sm">
+                   © 2025 Physique 57 India. All rights reserved.
+                  </p>
+                  <div class="flex space-x-4">
+                   <a class="text-white hover:text-gray-400" href="https://facebook.com/physique57india">
+                    <i class="fab fa-facebook-f">
+                    </i>
+                   </a>
+                   <a class="text-white hover:text-gray-400" href="https://twitter.com/physique57india">
+                    <i class="fab fa-twitter">
+                    </i>
+                   </a>
+                   <a class="text-white hover:text-gray-400" href="https://instagram.com/physique57india">
+                    <i class="fab fa-instagram">
+                    </i>
+                   </a>
+                  </div>
+                 </div>
+                </div>
+               </footer>    
+</body>
+</html>

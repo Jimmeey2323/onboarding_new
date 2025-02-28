@@ -1,0 +1,204 @@
+<html>
+<head>
+    <style>
+        @import url(//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css);
+        @import url(https://fonts.googleapis.com/css?family=Titillium+Web:300);
+        
+        .fa-2x {
+            font-size: 2em;
+        }
+        
+        .fa {
+            position: relative;
+            display: table-cell;
+            width: 60px;
+            height: 36px;
+            text-align: center;
+            vertical-align: middle;
+            font-size: 20px;
+        }
+        
+        .main-menu:hover, nav.main-menu.expanded {
+            width: 250px;
+            overflow: visible;
+        }
+        
+        .main-menu {
+            background: #212121;
+            border-right: 1px solid #e5e5e5;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            height: 100%;
+            left: 0;
+            width: 60px;
+            overflow: hidden;
+            transition: width .05s linear;
+            z-index: 1000;
+        }
+        
+        .main-menu > ul {
+            margin: 7px 0;
+        }
+        
+        .main-menu li {
+            position: relative;
+            display: block;
+            width: 250px;
+        }
+        
+        .main-menu li > a {
+            position: relative;
+            display: table;
+            color: #999;
+            font-family: Arial;
+            font-size: 14px;
+            text-decoration: none;
+            transition: all .1s linear;
+        }
+        
+        .main-menu .nav-icon {
+            position: relative;
+            display: table-cell;
+            width: 60px;
+            height: 36px;
+            text-align: center;
+            vertical-align: middle;
+            font-size: 18px;
+        }
+        
+        .main-menu .nav-text {
+            position: relative;
+            display: table-cell;
+            vertical-align: middle;
+            width: 190px;
+            font-family: 'Titillium Web', sans-serif;
+        }
+        
+        .main-menu > ul.logout {
+            position: absolute;
+            left: 0;
+            bottom: 0;
+        }
+        
+        a:hover, a:focus {
+            text-decoration: none;
+        }
+        
+        nav {
+            user-select: none;
+        }
+        
+        nav ul, nav li {
+            outline: 0;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .main-menu li:hover > a, nav.main-menu li.active > a {
+            color: #fff;
+            background-color: #000000;
+        }
+        
+        .submenu {
+            display: none;
+            background: #333;
+            padding-left: 20px;
+        }
+        
+        .has-subnav:hover .submenu {
+            display: block;
+        }
+        
+        .area {
+            float: left;
+            background: #e2e2e2;
+            width: 100%;
+            height: 100%;
+        }
+        
+        @font-face {
+            font-family: 'Titillium Web';
+            font-style: normal;
+            font-weight: 300;
+            src: local('Titillium WebLight'), local('TitilliumWeb-Light'), url(http://themes.googleusercontent.com/static/fonts/titilliumweb/v2/anMUvcNT0H1YN4FII8wpr24bNCNEoFTpS2BTjF6FB5E.woff) format('woff');
+        }
+    </style>
+</head>
+<body>
+    <div class="area"></div>
+    <nav class="main-menu">
+        <ul>
+            <li>
+                <a href="physique57india.html"> <!-- Change to your actual page -->
+                    <i class="fa fa-duotone fa-thin fa-dumbbell fa-2x"></i>
+                    <span class="nav-text">Physique 57 India</span>
+                </a>
+            </li>
+            <li class="has-subnav">
+                <a href="#">
+                    <i class="fa fa-info fa-2x"></i>
+                    <span class="nav-text">About Us</span>
+                </a>
+                <ul class="submenu">
+                    <li><a href="history.html"><span class="nav-text">About Us</span></a></li>
+                    <li><a href="about_owner.html"><span class="nav-text">About the Owner</span></a></li>
+                    <li><a href="mission_statement.html">< <span class="nav-text">Mission Statement</span></a></li>
+                    <li><a href="core_values.html"><span class="nav-text">Core Values</span></a></li>
+                    <li><a href="organisation_structure.html"><span class="nav-text">Organisation Structure</span></a></li>
+                    <li><a href="milestones.html"><span class="nav-text">Milestones</span></a></li>
+                </ul>
+            </li>
+            <li class="has-subnav">
+                <a href="#">
+                    <i class="fa fa-camera-retro fa-2x"></i>
+                    <span class="nav-text">Introduction to Physique 57</span>
+                </a>
+                <ul class="submenu">
+                    <li><a href="benefits_usps.html"><span class="nav-text">Benefits & USP’s</span></a></li>
+                    <li><a href="class_level_descriptions.html"><span class="nav-text">Class Level Descriptions</span></a></li>
+                    <li><a href="packages_memberships.html"><span class="nav-text">Packages & Memberships</span></a></li>
+                </ul>
+            </li>
+            <li class="has-subnav">
+                <a href="#">
+                    <i class="fa fa-cogs fa-2x"></i>
+                    <span class="nav-text">Policies & Regulations</span>
+                </a>
+                <ul class="submenu">
+                    <li><a href="studio_procedure.html"><span class="nav-text">Studio Opening & Closing Procedure</span></a></li>
+                    <li><a href="boutique_management.html"><span class="nav-text">Boutique & Inventory Management</span></a></li>
+                    <li><a href="lead_management.html"><span class="nav-text">Lead Management & Sales techniques</span></a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="client_personas.html">
+                    <i class="fa fa-users fa-2x"></i>
+                    <span class="nav-text">Client Personas</span>
+                </a>
+            </li>
+            <li>
+                <a href="harvard_business_review.html">
+                    <i class="fa fa-book fa-2x"></i>
+                    <span class="nav-text">Harvard Business Review</span>
+                </a>
+            </li>
+            <li>
+                <a href="faq.html">
+                    <i class="fa fa-question-circle fa-2x"></i>
+                    <span class="nav-text">Frequently Asked Questions</span>
+                </a>
+            </li>
+        </ul>
+
+        <ul class="logout">
+            <li>
+                <a href="logout.html">
+                    <i class="fa fa-power-off fa-2x"></i>
+                    <span class="nav-text">Logout</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</body>
+</html>

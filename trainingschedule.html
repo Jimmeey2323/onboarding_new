@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Physique 57: A Journey of Transformation</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet"/>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f9fafb;
+            color: #333;
+        }
+        .hero-section {
+            background: linear-gradient(120deg, #003e81, #000000);
+            padding: 20px;
+            color: #fff;
+            border-radius: 20px;
+            text-align: center;
+            margin-bottom: 20px;
+            position: relative;
+            overflow: hidden;
+            max-width: 100%;
+        }
+
+        .hero-section h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            animation: fadeInDown 1.5s ease-in-out;
+        }
+
+        .hero-section i {
+            font-size: 3rem;
+            margin-right: 10px;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .timeline {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            padding: 20px 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            width: 4px;
+            background-color: #cbd5e0;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .timeline-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            max-width: 600px;
+            padding: 20px;
+            box-sizing: border-box;
+            background-color: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            position: relative;
+            transform: translateY(0);
+            transition: transform 0.3s ease;
+        }
+
+        .timeline-item:hover {
+            transform: translateY(-10px);
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            background-color: white;
+            border: 4px solid #cbd5e0;
+            top: 20px;
+            left: -12.5px;
+            margin-top: -12.5px;
+            border-radius: 50%;
+            z-index: 1;
+        }
+
+        .timeline-item:nth-child(even)::before {
+            left: auto;
+            right: -12.5px;
+        }
+
+        .timeline-item:nth-child(even) {
+            align-self: flex-end;
+        }
+
+        .timeline-item img {
+            width: 100%;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .timeline-item h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .timeline-item h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #555;
+            margin-bottom: 10px;
+        }
+
+        .timeline-item ul {
+            list-style-type: disc;
+            padding-left: 20px;
+            color: #666;
+        }
+
+        .timeline-item ul li {
+            margin-bottom: 5px;
+        }
+  </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            fetch('navbar.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('navbar-container').innerHTML = data;
+                })
+                .catch(error => console.error('Error loading the navbar:', error));
+        });
+    </script>
+</head>
+<body class="bg-white font-roboto">
+    <!-- Hero Section -->
+    <div class="bg-gradient-to-r from-red-900 to-orange-700 text-white text-center py-2 shadow-lg">
+        <div class="container mx-auto flex items-end space-x-4">
+            <i class="fa-solid fa-chalkboard-teacher fa-fade fa-2x p-1" style="color: #ffffff;"></i>
+            <h1 class="text-4xl font-bold uppercase tracking-wider">Training Schedule</h1>            
+        </div>        
+    </div>    
+        <div id="navbar-container"></div> <!-- This is where the navbar will be loaded -->   
+               <!-- Main Content -->
+    <div class="container mx-auto py-12">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Timeline Item -->
+            <div class="bg-white p-6 rounded-lg shadow-lg">
+                <h2 class="text-2xl font-bold text-gray-800 mb-4 flex items-center">
+                    <i class="fa-solid fa-chalkboard-user mr-2 text-blue-500"></i>
+                    Day 1: Welcome and Introduction
+                </h2>
+                <div class="mb-4">
+                    <h3 class="text-lg font-semibold text-gray-700 flex items-center">
+                        <i class="fas fa-gift mr-2 text-green-500"></i>
+                        Handover Welcome Kit
+                    </h3>
+                    <ul class="list-disc list-inside text-gray-600 text-sm">
+                        <li>Notebooks</li>
+                        <li>Pens</li>
+                    </ul>
+                </div>
+                <div class="mb-4">
+                    <h3 class="text-lg font-semibold text-gray-700 flex items-center">
+                        <i class="fas fa-history mr-2 text-yellow-500"></i>
+                        History of Physique
+                    </h3>
+                    <ul class="list-disc list-inside text-gray-600 text-sm">
+                        <li>Company history, ethos, and vision</li>
+                        <li>About the owner</li>
+                        <li>Core Values</li>
+                        <li>Unique selling points of the brand</li>
+                    </ul>
+                </div>
+                <div class="mb-4">
+                    <h3 class="text-lg font-semibold text-gray-700 flex items-center">
+                        <i class="fas fa-users mr-2 text-red-500"></i>
+                        Introduce Yourself to the Team
+                    </h3>
+                    <ul class="list-disc list-inside text-gray-600 text-sm">
+                        <li>Meet and greet with team members</li>
+                        <li>Team building activities</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Timeline Item -->
+            <div class="bg-white p-6 rounded-lg shadow-lg">
+                <h2 class="text-2xl font-bold text-gray-800 mb-4 flex items-center">
+                    <i class="fas fa-calendar-day mr-2 text-blue-500"></i>
+                    Day 2: Operations and Policies
+                </h2>
+                <div class="mb-4">
+                    <h3 class="text-lg font-semibold text-gray-700 flex items-center">
+                        <i class="fas fa-undo-alt mr-2 text-green-500"></i>
+                        Recap of Day 1
+                    </h3>
+                </div>
+                <div class="mb-4">
+                    <h3 class="text-lg font-semibold text-gray-700 flex items-center">
+                        <i class="fas fa-cogs mr-2 text-yellow-500"></i>
+                        Basics of Operations at Physique
+                    </h3>
+                    <ul class="list-disc list-inside text-gray-600 text-sm">
+                        <li>Daily operations overview</li>
+                        <li>Front desk responsibilities</li>
+                    </ul>
+                </div>
+                <div class="mb-4">
+                    <h3 class="text-lg font-semibold text-gray-700 flex items-center">
+                        <i class="fas fa-sitemap mr-2 text-red-500"></i>
+                        Company Structure
+                    </h3>
+                    <ul class="list-disc list-inside text-gray-600 text-sm">
+                        <li>Organizational hierarchy</li>
+                        <li>Roles and responsibilities</li>
+                    </ul>
+                </div>
+                <div class="mb-4">
+                    <h3 class="text-lg font-semibold text-gray-700 flex items-center">
+                        <i class="fas fa-briefcase-medical mr-2 text-purple-500"></i>
+                        MTP (Medical Training Program)
+                    </h3>
+                    <ul class="list-disc list-inside text-gray-600 text-sm">
+                        <li>Introduction to MTP</li>
+                        <li>Importance and benefits</li>
+                    </ul>
+                </div>
+                <div class="mb-4">
+                    <h3 class="text-lg font-semibold text-gray-700 flex items-center">
+                        <i class="fas fa-dumbbell mr-2 text-blue-500"></i>
+                        Benefits of the Workout
+                    </h3>
+                    <ul class="list-disc list-inside text-gray-600 text-sm">
+                        <li>Physical benefits</li>
+                        <li>Mental benefits</li>
+                    </ul>
+                </div>
+                <div class="mb-4">
+                    <h3 class="text-lg font-semibold text-gray-700 flex items-center">
+                        <i class="fas fa-video mr-2 text-green-500"></i>
+                        Videos from Anisha
+                    </h3>
+                    <ul class="list-disc list-inside text-gray-600 text-sm">
+                        <li>Introduction to Physique 57</li>
+                        <li>Unique aspects of the workout</li>
+                    </ul>
+                </div>
+                <div class="mb-4">
+                    <h3 class="text-lg font-semibold text-gray-700 flex items-center">
+                        <i class="fas fa-file-video mr-2 text-yellow-500"></i>
+                        Company Policies Videos
+                    </h3>
+                    <ul class="list-disc list-inside text-gray-600 text-sm">
+                        <li>Code of Conduct</li>
+                        <li>Dress code</li>
+                        <li>Studio policies</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Timeline Item -->
+            <div class="bg-white p-6 rounded-lg shadow-lg">
+                <h2 class="text-2xl font-bold text-gray-800 mb-4 flex items-center">
+                    <i class="fas fa-calendar-day mr-2 text-blue-500"></i>
+                    Day 3: Class Levels and Schedule
+                </h2>
+                <div class="mb-4">
+                    <h3 class="text-lg font-semibold text-gray-700 flex items-center">
+                        <i class="fas fa-layer-group mr-2 text-green-500"></i>
+                        Intro to Class Levels
+                    </h3>
+                    <ul class="list-disc list-inside text-gray-600 text-sm">
+                        <li>Different class levels</li>
+                        <li>Criteria for each level</li>
+                    </ul>
+                </div>
+                <div class="mb-4">
+                    <h3 class="text-lg font-semibold text-gray-700 flex items-center">
+                        <i class="fas fa-calendar-alt mr-2 text-yellow-500"></i>
+                        Schedules
+                    </h3>
+                    <ul class="list-disc list-inside text-gray-600 text-sm">
+                        <li>Class schedules</li>
+                        <li>Booking and cancellations</li>
+                    </ul>
+                </div>
+                <div class="mb-4">
+                    <h3 class="text-lg font-semibold text-gray-700 flex items-center">
+                        <i class="fas fa-undo-alt mr-2 text-red-500"></i>
+                        Recap of Day 2 and 3
+                    </h3>
+                </div>
+            </div>
+
+            <!-- Timeline Item -->
+            <div class="bg-white p-6 rounded-lg shadow-lg">
+                <h2 class="text-2xl font-bold text-gray-800 mb-4 flex items-center">
+                    <i class="fas fa-calendar-day mr-2 text-blue-500"></i>
+                    Day 4: Memberships and Policies
+                </h2>
+                <div class="mb-4">
+                    <h3 class="text-lg font-semibold text-gray-700 flex items-center">
+                        <i class="fas fa-undo-alt mr-2 text-green-500"></i>
+                        Recap of the Week So Far
+                    </h3>
+                </div>
+                <div class="mb-4">
+                    <h3 class="text-lg font-semibold text-gray-700 flex items-center">
+                        <i class="fas fa-id-card mr-2 text-yellow-500"></i>
+                        Memberships and Packs
+                    </h3>
+                    <ul class="list-disc list-inside text-gray-600 text-sm">
+                        <li>Types of memberships</li>
+                        <li>Benefits of each pack</li>
+                    </ul>
+                </div>
+                <div class="mb-4">
+                    <h3 class="text-lg font-semibold text-gray-700 flex items-center">
+                        <i class="fas fa-calendar-check mr-2 text-red-500"></i>
+                        Validities and Freezes
+                    </h3>
+                    <ul class="list-disc list-inside text-gray-600 text-sm">
+                        <li>Membership validity periods</li>
+                        <li>Freezing memberships</li>
+                    </ul>
+                </div>
+                <div class="mb-4">
+                    <h3 class="text-lg font-semibold text-gray-700 flex items-center">
+                        <i class="fas fa-sync-alt mr-2 text-purple-500"></i>
+                        Extensions and Rollover Policies
+                    </h3>
+                    <ul class="list-disc list-inside text-gray-600 text-sm">
+                        <li>Extending memberships</li>
+                        <li>Rollover policies</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Timeline Item -->
+            <div class="bg-white p-6 rounded-lg shadow-lg">
+                <h2 class="text-2xl font-bold text-gray-800 mb-4 flex items-center">
+                    <i class="fas fa-calendar-day mr-2 text-blue-500"></i>
+                    Day 5: Momence Basics
+                </h2>
+                <div class="mb-4">
+                    <h3 class="text-lg font-semibold text-gray-700 flex items-center">
+                        <i class="fas fa-desktop mr-2 text-green-500"></i>
+                        Momence Basics
+                    </h3>
+                    <ul class="list-disc list-inside text-gray-600 text-sm">
+                        <li>Create an account</li>
+                        <li>Signing the waiver</li>
+                        <li>Schedules</li>
+                        <li>Adding clients to class</li>
+                        <li>Checking clients in</li>
+                        <li>Moving clients to different classes</li>
+                        <li>Cancellations and no-shows</li>
+                    </ul>
+                </div>
+                <div class="mb-4">
+                    <h3 class="text-lg font-semibold text-gray-700 flex items-center">
+                        <i class="fas fa-door-closed mr-2 text-yellow-500"></i>
+                        Class Door Policy and Cancellations
+                    </h3>
+                    <ul class="list-disc list-inside text-gray-600 text-sm">
+                        <li>Class door policy</li>
+                        <li>Class cancellations policy</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Timeline Item -->
+            <div class="bg-white p-6 rounded-lg shadow-lg">
+                <h2 class="text-2xl font-bold text-gray-800 mb-4 flex items-center">
+                    <i class="fas fa-calendar-day mr-2 text-blue-500"></i>
+                    Day 8: Advanced Momence Training
+                </h2>
+                <div class="mb-4">
+                    <h3 class="text-lg font-semibold text-gray-700 flex items-center">
+                        <i class="fas fa-undo-alt mr-2 text-green-500"></i>
+                        Recap of Week 1
+                    </h3>
+                </div>
+                <div class="mb-4">
+                    <h3 class="text-lg font-semibold text-gray-700 flex items-center">
+                        <i class="fas fa-desktop mr-2 text-yellow-500"></i>
+                        Momence Training Continues
+                    </h3>
+                    <ul class="list-disc list-inside text-gray-600 text-sm">
+                        <li>Advanced features</li>
+                        <li>Reporting and analytics</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Timeline Item -->
+            <div class="bg-white p-6 rounded-lg shadow-lg">
+                <h2 class="text-2xl font-bold text-gray-800 mb-4 flex items-center">
+                    <i class="fas fa-calendar-day mr-2 text-blue-500"></i>
+                    Day 9: Brand Language and Core Values
+                </h2>
+                <div class="mb-4">
+                    <h3 class="text-lg font-semibold text-gray-700 flex items-center">
+                        <i class="fas fa-language mr-2 text-green-500"></i>
+                        Brand Language
+                    </h3>
+                    <ul class="list-disc list-inside text-gray-600 text-sm">
+                        <li>Understanding brand language</li>
+                        <li>Consistent messaging</li>
+                    </ul>
+                </div>
+                <div class="mb-4">
+                    <h3 class="text-lg font-semibold text-gray-700 flex items-center">
+                        <i class="fas fa-comments mr-2 text-yellow-500"></i>
+                        How to Speak to Clients
+                    </h3>
+                    <ul class="list-disc list-inside text-gray-600 text-sm">
+                        <li>Effective communication techniques</li>
+                        <li>Handling client queries</li>
+                    </ul>
+                </div>
+                <div class="mb-4">
+                    <h3 class="text-lg font-semibold text-gray-700 flex items-center">
+                        <i class="fas fa-heart mr-2 text-red-500"></i>
+                        Core Values
+                    </h3>
+                    <ul class="list-disc list-inside text-gray-600 text-sm">
+                        <li>Company core values</li>
+                        <li>Incorporating values into daily work</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Timeline Item -->
+            <div class="bg-white p-6 rounded-lg shadow-lg">
+                <h2 class="text-2xl font-bold text-gray-800 mb-4 flex items-center">
+                    <i class="fas fa-calendar-day mr-2 text-blue-500"></i>
+                    Day 10: Role Plays
+                </h2>
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-gray-800 text-white py-1 mt-auto">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+         <div class="flex justify-between items-center">
+          <p class="text-sm">
+           © 2025 Physique 57 India. All rights reserved.
+          </p>
+          <div class="flex space-x-4">
+           <a class="text-white hover:text-gray-400" href="https://facebook.com/physique57india">
+            <i class="fab fa-facebook-f">
+            </i>
+           </a>
+           <a class="text-white hover:text-gray-400" href="https://twitter.com/physique57india">
+            <i class="fab fa-twitter">
+            </i>
+           </a>
+           <a class="text-white hover:text-gray-400" href="https://instagram.com/physique57india">
+            <i class="fab fa-instagram">
+            </i>
+           </a>
+          </div>
+         </div>                        
+       </footer>
+  </div>
+    </body>
+</html>

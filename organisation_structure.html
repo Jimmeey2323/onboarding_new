@@ -1,0 +1,565 @@
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   Centralized Hierarchical Organization Chart
+  </title>
+  <script src="https://cdn.tailwindcss.com">
+  </script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+  <style>
+   body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f9fafb;
+            color: #333;
+            max-width: 100%;
+        }
+
+        .animate-character {
+            text-transform: uppercase;
+            background-image: linear-gradient(
+                -225deg,
+                #000000 0%,
+                #00ff04 29%,
+                #f40ebe 67%,
+                #ffffff 100%
+            );
+            background-size: 200% auto;            
+            color: transparent; /* Set text color to transparent */
+            background-clip: text;            
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent; /* Ensure text fill is transparent */
+            animation: textclip 2s linear infinite, marquee 15s linear infinite;
+            display: inline-block;            
+            white-space: nowrap;            
+            letter-spacing: 1rem;
+        }
+
+        @keyframes textclip {
+            to {
+                background-position: 200% center;
+            }
+        }
+
+        * {margin: 0; padding: 0;}
+
+        .tree ul {
+            padding-top: 20px;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            flex-wrap: nowrap;
+            transition: all 0.5s;
+        }
+
+        .tree li {
+            text-align: center;
+            list-style-type: none;
+            position: relative;
+            padding: 20px 5px 0 5px;
+            transition: all 0.5s;
+        }
+
+        .tree li::before, .tree li::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            border-top: 1px solid #ccc;
+            width: 50%;
+            height: 20px;
+        }
+
+        .tree li::before {
+            right: 50%;
+        }
+
+        .tree li::after {
+            left: 50%;
+            border-left: 1px solid #ccc;
+        }
+
+        .tree li:only-child::after, .tree li:only-child::before {
+            display: none;
+        }
+
+        .tree li:only-child { padding-top: 0; }
+
+        .tree ul ul::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            border-left: 1px solid #ccc;
+            height: 20px;
+        }        
+
+        .tree li a:hover, .tree li a:hover+ul li a {
+            background: #000000;
+            color: #ffffff;
+            border: 2px solid #00c8ff;
+        }
+
+        .tree li a:hover+ul li::after, 
+        .tree li a:hover+ul li::before, 
+        .tree li a:hover+ul::before, 
+        .tree li a:hover+ul ul::before {
+            border-color: #f6f6f6;
+        }
+
+        .tree li a {
+            border: 1px solid #ccc;
+            padding: 10px; /* Increased padding for better spacing */
+            text-decoration: none;
+            color: #666;
+            font-family: Arial, Verdana, Tahoma;
+            font-size: 11px;
+            display: inline-block;
+            border-radius: 10px; /* Rounded corners */
+            transition: all 0.3s ease; /* Smooth transition for hover effects */
+            background: linear-gradient(145deg, #ffffff, #e6e6e6); /* Light gradient background */
+            box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.1), 
+                        -5px -5px 15px rgba(255, 255, 255, 0.9); /* 3D shadow effect */
+        }
+
+        .tree li a:hover {
+            background: linear-gradient(145deg, #e6e6e6, #ffffff); /* Reverse gradient on hover */
+            color: #000; /* Change text color on hover */
+            border: 1px solid #94a0b4; /* Change border color on hover */
+            transform: translateY(-5px); /* Lift effect on hover */
+            transform: scale(1.5); /* Slightly enlarge image on hover */
+            z-index: 10000;
+            position: relative;
+            box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.2), 
+                        -10px -10px 20px rgba(255, 255, 255, 0.9); /* Enhanced shadow on hover */
+        }
+
+        .tree li a img {
+            border-radius: 50%;
+            margin: 0 auto;
+            display: block;
+            transition: transform 0.3s ease; /* Smooth transition for image scaling */
+        }
+
+        .tree li a:hover img {
+            transform: scale(1.1); /* Slightly enlarge image on hover */
+        }
+
+        .tree li a .designation {
+            display: inline-block;
+            background-color: #f8f8f8;
+            padding: 2px 5px;
+            border-radius: 3px;
+            font-size: 10px;
+            color: #4b5563;
+            margin-top: 5px;
+            transition: background-color 0.3s ease; /* Smooth transition for background color */
+        }
+
+        .tree li a:hover .designation {
+            background-color: #000000; /* Change background color on hover */
+            color: #ffffff; /* Change text color on hover */
+            
+        }
+        /* Styles for great-grandchild elements */
+        .tree ul ul ul ul {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .tree ul ul ul ul li {
+            margin-bottom: 10px;
+        }
+
+        @media (max-width: 600px) {
+            .tree ul {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+  </style>
+ </head>
+ <body class="bg-gray-100 font-roboto">
+  <!-- Hero Section -->
+  <div class="bg-black text-white text-center py-3 shadow-lg">
+   <div class="container mx-auto flex items-center justify-center space-x-4">
+    <i class="fas fa-sitemap fa-3x">
+    </i>
+    <h1 class="animate-character text-5xl uppercase">
+     Organisation Structure
+    </h1>
+   </div>
+  </div>
+  <div class="container mx-auto max-w-full pb-0 pt-0">
+   <div id="navbar-container">
+   </div>
+   <!-- This is where the navbar will be loaded -->
+  </div>
+  <!-- This is where the navbar will be loaded -->
+  <div class="tree">
+   <ul>
+    <li>
+     <a href="#">
+      <img alt="Placeholder image for Mallika Parekh" height="30" src="https://placehold.co/30x30" width="30"/>
+      <br/>
+      Mallika Parekh
+      <br/>
+      <span class="designation">
+       Managing Director
+      </span>
+     </a>
+     <ul>
+      <li>
+       <a href="#">
+        <img alt="Placeholder image for Mitali Kumar" height="30" src="https://placehold.co/30x30" width="30"/>
+        <br/>
+        Mitali Kumar
+        <br/>
+        <span class="designation">
+         Chief Operations Manager
+        </span>
+       </a>
+       <ul>
+        <li>
+         <a href="#">
+          <img alt="Placeholder image for Saachi Shetty" height="30" src="https://placehold.co/30x30" width="30"/>
+          <br/>
+          Saachi Shetty
+          <br/>
+          <span class="designation">
+           Sr. Operations Manager
+          </span>
+         </a>
+         <ul>
+          <li>
+           <a href="#">
+            <img alt="Placeholder image for Zahur Shaikh" height="30" src="https://placehold.co/30x30" width="30"/>
+            <br/>
+            Zahur Shaikh
+            <br/>
+            <span class="designation">
+             Studio Coordinator
+            </span>
+           </a>
+          </li>
+         </ul>
+        </li>
+        <li>
+         <a href="#">
+          <img alt="Placeholder image for Jimmeey Gondaa" height="30" src="https://placehold.co/30x30" width="30"/>
+          <br/>
+          Jimmeey Gondaa
+          <br/>
+          <span class="designation">
+           Head of Sales &amp; Client Servicing
+          </span>
+         </a>
+         <ul>
+          <li>
+           <a href="#">
+            <img alt="Placeholder image for Akshay Rane" height="30" src="https://placehold.co/30x30" width="30"/>
+            <br/>
+            Akshay Rane
+            <br/>
+            <span class="designation">
+             Sales &amp; Client Servicing Associate
+            </span>
+           </a>
+          </li>
+          <li>
+           <a href="#">
+            <img alt="Placeholder image for Tahira Sayyed" height="30" src="https://placehold.co/30x30" width="30"/>
+            <br/>
+            Tahira Sayyed
+            <br/>
+            <span class="designation">
+             Sales &amp; Client Servicing Associate
+            </span>
+           </a>
+          </li>
+          <li>
+           <a href="#">
+            <img alt="Placeholder image for Sheetal Kataria" height="30" src="https://placehold.co/30x30" width="30"/>
+            <br/>
+            Sheetal Kataria
+            <br/>
+            <span class="designation">
+             Sales &amp; Client Servicing Associate
+            </span>
+           </a>
+          </li>
+          <li>
+           <a href="#">
+            <img alt="Placeholder image for Manisha Rathod" height="30" src="https://placehold.co/30x30" width="30"/>
+            <br/>
+            Manisha Rathod
+            <br/>
+            <span class="designation">
+             Sales &amp; Client Servicing Associate
+            </span>
+           </a>
+          </li>
+          <li>
+           <a href="#">
+            <img alt="Placeholder image for Shipra Bhika" height="30" src="https://placehold.co/30x30" width="30"/>
+            <br/>
+            Shipra Bhika
+            <br/>
+            <span class="designation">
+             Sales &amp; Client Servicing Associate
+            </span>
+           </a>
+          </li>
+          <li>
+           <a href="#">
+            <img alt="Placeholder image for Imran Shaikh" height="30" src="https://placehold.co/30x30" width="30"/>
+            <br/>
+            Imran Shaikh
+            <br/>
+            <span class="designation">
+             Sr. Sales &amp; Client Servicing Associate
+            </span>
+           </a>
+          </li>
+         </ul>
+        </li>
+        <li>
+         <a href="#">
+          <img alt="Placeholder image for Shifa Ali" height="30" src="https://placehold.co/30x30" width="30"/>
+          <br/>
+          Shifa Ali
+          <br/>
+          <span class="designation">
+           Regional Operations Manager - South
+          </span>
+         </a>
+         <ul>
+          <li>
+           <a href="#">
+            <img alt="Placeholder image for Wungsingla Serou" height="30" src="https://placehold.co/30x30" width="30"/>
+            <br/>
+            Wungsingla Serou
+            <br/>
+            <span class="designation">
+             Sales &amp; Client Servicing Associate
+            </span>
+           </a>
+          </li>
+          <li>
+           <a href="#">
+            <img alt="Placeholder image for Prathap Kp" height="30" src="https://placehold.co/30x30" width="30"/>
+            <br/>
+            Prathap Kp
+            <br/>
+            <span class="designation">
+             Sales &amp; Client Servicing Associate
+            </span>
+           </a>
+          </li>
+          <li>
+           <a href="#">
+            <img alt="Placeholder image for Jayanta Banerjee" height="30" src="https://placehold.co/30x30" width="30"/>
+            <br/>
+            Jayanta Banerjee
+            <br/>
+            <span class="designation">
+             Sales &amp; Client Servicing Associate
+            </span>
+           </a>
+          </li>
+         </ul>
+        </li>
+       </ul>
+      </li>
+      <li>
+       <a href="#">
+        <img alt="Placeholder image for Sachin Nalawade" height="30" src="https://placehold.co/30x30" width="30"/>
+        <br/>
+        Sachin Nalawade
+        <br/>
+        <span class="designation">
+         Accounts Manager
+        </span>
+       </a>
+       <ul>
+        <li>
+         <a href="#">
+          <img alt="Placeholder image for Gaurav Sogam" height="30" src="https://placehold.co/30x30" width="30"/>
+          <br/>
+          Gaurav Sogam
+          <br/>
+          <span class="designation">
+           Accounts Associate
+          </span>
+         </a>
+        </li>
+        <li>
+         <a href="#">
+          <img alt="Placeholder image for Nisha" height="30" src="https://placehold.co/30x30" width="30"/>
+          <br/>
+          Nisha
+          <br/>
+          <span class="designation">
+           Accounts Associate
+          </span>
+         </a>
+        </li>
+       </ul>
+      </li>
+      <li>
+       <a href="#">
+        <img alt="Placeholder image for Anisha Shah" height="30" src="https://placehold.co/30x30" width="30"/>
+        <br/>
+        Anisha Shah
+        <br/>
+        <span class="designation">
+         Master Trainer
+        </span>
+       </a>
+       <ul>
+        <li>
+         <a href="#">
+          <img alt="Placeholder image for Pushyank Nahar" height="30" src="https://placehold.co/30x30" width="30"/>
+          <br/>
+          Pushyank Nahar
+          <br/>
+          <span class="designation">
+           Head Trainer - Bengaluru
+          </span>
+         </a>
+         <ul>
+          <li>
+           <a href="#">
+            <img alt="Placeholder image for Shruti Kulkarni" height="30" src="https://placehold.co/30x30" width="30"/>
+            <br/>
+            <strong>
+             Shruti Kulkarni
+            </strong>
+            <br/>
+            <span class="designation">
+             Trainer
+            </span>
+           </a>
+          </li>
+          <li>
+           <a href="#">
+            <img alt="Placeholder image for Shruti Suresh" height="30" src="https://placehold.co/30x30" width="30"/>
+            <br/>
+            Shruti Suresh
+            <br/>
+            <span class="designation">
+             Trainer
+            </span>
+           </a>
+          </li>
+          <li>
+           <a href="#">
+            <img alt="Placeholder image for Kajol Kanchan" height="30" src="https://placehold.co/30x30" width="30"/>
+            <br/>
+            Kajol Kanchan
+            <br/>
+            <span class="designation">
+             Trainer
+            </span>
+           </a>
+          </li>
+          <li>
+           <a href="#">
+            <img alt="Placeholder image for Poojitha Bhaskar" height="30" src="https://placehold.co/30x30" width="30"/>
+            <br/>
+            Poojitha Bhaskar
+            <br/>
+            <span class="designation">
+             Trainer
+            </span>
+           </a>
+          </li>
+         </ul>
+        </li>
+        <li>
+         <a href="#">
+          <img alt="Placeholder image for Saniya Jaiswal" height="30" src="https://placehold.co/30x30" width="30"/>
+          <br/>
+          Saniya Jaiswal
+          <br/>
+          <span class="designation">
+           Head Trainer - Mumbai
+          </span>
+         </a>
+         <ul>
+          <li>
+           <a href="#">
+            <img alt="Placeholder image for Rohan Dahima" height="30" src="https://placehold.co/30x30" width="30"/>
+            <br/>
+            Rohan Dahima
+            <br/>
+            <span class="designation">
+             Sr. Trainer
+            </span>
+           </a>
+          </li>
+          <li>
+           <a href="#">
+            <img alt="Placeholder image for Richard D'Costa" height="30" src="https://placehold.co/30x30" width="30"/>
+            <br/>
+            Richard D'Costa
+            <br/>
+            <span class="designation">
+             Sr. Trainer
+            </span>
+           </a>
+          </li>
+          <li>
+           <a href="#">
+            <img alt="Placeholder image for Pranjali Jain" height="30" src="https://placehold.co/30x30" width="30"/>
+            <br/>
+            Pranjali Jain
+            <br/>
+            <span class="designation">
+             Sr. Trainer
+            </span>
+           </a>
+          </li>
+          <li>
+           <a href="#">
+            <img alt="Placeholder image for Reshma Sharma" height="30" src="https://placehold.co/30x30" width="30"/>
+            <br/>
+            Reshma Sharma
+            <br/>
+            <span class="designation">
+             Trainer
+            </span>
+           </a>
+          </li>
+         </ul>
+        </li>
+        <li>
+         <a href="#">
+          <img alt="Placeholder image for Vivaran Dhasmana" height="30" src="https://placehold.co/30x30" width="30"/>
+          <br/>
+          Vivaran Dhasmana
+          <br/>
+          <span class="designation">
+           Trainer
+          </span>
+         </a>
+        </li>
+       </ul>
+      </li>
+     </ul>
+    </li>
+   </ul>
+  </div>
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        fetch('navbar.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('navbar-container').innerHTML = data;
+            })
+            .catch(error => console.error('Error loading the navbar:', error));
+    });
+</script>
+ </body>
+</html>

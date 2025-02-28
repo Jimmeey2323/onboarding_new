@@ -1,0 +1,1021 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Physique 57: A Journey of Transformation</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <style>
+         body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f9fafb;
+            color: #333;
+        }
+
+        .hero-section {
+            background: linear-gradient(120deg, #007bff, #000608);
+            color: #fff;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: slideIn 1.5s ease-out forwards;
+        }
+    
+        .hero-section h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin: 0;
+            opacity: 0;
+            transform: translateY(-20px);
+            animation: fadeIn 1s ease-in-out 0.5s forwards;
+        }
+    
+        .hero-section i {
+            font-size: 3rem;
+            margin-right: 10px;
+            animation: bounceIn 1s ease-in-out 1s forwards;
+        }
+    
+        /* Keyframes */
+        @keyframes slideIn {
+            0% {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+    
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    
+        @keyframes bounceIn {
+            0%,
+            20%,
+            40%,
+            60%,
+            80%,
+            100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+    
+        @media (max-width: 768px) {
+            .hero-section h1 {
+                font-size: 2.5rem;
+            }
+            .hero-section i {
+                font-size: 2.5rem;
+            }
+        }
+
+        .animate-character {
+            text-transform: uppercase;
+            background-image: linear-gradient(
+                -225deg,
+                #000000 0%,
+                #ffd900 29%,
+                #ffea00 67%,
+                #ffffff 100%
+            );
+            background-size: 200% auto;            
+            color: transparent; /* Set text color to transparent */
+            background-clip: text;            
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent; /* Ensure text fill is transparent */
+            animation: textclip 2s linear infinite, marquee 15s linear infinite;
+            display: inline-block;            
+            white-space: nowrap;            
+            letter-spacing: 1rem;
+        }
+
+        @keyframes textclip {
+            to {
+                background-position: 200% center;
+            }
+        }
+
+        .card {
+            background-color: #fff;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .card img {
+            width: 100%;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .card img:hover {
+            transform: scale(1.05);
+        }
+
+        .quote {
+            font-size: 1.5rem;
+            font-style: italic;
+            color: #007bff;
+            margin-top: 30px;
+            animation: fadeInText 2.5s ease-in-out;
+        }
+
+        .quote-author {
+            font-size: 1rem;
+            color: #555;
+            margin-top: 10px;
+            animation: fadeInText 2.5s ease-in-out;
+        }
+
+        @keyframes fadeInText {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .icon-list {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            gap: 10px;
+        }
+
+        .icon-list i {
+            color: #a80000;
+            font-size: 1.5rem;
+        }
+        .pdf-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .pdf-card {
+            background-color: #fff;
+            border: 2px solid #000000;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 200px;
+            height: 250px;
+            padding: 10px;
+            transition: transform 0.3s;
+            cursor: pointer;
+        }
+
+        .pdf-card:hover {
+            transform: scale(1.05);
+        }
+
+        .pdf-card i {
+            font-size: 50px;
+            color: #7c0000;
+        }
+
+        .pdf-title {
+            margin-top: 10px;
+            font-weight: bold;
+            font-size: 20px;
+        }       
+    </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            fetch('navbar.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('navbar-container').innerHTML = data;
+                })
+                .catch(error => console.error('Error loading the navbar:', error));
+        });
+        function openPDF(pdfUrl) {
+            const newWindow = window.open(pdfUrl, '_blank');
+            newWindow.focus();
+        }
+    </script>
+</head>
+<body class="bg-gray-100 font-roboto">
+        <!-- Hero Section -->
+        <div class="bg-gradient-to-r from-gray-900 to-gray-900 text-white text-center pt-3 pb-3 shadow-lg">
+            <div class="container mx-auto flex items-end space-x-4">
+                <i class="fa-solid fa-layer-group fa-fade fa-3x mr-1 mb-0 pb-1" style="color: #ffffff;"></i>
+                <h1 class="animate-character text-5xl uppercase">Class Formats</h1>
+            </div>        
+        </div>
+    
+        <div class="container mx-auto max-w-full pb-0 pl-20 pr-5 pt-5">
+            <div id="navbar-container"></div> <!-- This is where the navbar will be loaded -->           
+             <div class="bg-white shadow-md rounded-lg p-6 mb-6 mx-10 fade-in">
+              <h2 class="text-3xl font-bold mb-4 flex items-center">
+               <i class="fas fa-dumbbell text-blue-500 mr-2">
+               </i>
+               Barre 57
+              </h2>
+              <p class="mb-4">
+               Barre 57 stands as the cornerstone of our fitness philosophy, representing the pinnacle of our signature class offerings. Rooted in our proprietary 'Interval Overload' method, Barre 57 is a dynamic fusion of ballet-inspired movements, isometric holds, and targeted strength exercises. In this class, you'll experience a harmonious blend of sculpting, toning, and lengthening movements meticulously choreographed to upbeat music. Led by our expert instructors, each session guides you through a series of precise movements designed to challenge your endurance, flexibility, and muscle engagement.
+              </p>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+               <div class="bg-gray-50 p-4 rounded-lg shadow-md">
+                <h3 class="text-xl font-bold mb-2 flex items-center">
+                 <i class="fas fa-star text-yellow-500 mr-2">
+                 </i>
+                 Key Benefits
+                </h3>
+                <ul class="list-disc pl-5 space-y-2">
+                 <li>
+                  Strengthens and tones muscles throughout the body, with a focus on core, arms, thighs, and glutes.
+                 </li>
+                 <li>
+                  Improves flexibility, posture, and body awareness through targeted stretching and alignment techniques.
+                 </li>
+                 <li>
+                  Boosts endurance and cardiovascular health with dynamic movements and interval training.
+                 </li>
+                 <li>
+                  Enhances muscular endurance and stamina through isometric holds and controlled movements.
+                 </li>
+                 <li>
+                  Promotes mental focus and mindfulness, providing a holistic approach to fitness and well-being.
+                 </li>
+                </ul>
+               </div>
+               <div class="bg-gray-50 p-4 rounded-lg shadow-md">
+                <h3 class="text-xl font-bold mb-2 flex items-center">
+                 <i class="fas fa-info-circle text-blue-500 mr-2">
+                 </i>
+                 Class Details
+                </h3>
+                <p class="mb-2">
+                 <strong>
+                  Keywords:
+                 </strong>
+                 Ballet-inspired, isometric holds, sculpting, toning, lengthening, dynamic movements, interval training, endurance, flexibility, alignment, holistic.
+                </p>
+                <p class="mb-2">
+                 <strong>
+                  Intensity Level:
+                 </strong>
+                 Moderate to high intensity, with options for modifications to accommodate various fitness levels.
+                </p>
+                <p class="mb-2">
+                 <strong>
+                  Suitable For:
+                 </strong>
+                 Barre 57 is suitable for individuals of all fitness levels, from beginners to experienced practitioners. Whether you're new to fitness or seeking to elevate your workout routine, Barre 57 offers a challenging, yet accessible experience tailored to your needs.
+                </p>
+               </div>
+              </div>
+             </div>
+             <div class="bg-white shadow-md rounded-lg p-6 mb-6 mx-10 fade-in">
+              <h2 class="text-3xl font-bold mb-4 flex items-center">
+               <i class="fas fa-heartbeat text-blue-500 mr-2">
+               </i>
+               Foundations
+              </h2>
+              <p class="mb-4">
+               Foundations offers a deliberate and introspective approach to our renowned Barre 57 class, tailored for those seeking a gentler introduction to barre fitness. Led by our experienced trainers, Foundations provides a slower-paced experience, allowing ample time to break down each exercise with meticulous attention to detail.
+              </p>
+              <p class="mb-4">
+               With fewer variations, Foundations prioritizes the refinement of movement quality over quantity, fostering a deeper connection between mind and body. This deliberate pace enables you to concentrate on mastering the foundational elements of barre while emphasizing proper alignment and technique.
+              </p>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+               <div class="bg-gray-50 p-4 rounded-lg shadow-md">
+                <h3 class="text-xl font-bold mb-2 flex items-center">
+                 <i class="fas fa-star text-yellow-500 mr-2">
+                 </i>
+                 Key Benefits
+                </h3>
+                <ul class="list-disc pl-5 space-y-2">
+                 <li>
+                  Builds strength and muscle tone throughout the body, with a focus on core stability, lean muscle development, and overall muscular endurance.
+                 </li>
+                 <li>
+                  Enhances body awareness and mindfulness through deliberate movement and focused attention on alignment.
+                 </li>
+                 <li>
+                  Improves flexibility and mobility through targeted stretching and lengthening exercises.
+                 </li>
+                 <li>
+                  Provides a gentle introduction to cardiovascular activity with light cardio intervals, promoting heart health and circulation.
+                 </li>
+                 <li>
+                  Cultivates a supportive and inclusive environment ideal for beginners or those new to physical exercise, fostering confidence and empowerment.
+                 </li>
+                </ul>
+               </div>
+               <div class="bg-gray-50 p-4 rounded-lg shadow-md">
+                <h3 class="text-xl font-bold mb-2 flex items-center">
+                 <i class="fas fa-info-circle text-blue-500 mr-2">
+                 </i>
+                 Class Details
+                </h3>
+                <p class="mb-2">
+                 <strong>
+                  Keywords:
+                 </strong>
+                 deliberate, introspective, foundational, mindful, alignment, technique, strength, muscle tone, flexibility, inclusivity.
+                </p>
+                <p class="mb-2">
+                 <strong>
+                  Intensity Level:
+                 </strong>
+                 Low to moderate intensity, suitable for beginners or individuals seeking a gentler workout experience.
+                </p>
+                <p class="mb-2">
+                 <strong>
+                  Suitable For:
+                 </strong>
+                 Foundations is ideal for newcomers to barre fitness or those who prefer a slower-paced, more methodical approach to exercise. Whether you are brand new to physical activity or simply seeking a mindful movement practice, Foundations provides a welcoming and supportive environment to nurture your fitness journey.
+                </p>
+               </div>
+              </div>
+             </div>
+             <!-- Barre 57 Vs Foundations -->
+        <div class="bg-white shadow-md rounded-lg p-6 mb-6 mx-10 fade-in">
+            <h2 class="text-4xl font-bold mb-6 flex items-center">
+                <i class="fas fa-balance-scale text-blue-600 mr-2"></i>
+                Barre 57 Vs Foundations
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Barre 57 -->
+                <div class="bg-gradient-to-r from-purple-600 to-pink-600 text-white p-6 rounded-lg shadow-lg transform transition duration-500 hover-grow">
+                    <h3 class="text-2xl font-bold mb-4 flex items-center animate-pulse">
+                        <i class="fas fa-dumbbell text-yellow-300 mr-2"></i>
+                        Barre 57
+                    </h3>
+                    <ul class="space-y-4">
+                        <li class="flex items-center">
+                            <i class="fas fa-tachometer-alt text-yellow-300 mr-2"></i>
+                            <span>Pace: Dynamic and upbeat</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-random text-yellow-300 mr-2"></i>
+                            <span>Variations: Includes a variety of movements and sequences</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-bolt text-yellow-300 mr-2"></i>
+                            <span>Intensity Level: Moderate to high intensity</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-dumbbell text-yellow-300 mr-2"></i>
+                            <span>Focus: Sculpting, toning, and lengthening</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-users text-yellow-300 mr-2"></i>
+                            <span>Suitable For: All fitness levels</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-heartbeat text-yellow-300 mr-2"></i>
+                            <span>Cardio Component: Included with intervals for cardiovascular health</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-yellow-300 mr-2"></i>
+                            <span>Emphasis on Quality: Yes</span>
+                        </li>
+                    </ul>
+                </div>
+                <!-- Foundations -->
+                <div class="bg-gradient-to-r from-gray-600 to-gray-800 text-white p-6 rounded-lg shadow-lg transform transition duration-500 hover-grow">
+                    <h3 class="text-2xl font-bold mb-4 flex items-center animate-pulse">
+                        <i class="fas fa-dumbbell text-yellow-300 mr-2"></i>
+                        Foundations
+                    </h3>
+                    <ul class="space-y-4">
+                        <li class="flex items-center">
+                            <i class="fas fa-tachometer-alt text-yellow-300 mr-2"></i>
+                            <span>Pace: Deliberate and slower-paced</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-random text-yellow-300 mr-2"></i>
+                            <span>Variations: Fewer variations, focusing on foundational moves</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-bolt text-yellow-300 mr-2"></i>
+                            <span>Intensity Level: Low to moderate intensity</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-dumbbell text-yellow-300 mr-2"></i>
+                            <span>Focus: Alignment, technique, and mindfulness</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-users text-yellow-300 mr-2"></i>
+                            <span>Suitable For: Beginners or those new to physical exercise</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-heartbeat text-yellow-300 mr-2"></i>
+                            <span>Cardio Component: Light cardio intervals for gentle activity</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-yellow-300 mr-2"></i>
+                            <span>Emphasis on Quality: Yes</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+                    <!-- SWEAT in 30 -->
+                    <div class="bg-white shadow-md rounded-lg p-6 mb-6 mx-10 fade-in">
+                        <h2 class="text-3xl font-bold mb-4 flex items-center">
+                            <i class="fas fa-burn text-red-500 mr-2"></i>
+                            Sweat in 30
+                        </h2>
+                        <p class="mb-4">
+                            SWEAT in 30 offers an exhilarating 30-minute Cardio focused HIIT experience designed to ignite your metabolism and elevate your fitness level. Following the principles of High-Intensity Interval Training (HIIT), this fast-paced class alternates between intense bursts of activity and brief recovery periods to maximize calorie burn and cardiovascular benefits.
+                        </p>
+                        <p class="mb-4">
+                            Led by our expert trainers, SWEAT in 30 delivers a full-body workout that targets both strength and cardio using only your body weight as resistance. With dynamic movements that engage multiple muscle groups simultaneously, you'll challenge your endurance, improve your agility, and enhance your overall athleticism.
+                        </p>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div class="bg-gray-50 p-4 rounded-lg shadow-md">
+                                <h3 class="text-xl font-bold mb-2 flex items-center">
+                                    <i class="fas fa-star text-yellow-500 mr-2"></i>
+                                    Key Benefits
+                                </h3>
+                                <ul class="list-disc pl-5 space-y-2">
+                                    <li>Accelerates calorie burn and boosts metabolism for efficient fat loss.</li>
+                                    <li>Improves cardiovascular health and endurance through intense intervals.</li>
+                                    <li>Builds strength and muscle tone with bodyweight resistance exercises.</li>
+                                    <li>Enhances agility, coordination, and athletic performance.</li>
+                                    <li>Maximizes workout efficiency with a condensed 30-minute format.</li>
+                                </ul>
+                            </div>
+                            <div class="bg-gray-50 p-4 rounded-lg shadow-md">
+                                <h3 class="text-xl font-bold mb-2 flex items-center">
+                                    <i class="fas fa-info-circle text-blue-500 mr-2"></i>
+                                    Class Details
+                                </h3>
+                                <p class="mb-2">
+                                    <strong>Keywords:</strong> Cardio-focused, HIIT, bursts of movement, bodyweight resistance, all levels.
+                                </p>
+                                <p class="mb-2">
+                                    <strong>Intensity Level:</strong> High intensity, suitable for individuals of all fitness levels with options for modifications.
+                                </p>
+                                <p class="mb-2">
+                                    <strong>Suitable For:</strong> SWEAT in 30 is suitable for individuals of all fitness levels, from beginners to advanced athletes. Whether you're looking to kickstart your fitness journey or take your workouts to the next level, this class offers a challenging and effective solution for achieving your goals in a time-efficient manner.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+        
+                    <!-- Functional Interval Training (F.I.T.) -->
+                    <div class="bg-white shadow-md rounded-lg p-6 mb-6 mx-10 fade-in">
+                        <h2 class="text-3xl font-bold mb-4 flex items-center">
+                            <i class="fas fa-dumbbell text-blue-500 mr-2"></i>
+                            Functional Interval Training (F.I.T.)
+                        </h2>
+                        <p class="mb-4">
+                            FIT revolutionizes HIIT with a cutting-edge 50-minute class format that combines strength-based interval training, endurance work, and core conditioning for a comprehensive full-body workout experience. Led by our expert trainers, FIT pushes your limits and challenges your body in new ways to achieve optimal results.
+                        </p>
+                        <p class="mb-4">
+                            During this high-intensity session, you'll engage in a series of functional strength exercises that target major muscle groups while enhancing core stability and overall athleticism. Utilizing progressive resistance with heavy weights, FIT maximizes muscle engagement and promotes muscular endurance and strength gains.
+                        </p>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div class="bg-gray-50 p-4 rounded-lg shadow-md">
+                                <h3 class="text-xl font-bold mb-2 flex items-center">
+                                    <i class="fas fa-star text-yellow-500 mr-2"></i>
+                                    Key Benefits
+                                </h3>
+                                <ul class="list-disc pl-5 space-y-2">
+                                    <li>Enhances overall strength and muscle definition through functional movements.</li>
+                                    <li>Improves cardiovascular health and endurance with high-intensity intervals.</li>
+                                    <li>Increases core stability and balance through targeted core conditioning exercises.</li>
+                                    <li>Boosts metabolism and calorie burn for effective fat loss and weight management.</li>
+                                    <li>Provides variety and challenge to your workout routine with innovative exercises and training techniques.</li>
+                                </ul>
+                            </div>
+                            <div class="bg-gray-50 p-4 rounded-lg shadow-md">
+                                <h3 class="text-xl font-bold mb-2 flex items-center">
+                                    <i class="fas fa-info-circle text-blue-500 mr-2"></i>
+                                    Class Details
+                                </h3>
+                                <p class="mb-2">
+                                    <strong>Keywords:</strong> Strength-based interval training, endurance work, core conditioning, high intensity, functional strength training, heavy weights.
+                                </p>
+                                <p class="mb-2">
+                                    <strong>Intensity Level:</strong> High intensity, suitable for individuals seeking a challenging and results-driven workout.
+                                </p>
+                                <p class="mb-2">
+                                    <strong>Suitable For:</strong> FIT is ideal for individuals looking to push their limits and take their fitness to the next level. Whether you're an experienced athlete or someone looking to break through fitness plateaus, this class offers a dynamic and effective solution for achieving your strength and conditioning goals.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+        
+                    <!-- High Intensity Interval Training (H.I.I.T.) -->
+                    <div class="bg-white shadow-md rounded-lg p-6 mb-6 mx-10 fade-in">
+                        <h2 class="text-3xl font-bold mb-4 flex items-center">
+                            <i class="fas fa-heartbeat text-green-500 mr-2"></i>
+                            High Intensity Interval Training (H.I.I.T.)
+                        </h2>
+                        <p class="mb-4">
+                            Our HIIT (High-Intensity Interval Training) class is a dynamic fusion of cardiovascular exercises and strength training, meticulously crafted to push your limits and ignite your metabolism. In this exhilarating 45-minute session, we've transformed classic exercises like jumping jacks, lunges, and planks into heart-pounding sprints, ensuring non-stop action that will leave you breathless and exhilarated.
+                        </p>
+                        <p class="mb-4">
+                            With a focus on intensity and efficiency, our HIIT workout maximizes calorie burn and boosts your heart rate, amplifying the afterburn effect to torch calories long after the workout is over. By alternating between bursts of intense cardio and periods of active recovery, you'll experience a full-body burn that targets both aerobic and anaerobic fitness, sculpting lean muscle and improving overall endurance.
+                        </p>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div class="bg-gray-50 p-4 rounded-lg shadow-md">
+                                <h3 class="text-xl font-bold mb-2 flex items-center">
+                                    <i class="fas fa-star text-yellow-500 mr-2"></i>
+                                    Key Benefits
+                                </h3>
+                                <ul class="list-disc pl-5 space-y-2">
+                                    <li>Accelerates calorie burn and promotes fat loss through high-intensity intervals.</li>
+                                    <li>Improves cardiovascular health and boosts endurance with dynamic cardio exercises.</li>
+                                    <li>Builds strength and muscle tone through bodyweight resistance and strength training exercises.</li>
+                                    <li>Enhances metabolic rate and promotes post-workout calorie burn.</li>
+                                    <li>Releases endorphins to boost mood and energy levels, leaving you feeling invigorated and empowered.</li>
+                                </ul>
+                            </div>
+                            <div class="bg-gray-50 p-4 rounded-lg shadow-md">
+                                <h3 class="text-xl font-bold mb-2 flex items-center">
+                                    <i class="fas fa-info-circle text-blue-500 mr-2"></i>
+                                    Class Details
+                                </h3>
+                                <p class="mb-2">
+                                    <strong>Keywords:</strong> High-intensity interval training, cardiovascular exercises, strength training, calorie burn, metabolism boost.
+                                </p>
+                                <p class="mb-2">
+                                    <strong>Intensity Level:</strong> Intermediate, suitable for individuals seeking a challenging and dynamic workout experience.
+                                </p>
+                                <p class="mb-2">
+                                    <strong>Suitable For:</strong> Our HIIT class is ideal for individuals looking to maximize their workout efficiency and achieve rapid results. Whether you're a seasoned fitness enthusiast or just starting your fitness journey, HIIT offers a high-energy and effective solution for reaching your fitness goals and pushing your limits. Get ready to sweat, burn calories, and elevate your fitness to the next level.
+                                </p>
+                            </div>
+                        </div>
+                    </div>                
+        
+                <!-- Comparison Infographic -->
+        <div class="bg-white shadow-md rounded-lg p-6 mb-6 mx-10 fade-in">
+            <h2 class="text-4xl font-bold mb-6 flex items-center">
+                <i class="fas fa-chart-bar text-blue-600 mr-2"></i>
+                Class Comparison
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- HIIT -->
+                <div class="bg-gradient-to-r from-blue-600 to-indigo-600 text-white p-6 rounded-lg shadow-lg transform transition duration-500 hover-grow">
+                    <h3 class="text-2xl font-bold mb-4 flex items-center animate-pulse">
+                        <i class="fas fa-running text-yellow-300 mr-2"></i>
+                        HIIT
+                    </h3>
+                    <ul class="space-y-4">
+                        <li class="flex items-center">
+                            <i class="fas fa-clock text-yellow-300 mr-2"></i>
+                            <span>Class Length: 45 minutes</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-bullseye text-yellow-300 mr-2"></i>
+                            <span>Focus: High-intensity intervals, cardio, strength</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-tachometer-alt text-yellow-300 mr-2"></i>
+                            <span>Intensity Level: Intermediate to advanced</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-dumbbell text-yellow-300 mr-2"></i>
+                            <span>Workout Components: Non-stop sprints, cardio, strength</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-users text-yellow-300 mr-2"></i>
+                            <span>Suitable For: Intermediate to advanced levels</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-fire text-yellow-300 mr-2"></i>
+                            <span>Emphasis: Rapid calorie burn, metabolic boost</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-tools text-yellow-300 mr-2"></i>
+                            <span>Equipment: Minimal equipment (bodyweight exercises)</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-heartbeat text-yellow-300 mr-2"></i>
+                            <span>Ideal For: Those seeking a challenging cardio workout</span>
+                        </li>
+                    </ul>
+                </div>
+                <!-- FIT -->
+                <div class="bg-gradient-to-r from-green-600 to-teal-600 text-white p-6 rounded-lg shadow-lg transform transition duration-500 hover-grow">
+                    <h3 class="text-2xl font-bold mb-4 flex items-center animate-pulse">
+                        <i class="fas fa-dumbbell text-yellow-300 mr-2"></i>
+                        FIT
+                    </h3>
+                    <ul class="space-y-4">
+                        <li class="flex items-center">
+                            <i class="fas fa-clock text-yellow-300 mr-2"></i>
+                            <span>Class Length: 50 minutes</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-bullseye text-yellow-300 mr-2"></i>
+                            <span>Focus: Functional strength training, endurance, core</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-tachometer-alt text-yellow-300 mr-2"></i>
+                            <span>Intensity Level: High intensity</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-dumbbell text-yellow-300 mr-2"></i>
+                            <span>Workout Components: Functional strength exercises, heavy weights</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-users text-yellow-300 mr-2"></i>
+                            <span>Suitable For: Advanced levels</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-fire text-yellow-300 mr-2"></i>
+                            <span>Emphasis: Muscle strength, endurance, core stability</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-tools text-yellow-300 mr-2"></i>
+                            <span>Equipment: Heavy weights</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-heartbeat text-yellow-300 mr-2"></i>
+                            <span>Ideal For: Individuals focusing on strength and endurance</span>
+                        </li>
+                    </ul>
+                </div>
+                <!-- SWEAT -->
+                <div class="bg-gradient-to-r from-red-600 to-pink-600 text-white p-6 rounded-lg shadow-lg transform transition duration-500 hover-grow">
+                    <h3 class="text-2xl font-bold mb-4 flex items-center animate-pulse">
+                        <i class="fas fa-burn text-yellow-300 mr-2"></i>
+                        SWEAT
+                    </h3>
+                    <ul class="space-y-4">
+                        <li class="flex items-center">
+                            <i class="fas fa-clock text-yellow-300 mr-2"></i>
+                            <span>Class Length: 30 minutes</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-bullseye text-yellow-300 mr-2"></i>
+                            <span>Focus: Cardio-focused HIIT, full-body workout</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-tachometer-alt text-yellow-300 mr-2"></i>
+                            <span>Intensity Level: High intensity</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-dumbbell text-yellow-300 mr-2"></i>
+                            <span>Workout Components: Cardio intervals, bodyweight resistance</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-users text-yellow-300 mr-2"></i>
+                            <span>Suitable For: All fitness levels</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-fire text-yellow-300 mr-2"></i>
+                            <span>Emphasis: Cardiovascular health, calorie burn</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-tools text-yellow-300 mr-2"></i>
+                            <span>Equipment: Minimal equipment (bodyweight exercises)</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-heartbeat text-yellow-300 mr-2"></i>
+                            <span>Ideal For: Individuals looking for a quick cardio burn</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+                <!-- Mat 57 -->
+        <div class="bg-white shadow-md rounded-lg p-6 mb-6 mx-10 fade-in">
+            <h2 class="text-3xl font-bold mb-4 flex items-center">
+                <i class="fas fa-dumbbell text-red-500 mr-2"></i>
+                Mat 57
+            </h2>
+            <p class="mb-4">
+                Mat 57 offers a transformative experience, bringing our most effective sculpting techniques to the floor in a Pilates-inspired format. This dynamic class focuses on enhancing posture and toning the core through a series of radical, ab-blasting workouts. With a fiery and fabulous approach, Mat 57 is designed to improve balance, alignment, and flexibility, ensuring a comprehensive and invigorating session for participants.
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="bg-gray-50 p-4 rounded-lg shadow-md">
+                    <h3 class="text-xl font-bold mb-2 flex items-center">
+                        <i class="fas fa-star text-yellow-500 mr-2"></i>
+                        Key Benefits
+                    </h3>
+                    <ul class="list-disc pl-5 space-y-2">
+                        <li>Enhances posture and core strength through targeted exercises.</li>
+                        <li>Tones and sculpts abdominal muscles for a more defined midsection.</li>
+                        <li>Improves balance and stability, promoting overall body alignment.</li>
+                        <li>Increases flexibility and range of motion with Pilates-inspired movements.</li>
+                        <li>Provides a challenging yet accessible workout suitable for all fitness levels.</li>
+                    </ul>
+                </div>
+                <div class="bg-gray-50 p-4 rounded-lg shadow-md">
+                    <h3 class="text-xl font-bold mb-2 flex items-center">
+                        <i class="fas fa-info-circle text-blue-500 mr-2"></i>
+                        Class Details
+                    </h3>
+                    <p class="mb-2">
+                        <strong>Keywords:</strong> Pilates-style, core strength, posture, flexibility, alignment, balance, sculpting, vigorous, inclusive.
+                    </p>
+                    <p class="mb-2">
+                        <strong>Intensity Level:</strong> Moderate to high intensity, offering a stimulating and effective workout experience.
+                    </p>
+                    <p class="mb-2">
+                        <strong>Suitable For:</strong> Mat 57 is ideal for individuals seeking to strengthen their core, improve posture, and enhance flexibility. Whether you're a beginner or an experienced practitioner, this class offers a dynamic and empowering opportunity to elevate your fitness journey.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Cardio Barre -->
+        <div class="bg-white shadow-md rounded-lg p-6 mb-6 mx-10 fade-in">
+            <h2 class="text-3xl font-bold mb-4 flex items-center">
+                <i class="fas fa-heartbeat text-red-500 mr-2"></i>
+                Cardio Barre
+            </h2>
+            <p class="mb-4">
+                Cardio Barre is a fitness class that combines elements of traditional barre exercises with cardiovascular training. Participants engage in a series of movements that target various muscle groups, focusing on both strength and endurance. The class typically includes sequences performed at a fast pace to elevate the heart rate and promote calorie burning. Unlike traditional barre classes, Cardio Barre incorporates more dynamic movements and intervals of higher intensity to provide a challenging cardiovascular workout. This format aims to improve overall fitness levels while also sculpting and toning the body.
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="bg-gray-50 p-4 rounded-lg shadow-md">
+                    <h3 class="text-xl font-bold mb-2 flex items-center">
+                        <i class="fas fa-star text-yellow-500 mr-2"></i>
+                        Key Benefits
+                    </h3>
+                    <ul class="list-disc pl-5 space-y-2">
+                        <li>Accelerates calorie burn and promotes fat loss through high-intensity intervals.</li>
+                        <li>Improves cardiovascular health and boosts endurance with dynamic cardio exercises.</li>
+                        <li>Strengthens and tones muscles, sculpting a lean and defined physique.</li>
+                        <li>Amplifies metabolic rate, ensuring continued calorie burn post-workout.</li>
+                        <li>Releases endorphins to uplift mood and enhance overall well-being, leaving you invigorated and empowered.</li>
+                    </ul>
+                </div>
+                <div class="bg-gray-50 p-4 rounded-lg shadow-md">
+                    <h3 class="text-xl font-bold mb-2 flex items-center">
+                        <i class="fas fa-info-circle text-blue-500 mr-2"></i>
+                        Class Details
+                    </h3>
+                    <p class="mb-2">
+                        <strong>Keywords:</strong> Cardiovascular endurance, strength training, calorie burn, metabolism boost, high-intensity intervals.
+                    </p>
+                    <p class="mb-2">
+                        <strong>Intensity Level:</strong> Intermediate to advanced, suitable for individuals seeking a challenging and transformative workout experience.
+                    </p>
+                    <p class="mb-2">
+                        <strong>Suitable For:</strong> Cardio Barre is ideal for fitness enthusiasts looking to push their limits and achieve remarkable results. Whether you're a seasoned athlete or new to exercise, this high-energy class offers an effective solution for achieving your fitness goals and taking your performance to new heights.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Amped Up! -->
+        <div class="bg-white shadow-md rounded-lg p-6 mb-6 mx-10 fade-in">
+            <h2 class="text-3xl font-bold mb-4 flex items-center">
+                <i class="fas fa-bolt text-red-500 mr-2"></i>
+                Amped Up!
+            </h2>
+            <p class="mb-4">
+                Amped Up! is an advanced barre format class that challenges participants with a fast-paced and high-intensity workout. In this class, trainers introduce themed choreography variations to keep participants engaged and excited. The workout includes a variety of exercises targeting different muscle groups, such as the inner thighs, arms, and abs. Participants can expect high repetitions and dynamic movements designed to maximize muscle engagement and endurance. Amped Up! sessions incorporate sweat-inducing and calorie-burning sequences to provide a comprehensive and challenging workout experience.
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="bg-gray-50 p-4 rounded-lg shadow-md">
+                    <h3 class="text-xl font-bold mb-2 flex items-center">
+                        <i class="fas fa-star text-yellow-500 mr-2"></i>
+                        Key Benefits
+                    </h3>
+                    <ul class="list-disc pl-5 space-y-2">
+                        <li>Enhanced cardiovascular endurance.</li>
+                        <li>Improved muscular strength and endurance.</li>
+                        <li>Increased calorie burn and fat loss.</li>
+                        <li>Sculpted and toned muscles throughout the body.</li>
+                        <li>Engaging and dynamic workout experience.</li>
+                    </ul>
+                </div>
+                <div class="bg-gray-50 p-4 rounded-lg shadow-md">
+                    <h3 class="text-xl font-bold mb-2 flex items-center">
+                        <i class="fas fa-info-circle text-blue-500 mr-2"></i>
+                        Class Details
+                    </h3>
+                    <p class="mb-2">
+                        <strong>Keywords:</strong> Fast-paced, high-intensity, innovative choreography, muscle engagement, diverse exercises, calorie-scorching.
+                    </p>
+                    <p class="mb-2">
+                        <strong>Intensity Level:</strong> Advanced, suitable for individuals seeking a challenging and dynamic workout experience.
+                    </p>
+                    <p class="mb-2">
+                        <strong>Suitable For:</strong> Amped Up! is perfect for experienced fitness enthusiasts looking to take their workout to the next level. Whether you're craving variety, intensity, or a serious challenge, this class delivers results and keeps you coming back for more. Get ready to amp up your fitness journey and unleash your full potential with Amped Up!
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Back Body Blaze -->
+        <div class="bg-white shadow-md rounded-lg p-6 mb-6 mx-10 fade-in">
+            <h2 class="text-3xl font-bold mb-4 flex items-center">
+                <i class="fas fa-fire text-red-500 mr-2"></i>
+                Back Body Blaze
+            </h2>
+            <p class="mb-4">
+                Back Body Blaze is a targeted workout designed to strengthen often overlooked muscle groups such as the triceps, glutes, and back. This intermediate-level class offers a relentless series of exercises aimed at sculpting and toning these key areas. Participants can expect a non-stop session that challenges both strength and endurance, leaving them feeling empowered and revitalized. With the use of weights and a focus on motivation, Back Body Blaze encourages participants to push themselves to new heights and unleash their full potential.
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="bg-gray-50 p-4 rounded-lg shadow-md">
+                    <h3 class="text-xl font-bold mb-2 flex items-center">
+                        <i class="fas fa-star text-yellow-500 mr-2"></i>
+                        Key Benefits
+                    </h3>
+                    <ul class="list-disc pl-5 space-y-2">
+                        <li>Strengthening of triceps, glutes, and back muscles.</li>
+                        <li>Improved muscle tone and definition.</li>
+                        <li>Enhanced muscular endurance and strength.</li>
+                        <li>Increased confidence and empowerment.</li>
+                        <li>Comprehensive full-body workout experience.</li>
+                    </ul>
+                </div>
+                <div class="bg-gray-50 p-4 rounded-lg shadow-md">
+                    <h3 class="text-xl font-bold mb-2 flex items-center">
+                        <i class="fas fa-info-circle text-blue-500 mr-2"></i>
+                        Class Details
+                    </h3>
+                    <p class="mb-2">
+                        <strong>Keywords:</strong> Targeted workout, triceps, glutes, back, sculpting, toning, intermediate-level, relentless, non-stop, empowerment.
+                    </p>
+                    <p class="mb-2">
+                        <strong>Intensity Level:</strong> Intermediate, suitable for individuals with some prior fitness experience.
+                    </p>
+                    <p class="mb-2">
+                        <strong>Suitable For:</strong> Back Body Blaze is ideal for participants looking to target specific muscle groups and enhance overall strength and tone. Whether you're seeking to refine your physique or challenge yourself with a dynamic workout, this class offers a comprehensive and effective solution.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Recovery -->
+        <div class="bg-white shadow-md rounded-lg p-6 mb-6 mx-10 fade-in">
+            <h2 class="text-3xl font-bold mb-4 flex items-center">
+                <i class="fas fa-leaf text-green-500 mr-2"></i>
+                Recovery
+            </h2>
+            <p class="mb-4">
+                Indulge in a total body rejuvenation experience with our specialized Recovery Class. This gentle stretch session is designed to deeply relax you while optimizing muscle strength, symmetry, and recovery. Led by a knowledgeable trainer, this 30-minute class offers a guided journey towards relaxation and restoration. Whether you're aiming to enhance flexibility or simply seeking a restorative session for days off, this class is the perfect choice.
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="bg-gray-50 p-4 rounded-lg shadow-md">
+                    <h3 class="text-xl font-bold mb-2 flex items-center">
+                        <i class="fas fa-star text-yellow-500 mr-2"></i>
+                        Key Benefits
+                    </h3>
+                    <ul class="list-disc pl-5 space-y-2">
+                        <li>Deep relaxation of muscles and mind.</li>
+                        <li>Improved flexibility and range of motion.</li>
+                        <li>Enhanced muscle recovery and repair.</li>
+                        <li>Reduction of stress and tension.</li>
+                        <li>Comprehensive total body rejuvenation.</li>
+                    </ul>
+                </div>
+                <div class="bg-gray-50 p-4 rounded-lg shadow-md">
+                    <h3 class="text-xl font-bold mb-2 flex items-center">
+                        <i class="fas fa-info-circle text-blue-500 mr-2"></i>
+                        Class Details
+                    </h3>
+                    <p class="mb-2">
+                        <strong>Keywords:</strong> Total body recovery, stretch session, relaxation, flexibility, muscle recovery, stress reduction.
+                    </p>
+                    <p class="mb-2">
+                        <strong>Intensity Level:</strong> Gentle, suitable for all fitness levels.
+                    </p>
+                    <p class="mb-2">
+                        <strong>Suitable For:</strong> Recovery Class is ideal for individuals seeking relaxation, muscle recovery, and stress relief. Whether you're recovering from intense workouts or simply looking to unwind, this class offers a soothing and rejuvenating experience for both body and mind.
+                    </p>
+                </div>            
+            </div>
+            </div>
+            <div class="bg-white shadow-md rounded-lg p-6 mb-6 mx-10 fade-in">
+                <h2 class="text-3xl font-bold mb-4 flex items-center">
+                    <i class="fa-solid fa-list" style="color: #06a5ea;margin-right: 20px;"></i> 
+                    To Summarize
+                </h2>
+                <div class="mb-2">
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+                        <!-- Barre 57 -->
+                        <div class="bg-white p-6 rounded-lg shadow-lg flex flex-col items-center">
+                            <div class="text-6xl text-blue-500 mb-4"><i class="fas fa-dumbbell"></i></div>
+                            <h2 class="text-2xl font-bold">Barre 57</h2>
+                            <p class="mt-2 text-center">The signature method that revolutionizes full-body conditioning through precise, micro-movements. Ideal for fitness enthusiasts seeking comprehensive muscle sculpting.</p>
+                        </div>
+                        <!-- Cardio Barre -->
+                        <div class="bg-white p-6 rounded-lg shadow-lg flex flex-col items-center">
+                            <div class="text-6xl text-red-500 mb-4"><i class="fas fa-heartbeat"></i></div>
+                            <h2 class="text-2xl font-bold">Cardio Barre</h2>
+                            <p class="mt-2 text-center">An explosive metabolic conditioning program designed for those seeking maximum calorie burn and cardiovascular endurance.</p>
+                        </div>
+                        <!-- Mat 57 -->
+                        <div class="bg-white p-6 rounded-lg shadow-lg flex flex-col items-center">
+                            <div class="text-6xl text-green-500 mb-4"><i class="fa-solid fa-mattress-pillow" style="color: #c70088;"></i></div>
+                            <h2 class="text-2xl font-bold">Mat 57</h2>
+                            <p class="mt-2 text-center">A ground-based powerhouse focusing on core strength, flexibility, and muscular endurance. Tailored for practitioners seeking deep muscle activation.</p>
+                        </div>
+                        <!-- Foundations -->
+                        <div class="bg-white p-6 rounded-lg shadow-lg flex flex-col items-center">
+                            <div class="text-6xl text-yellow-500 mb-4"><i class="fas fa-seedling"></i></div>
+                            <h2 class="text-2xl font-bold">Foundations</h2>
+                            <p class="mt-2 text-center">A transformative program specifically designed for fitness beginners, rehabilitation clients, or those re-entering structured exercise.</p>
+                        </div>
+                        <!-- HIIT -->
+                        <div class="bg-white p-6 rounded-lg shadow-lg flex flex-col items-center">
+                            <div class="text-6xl text-purple-500 mb-4"><i class="fas fa-bolt"></i></div>
+                            <h2 class="text-2xl font-bold">HIIT</h2>
+                            <p class="mt-2 text-center">An extreme metabolic conditioning format engineered for high-performance athletes, fitness enthusiasts, and individuals seeking rapid body transformation.</p>
+                        </div>
+                        <!-- FIT -->
+                        <div class="bg-white p-6 rounded-lg shadow-lg flex flex-col items-center">
+                            <div class="text-6xl text-orange-500 mb-4"><i class="fas fa-running"></i></div>
+                            <h2 class="text-2xl font-bold">FIT</h2>
+                            <p class="mt-2 text-center">A comprehensive strength and conditioning program targeting holistic fitness development. Designed for individuals seeking balanced, functional strength.</p>
+                        </div>
+                        <!-- SWEAT IN 30 -->
+                        <div class="bg-white p-6 rounded-lg shadow-lg flex flex-col items-center">
+                            <div class="text-6xl text-pink-500 mb-4"><i class="fas fa-stopwatch"></i></div>
+                            <h2 class="text-2xl font-bold">SWEAT IN 30</h2>
+                            <p class="mt-2 text-center">An ultra-efficient workout engineered for time-constrained individuals seeking maximum results in minimal time.</p>
+                        </div>
+                        <!-- Back Body Blaze -->
+                        <div class="bg-white p-6 rounded-lg shadow-lg flex flex-col items-center">
+                            <div class="text-6xl text-teal-500 mb-4"><i class="fa-brands fa-gripfire" style="color: #ff6600;"></i></div>
+                            <h2 class="text-2xl font-bold">Back Body Blaze</h2>
+                            <p class="mt-2 text-center">A specialized muscular conditioning program focusing exclusively on posterior chain development. Ideal for individuals seeking improved posture and reduced injury risk.</p>
+                        </div>
+                        <!-- Amped Up -->
+                        <div class="bg-white p-6 rounded-lg shadow-lg flex flex-col items-center">
+                            <div class="text-6xl text-indigo-500 mb-4"><i class="fas fa-fire"></i></div>
+                            <h2 class="text-2xl font-bold">Amped Up</h2>
+                            <p class="mt-2 text-center">An advanced fitness experience designed for high-level athletes and fitness enthusiasts seeking extraordinary physical challenges.</p>
+                        </div>
+                        <!-- Recovery -->
+                        <div class="bg-white p-6 rounded-lg shadow-lg flex flex-col items-center">
+                            <div class="text-6xl text-gray-500 mb-4"><i class="fas fa-leaf"></i></div>
+                            <h2 class="text-2xl font-bold">Recovery</h2>
+                            <p class="mt-2 text-center">A strategic regeneration program focused on mobility, muscular repair, and holistic wellness. Tailored for athletes and fitness practitioners.</p>
+                        </div>
+                        <!-- Cardio Barre Plus -->
+                        <div class="bg-white p-6 rounded-lg shadow-lg flex flex-col items-center">
+                            <div class="text-6xl text-cyan-500 mb-4"><i class="fas fa-heart"></i></div>
+                            <h2 class="text-2xl font-bold">Cardio Barre Plus</h2>
+                            <p class="mt-2 text-center">An elevated cardiovascular conditioning program that transcends traditional fitness methodologies. Targets individuals seeking comprehensive metabolic enhancement.</p>
+                        </div>
+                        <!-- powerCycle -->
+                        <div class="bg-white p-6 rounded-lg shadow-lg flex flex-col items-center">
+                            <div class="text-6xl text-lime-500 mb-4"><i class="fas fa-bicycle"></i></div>
+                            <h2 class="text-2xl font-bold">powerCycle</h2>
+                            <p class="mt-2 text-center">An immersive indoor cycling experience engineered for cardiovascular performance and lower-body conditioning. Designed for cycling enthusiasts and endurance athletes.</p>
+                        </div>
+                    </div>
+                </div>
+                </div>    
+                <footer class="bg-gray-800 text-white py-1 mt-auto">
+                    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                     <div class="flex justify-between items-center">
+                      <p class="text-sm">
+                       © 2025 Physique 57 India. All rights reserved.
+                      </p>
+                      <div class="flex space-x-4">
+                       <a class="text-white hover:text-gray-400" href="https://facebook.com/physique57india">
+                        <i class="fab fa-facebook-f">
+                        </i>
+                       </a>
+                       <a class="text-white hover:text-gray-400" href="https://twitter.com/physique57india">
+                        <i class="fab fa-twitter">
+                        </i>
+                       </a>
+                       <a class="text-white hover:text-gray-400" href="https://instagram.com/physique57india">
+                        <i class="fab fa-instagram">
+                        </i>
+                       </a>
+                      </div>
+                     </div>
+                    </div>
+                   </footer>    
+        </div> 
+</body>
+</html>

@@ -1,0 +1,983 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Journey</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f9fafb;
+            color: #333;
+            transition: margin-left 0.5s ease;
+        }
+
+        .hero-section {
+            background: linear-gradient(120deg, #007bff, #000608);
+            color: #fff;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            align-items: left;
+            justify-content: center;
+            transition: margin-left 0.3s;
+        }
+    
+        .hero-section h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin: 0;
+            opacity: 0;
+            transform: translateY(-20px);
+            animation: fadeIn 1s ease-in-out 0.5s forwards;
+        }
+    
+        .hero-section i {
+            font-size: 3rem;
+            margin-right: 10px;
+            animation: bounceIn 1s ease-in-out 1s forwards;
+        }
+    
+        /* Keyframes */
+        @keyframes slideIn {
+            0% {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+    
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    
+        @keyframes bounceIn {
+            0%,
+            20%,
+            40%,
+            60%,
+            80%,
+            100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+    
+        @media (max-width: 768px) {
+            .hero-section h1 {
+                font-size: 2.5rem;
+            }
+            .hero-section i {
+                font-size: 2.5rem;
+            }
+        }
+
+        .animate-character {
+            text-transform: uppercase;
+            background-image: linear-gradient(
+                -225deg,
+                #000000 0%,
+                #00ff04 29%,
+                #f40ebe 67%,
+                #ffffff 100%
+            );
+            background-size: 200% auto;            
+            color: transparent; /* Set text color to transparent */
+            background-clip: text;            
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent; /* Ensure text fill is transparent */
+            animation: textclip 2s linear infinite, marquee 15s linear infinite;
+            display: inline-block;            
+            white-space: nowrap;            
+            letter-spacing: 1rem;
+        }
+
+        @keyframes textclip {
+            to {
+                background-position: 200% center;
+            }
+        }
+
+        .faq-content {
+            transition: margin-left 0.3s ease;
+            margin-top: 1px;
+        }
+        .faq-card {
+            transition: transform 0.3s ease, max-height 0.5s ease, background-color 0.3s ease;
+        }
+
+        .faq-card:hover {
+            transform: scale(1.02);
+        }
+
+        .faq-card p {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease;
+        }
+
+        .faq-card.expanded {
+            background-color: #f0f8ff;
+        }
+
+        .faq-card.expanded p {
+            max-height: 1000px;
+        }
+        #navbar-container {
+        transition: margin-left 0.3s ease;
+        position: relative;
+        z-index: 100;
+    }
+
+        #navbar-container:hover + .faq-content {
+            margin-left: 260px; /* Adjust this value based on your navbar width */
+        }
+
+        .card {
+            background-color: #fff;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .card img {
+            width: 100%;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .card img:hover {
+            transform: scale(1.05);
+        }
+
+        .quote {
+            font-size: 1.5rem;
+            font-style: italic;
+            color: #007bff;
+            margin-top: 30px;
+            animation: fadeInText 2.5s ease-in-out;
+        }
+
+        .quote-author {
+            font-size: 1rem;
+            color: #555;
+            margin-top: 10px;
+            animation: fadeInText 2.5s ease-in-out;
+        }
+
+        @keyframes fadeInText {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .icon-list {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            gap: 10px;
+        }
+
+        .icon-list i {
+            color: #a80000;
+            font-size: 1.5rem;
+        }
+
+        .pdf-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .pdf-card {
+            background-color: #fff;
+            border: 2px solid #000000;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 200px;
+            height: 250px;
+            padding: 10px;
+            transition: transform 0.3s;
+            cursor: pointer;
+        }
+
+        .pdf-card:hover {
+            transform: scale(1.05);
+        }
+
+        .pdf-card i {
+            font-size: 50px;
+            color: #7c0000;
+        }
+
+        .pdf-title {
+            margin-top: 10px;
+            font-weight: bold;
+            font-size: 20px;
+        }
+
+        .timeline {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            background-color: #1e3a8a;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -3px;
+        }
+
+        .container {
+            padding: 10px 40px;
+            position: relative;
+            background-color: inherit;
+            width: 50%;
+        }
+
+        .container.left {
+            left: 0;
+        }
+
+        .container.right {
+            left: 50%;
+        }
+
+        .content {
+            padding: 20px;
+            background-color: white;
+            position: relative;
+            border-radius: 6px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            width: 200px;
+            height: 200px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .content:hover {
+            transform: scale(1.05);
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .year {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #1e3a8a;
+        }
+
+        .icon {
+            font-size: 2rem;
+            color: #1e3a8a;
+            margin-bottom: 10px;
+        }        
+    </style>
+</head>
+<body class="bg-gray-100 font-roboto">
+    <!-- Hero Section -->
+<div class="bg-gradient-to-r from-gray-900 to-gray-900 text-white text-left shadow-lg">
+    <div class="container mx-auto flex items-end space-x-4 pb-2 pt-4">
+        <i class="fa-solid fa-file-circle-question fa-fade fa-3x pb-1"></i>
+        <h1 class="animate-character text-5xl uppercase">Frequently Asked Questions</h1>
+    </div>        
+</div>
+<div class="container mx-auto max-w-full p-6">
+<div id="navbar-container"></div> <!-- This is where the navbar will be loaded -->           
+<div class="faq-content space-y-4 mr-20 ml-20">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <!-- Card 1 (Horizontal and Full Width) -->
+        <div class="bg-white p-6 rounded-lg shadow-lg flex flex-col md:flex-row border-l-4 border-blue-500 w-full md:col-span-2">
+            <div class="mr-4 mb-4 md:mb-0">
+                <i class="fas fa-dumbbell text-blue-500 text-3xl"></i>
+            </div>
+            <div>
+                <h2 class="text-2xl font-bold mb-2 pb-2 border-b-2 border-gray-200">What is the Physique 57 Experience?</h2>
+                <p>Physique 57 is a barre-based workout combining cardio, strength training, and stretching. The classes are intense and fast-paced, focusing on small, isometric movements that sculpt and tone the muscles without bulk.</p>
+                <br><p>Sessions often use props like weights and resistance bands to increase challenge. Despite the rigor, there's a strong emphasis on flexibility and core strength, with routines frequently changing to keep things fresh and engaging.The community vibe and supportive instructors help motivate participants to push through tough workouts for noticeable results.</p>
+            </div>
+        </div>
+        <!-- Card 2 -->
+        <div class="bg-white p-6 rounded-lg shadow-lg flex flex-col md:flex-row border-l-4 border-green-500">
+            <div class="mr-4 mb-4 md:mb-0">
+                <i class="fas fa-heartbeat text-green-500 text-3xl"></i>
+            </div>
+            <div>
+                <h2 class="text-2xl font-bold mb-2 pb-2 border-b-2 border-gray-200">What is the Physique 57 Method?</h2>
+                <p>The Physique 57 method utilizes a combination of isometric exercises and the ballet barre, focusing on interval overload where muscles are worked to the point of fatigue and then immediately stretched. This method helps create lean, long muscles and effectively boosts metabolism.</p>
+            </div>
+        </div>
+        <!-- Card 3 -->
+        <div class="bg-white p-6 rounded-lg shadow-lg flex flex-col md:flex-row border-l-4 border-red-500">
+            <div class="mr-4 mb-4 md:mb-0">
+                <i class="fas fa-running text-red-500 text-3xl"></i>
+            </div>
+            <div>
+                <h2 class="text-2xl font-bold mb-2 pb-2 border-b-2 border-gray-200">What do you do in a Physique 57 workout?</h2>
+                <p>A Physique 57 workout involves a series of high-intensity, low-impact exercises that target every major muscle group. It includes:</p>
+                <ul class="list-disc list-inside">
+                    <li>Arm exercises</li>
+                    <li>Thigh and seat sequences</li>
+                    <li>Waist-chiselling abdominal moves</li>
+                </ul>
+                <p>Classes incorporate light weights, bands, or body weight as resistance, enhancing muscle tone and overall fitness.</p>
+            </div>
+        </div>
+        <!-- Card 4 -->
+        <div class="bg-white p-6 rounded-lg shadow-lg flex flex-col md:flex-row border-l-4 border-yellow-500">
+            <div class="mr-4 mb-4 md:mb-0">
+                <i class="fas fa-star text-yellow-500 text-3xl"></i>
+            </div>
+            <div>
+                <h2 class="text-2xl font-bold mb-2 pb-2 border-b-2 border-gray-200">What makes Physique 57 different from other barre techniques?</h2>
+                <p>Physique 57 is distinguished by its unique blend of cardio, strength, and stretching, combined with interval overload that leads to quick, dramatic transformations. It emphasizes:</p>
+                <ul class="list-disc list-inside">
+                    <li>Safety</li>
+                    <li>Effectiveness</li>
+                    <li>Fun</li>
+                </ul>
+                <p>Set apart by its scientifically backed methodology and the personalized attention from highly trained instructors.</p>
+            </div>
+        </div>
+        <!-- Card 5 -->
+        <div class="bg-white p-6 rounded-lg shadow-lg flex flex-col md:flex-row border-l-4 border-purple-500">
+            <div class="mr-4 mb-4 md:mb-0">
+                <i class="fas fa-thumbs-up text-purple-500 text-3xl"></i>
+            </div>
+            <div>
+                <h2 class="text-2xl font-bold mb-2 pb-2 border-b-2 border-gray-200">Do you offer different types of classes?</h2>
+                <p>Yes, Physique 57 offers a variety of classes tailored to different fitness levels, from beginner to advanced. These include:</p>
+                <ul class="list-disc list-inside">
+                    <li>Signature barre classes</li>
+                    <li>Mat Pilates</li>
+                    <li>HIIT</li>
+                    <li>Specialized classes focusing on different body parts or recovery</li>
+                </ul>
+                <p>Ensuring a comprehensive fitness regimen for all participants.</p>
+            </div>
+        </div>
+        <!-- Card 6 -->
+        <div class="bg-white p-6 rounded-lg shadow-lg flex flex-col md:flex-row border-l-4 border-pink-500">
+            <div class="mr-4 mb-4 md:mb-0">
+                <i class="fas fa-sync-alt text-pink-500 text-3xl"></i>
+            </div>
+            <div>
+                <h2 class="text-2xl font-bold mb-2 pb-2 border-b-2 border-gray-200">Is every workout the same?</h2>
+                <p>No, each Physique 57 workout is unique. The program is designed to avoid fitness plateaus by changing routines, which keeps the muscles guessing and continues to drive significant physical improvements.</p>
+            </div>
+        </div>
+        <!-- Card 7 -->
+        <div class="bg-white p-6 rounded-lg shadow-lg flex flex-col md:flex-row border-l-4 border-indigo-500">
+            <div class="mr-4 mb-4 md:mb-0">
+                <i class="fas fa-calendar-alt text-indigo-500 text-3xl"></i>
+            </div>
+            <div>
+                <h2 class="text-2xl font-bold mb-2 pb-2 border-b-2 border-gray-200">How often should I do Physique 57 workouts to see results?</h2>
+                <p>For optimal results, it is recommended to participate in Physique 57 classes 3-4 times per week. This frequency helps develop muscle memory, increases muscle tone, and enhances overall fitness levels.</p>
+            </div>
+        </div>
+        <!-- Card 8 -->
+        <div class="bg-white p-6 rounded-lg shadow-lg flex flex-col md:flex-row border-l-4 border-teal-500">
+            <div class="mr-4 mb-4 md:mb-0">
+                <i class="fas fa-laptop text-teal-500 text-3xl"></i>
+            </div>
+            <div>
+                <h2 class="text-2xl font-bold mb-2 pb-2 border-b-2 border-gray-200">What are the differences among Studio classes, Virtual classes, and On Demand?</h2>
+                <p>Studio classes provide a live group experience with personalized instruction. Virtual classes are conducted live online, allowing interaction with instructors in real-time. On Demand classes offer pre-recorded sessions that can be accessed anytime, providing flexibility to fit individual schedules.</p>
+            </div>
+        </div>
+        <!-- Card 9 (Horizontal and Full Width) -->
+        <div class="bg-white p-6 rounded-lg shadow-lg flex flex-col md:flex-row border-l-4 border-orange-500">
+            <div class="mr-4 mb-4 md:mb-0">
+                <i class="fas fa-heart text-orange-500 text-3xl"></i>
+            </div>
+            <div>
+                <h2 class="text-2xl font-bold mb-2 pb-2 border-b-2 border-gray-200">Why do women become obsessed with Physique 57 workouts?</h2>
+                <p>Women often become obsessed with Physique 57 due to the rapid, visible results and the enjoyable class atmosphere. The workouts are engaging, varied, and effectively challenge the body in a safe manner, which keeps participants motivated and eager to return.</p>
+            </div>
+        </div>
+        <!-- Card 10 -->
+        <div class="bg-white p-6 rounded-lg shadow-lg flex flex-col md:flex-row border-l-4 border-gray-500">
+            <div class="mr-4 mb-4 md:mb-0">
+                <i class="fas fa-bolt text-gray-500 text-3xl"></i>
+            </div>
+            <div>
+                <h2 class="text-2xl font-bold mb-2 pb-2 border-b-2 border-gray-200">Why do women typically see results so fast?</h2>
+                <p>The interval overload technique, a core component of the Physique 57 method, ensures that muscles are worked intensely and efficiently, leading to faster metabolic rates and quicker sculpting of the body. This method helps achieve visible results quickly, often noticed within just a few sessions.</p>
+            </div>
+        </div>
+        <!-- Card 11 -->
+        <div class="bg-white p-6 rounded-lg shadow-lg flex flex-col md:flex-row border-l-4 border-blue-700">
+            <div class="mr-4 mb-4 md:mb-0">
+                <i class="fas fa-stretch text-blue-700 text-3xl"></i>
+            </div>
+            <div>
+                <h2 class="text-2xl font-bold mb-2 pb-2 border-b-2 border-gray-200">How does Physique 57 incorporate stretching?</h2>
+                <p>Stretching is integrated throughout the workout sessions, with fluid stretches between intense muscle work. This not only aids in muscle recovery but also helps in elongating and shaping the muscles, enhancing flexibility and reducing the risk of injury.</p>
+            </div>
+        </div>
+        <!-- Card 12 -->
+        <div class="bg-white p-6 rounded-lg shadow-lg flex flex-col md:flex-row border-l-4 border-green-700">
+            <div class="mr-4 mb-4 md:mb-0">
+                <i class="fas fa-tools text-green-700 text-3xl"></i>
+            </div>
+            <div>
+                <h2 class="text-2xl font-bold mb-2 pb-2 border-b-2 border-gray-200">What equipment will I use?</h2>
+                <p>Participants use a ballet barre, light weights, resistance bands, and their own body weight as primary tools for resistance and support during workouts.</p>
+            </div>
+        </div>
+        <!-- Card 13 -->
+        <div class="bg-white p-6 rounded-lg shadow-lg flex flex-col md:flex-row border-l-4 border-pink-700">
+            <div class="mr-4 mb-4 md:mb-0">
+                <i class="fas fa-male text-pink-700 text-3xl"></i>
+            </div>
+            <div>
+                <h2 class="text-2xl font-bold mb-2 pb-2 border-b-2 border-gray-200">Can men take class?</h2>
+                <p>Absolutely, Physique 57 welcomes men. The workouts are designed to benefit anyone looking to improve their fitness, regardless of gender.</p>
+            </div>
+        </div>
+        <!-- Card 14 -->
+        <div class="bg-white p-6 rounded-lg shadow-lg flex flex-col md:flex-row border-l-4 border-yellow-700">
+            <div class="mr-4 mb-4 md:mb-0">
+                <i class="fas fa-baby text-yellow-700 text-3xl"></i>
+            </div>
+            <div>
+                <h2 class="text-2xl font-bold mb-2 pb-2 border-b-2 border-gray-200">Is Physique 57 safe during or after pregnancy?</h2>
+                <p>Yes, Physique 57 offers prenatal and postnatal modifications and is considered safe for pregnant women, as long as they have clearance from their healthcare provider. The workouts can be adapted to suit the needs of women during and after pregnancy, ensuring safety and effectiveness.</p>
+            </div>
+        </div>
+        <!-- Card 15 -->
+        <div class="bg-white p-6 rounded-lg shadow-lg flex flex-col md:flex-row border-l-4 border-red-700">
+            <div class="mr-4 mb-4 md:mb-0">
+                <i class="fas fa-ballet text-red-700 text-3xl"></i>
+            </div>
+            <div>
+                <h2 class="text-2xl font-bold mb-2 pb-2 border-b-2 border-gray-200">What is barre?</h2>
+                <p>Barre is a workout method that combines elements of ballet, Pilates, and yoga. It primarily uses a ballet barre for support while performing exercises that focus on isometric strength training (holding your body still while you contract a specific set of muscles) combined with high reps of small range-of-motion movements.</p>
+            </div>
+        </div>
+        <!-- Card 16 -->
+        <div class="bg-white p-6 rounded-lg shadow-lg flex flex-col md:flex-row border-l-4 border-green-800">
+            <div class="mr-4 mb-4 md:mb-0">
+                <i class="fas fa-check-circle text-green-800 text-3xl"></i>
+            </div>
+            <div>
+                <h2 class="text-2xl font-bold mb-2 pb-2 border-b-2 border-gray-200">What are the benefits of barre?</h2>
+                <p>The benefits of barre include:</p>
+                <ul class="list-disc list-inside">
+                    <li>Improved posture</li>
+                    <li>Muscle definition</li>
+                    <li>Weight loss</li>
+                    <li>Increased flexibility</li>
+                    <li>Reduced stress</li>
+                </ul>
+                <p>Additionally, barre workouts are low impact, making them safe for a wide range of fitness levels and effective for strengthening and toning the muscles without adding bulk.</p>
+            </div>
+        </div>
+        <!-- Card 17 -->
+        <div class="bg-white p-6 rounded-lg shadow-lg flex flex-col md:flex-row border-l-4 border-blue-800">
+            <div class="mr-4 mb-4 md:mb-0">
+                <i class="fas fa-weight text-blue-800 text-3xl"></i>
+            </div>
+            <div>
+                <h2 class="text-2xl font-bold mb-2 pb-2 border-b-2 border-gray-200">Will barre help me lose weight and tone my body?</h2>
+                <p>Yes, barre workouts can help you lose weight and tone your body. They focus on high reps of small movements that target specific muscle groups, leading to muscle fatigue and subsequent toning. Coupled with a balanced diet and regular participation, barre can also contribute to weight loss by increasing your metabolism.</p>
+            </div>
+        </div>
+        <!-- Card 18 -->
+        <div class="bg-white p-6 rounded-lg shadow-lg flex flex-col md:flex-row border-l-4 border-purple-800">
+            <div class="mr-4 mb-4 md:mb-0">
+                <i class="fas fa-dumbbell text-purple-800 text-3xl"></i>
+            </div>
+            <div>
+                <h2 class="text-2xl font-bold mb-2 pb-2 border-b-2 border-gray-200">How is barre different from Pilates?</h2>
+                <p>While both barre and Pilates improve strength, flexibility, and posture, barre incorporates elements from ballet and often includes more standing exercises, which use the barre for balance and resistance. Pilates typically focuses more on mat exercises and may involve specialized equipment like a reformer. Barre classes also generally include more cardio and strength training elements compared to Pilates.</p>
+            </div>
+        </div>
+        <!-- Card 19 -->
+        <div class="bg-white p-6 rounded-lg shadow-lg flex flex-col md:flex-row border-l-4 border-pink-800">
+            <div class="mr-4 mb-4 md:mb-0">
+                <i class="fas fa-dance text-pink-800 text-3xl"></i>
+            </div>
+            <div>
+                <h2 class="text-2xl font-bold mb-2 pb-2 border-b-2 border-gray-200">Do I need any previous dance experience to do barre?</h2>
+                <p>No, you do not need any previous dance experience to participate in barre classes. The exercises are designed to be accessible to people of all fitness levels and backgrounds, with modifications available to accommodate different abilities.</p>
+            </div>
+        </div>
+        <!-- Card 20 -->
+        <div class="bg-white p-6 rounded-lg shadow-lg flex flex-col md:flex-row border-l-4 border-yellow-800">
+            <div class="mr-4 mb-4 md:mb-0">
+                <i class="fas fa-ballet text-yellow-800 text-3xl"></i>
+            </div>
+            <div>
+                <h2 class="text-2xl font-bold mb-2 pb-2 border-b-2 border-gray-200">Is there dance or ballet in a barre class?</h2>
+                <p>While barre workouts are inspired by ballet, the classes are not dance classes. The ballet elements are primarily related to the use of the ballet barre as a tool for balance and resistance; however, some movements or positions may be dance-like in their execution.</p>
+            </div>
+        </div>
+        <!-- Card 21 -->
+        <div class="bg-white p-6 rounded-lg shadow-lg flex flex-col md:flex-row border-l-4 border-red-800">
+            <div class="mr-4 mb-4 md:mb-0">
+                <i class="fas fa-beginner text-red-800 text-3xl"></i>
+            </div>
+            <div>
+                <h2 class="text-2xl font-bold mb-2 pb-2 border-b-2 border-gray-200">Can barre workouts be suitable for beginners and those who haven’t exercised in a while?</h2>
+                <p>Yes, barre workouts are suitable for beginners and those who haven't exercised in a while. Instructors typically offer various modifications to accommodate different fitness levels, and the low-impact nature of the exercises makes it a welcoming format for those starting their fitness journey.</p>
+            </div>
+        </div>
+        <!-- Card 22 -->
+        <div class="bg-white p-6 rounded-lg shadow-lg flex flex-col md:flex-row border-l-4 border-green-900">
+            <div class="mr-4 mb-4 md:mb-0">
+                <i class="fas fa-heartbeat text-green-900 text-3xl"></i>
+            </div>
+            <div>
+                <h2 class="text-2xl font-bold mb-2 pb-2 border-b-2 border-gray-200">Can I do barre if I have certain health conditions or injuries?</h2>
+                <p>Barre workouts can often be modified to accommodate specific health conditions or injuries. It is low-impact and focuses on controlled movements, which can be adapted for different needs. However, it's important to consult with a healthcare provider before starting any new workout regimen, especially if you have health concerns.</p>
+            </div>
+        </div>
+        <!-- Card 23 -->
+        <div class="bg-white p-6 rounded-lg shadow-lg flex flex-col md:flex-row border-l-4 border-blue-900">
+            <div class="mr-4 mb-4 md:mb-0">
+                <i class="fas fa-balance-scale text-blue-900 text-3xl"></i>
+            </div>
+            <div>
+                <h2 class="text-2xl font-bold mb-2 pb-2 border-b-2 border-gray-200">Do barre workouts help core strength and balance?</h2>
+                <p>Yes, barre workouts are excellent for building core strength and improving balance. Many of the movements in barre focus on core stabilization, which is key to maintaining balance and overall fitness.</p>
+            </div>
+        </div>
+        <!-- Card 24 -->
+        <div class="bg-white p-6 rounded-lg shadow-lg flex flex-col md:flex-row border-l-4 border-purple-900">
+            <div class="mr-4 mb-4 md:mb-0">
+                <i class="fas fa-align-center text-purple-900 text-3xl"></i>
+            </div>
+            <div>
+                <h2 class="text-2xl font-bold mb-2 pb-2 border-b-2 border-gray-200">Do barre workouts help with posture, flexibility, and alignment?</h2>
+                <p>Barre workouts are very beneficial for improving posture, flexibility, and alignment. The exercises are designed to strengthen the postural muscles, enhance flexibility through stretching segments, and improve alignment through precise movements and cues from instructors.</p>
+            </div>
+        </div>
+        <!-- Card 25 -->
+        <div class="bg-white p-6 rounded-lg shadow-lg flex flex-col md:flex-row border-l-4 border-pink-900">
+            <div class="mr-4 mb-4 md:mb-0">
+                <i class="fas fa-dumbbell text-pink-900 text-3xl"></i>
+            </div>
+            <div>
+                <h2 class="text-2xl font-bold mb-2 pb-2 border-b-2 border-gray-200">Does barre build muscle?</h2>
+                <p>Yes, barre helps build muscle. The workout method involves repetitive movements that target specific muscle groups, leading to muscle fatigue and increased muscle tone over time.</p>
+            </div>
+        </div>
+        <!-- Card 26 -->
+        <div class="bg-white p-6 rounded-lg shadow-lg flex flex-col md:flex-row border-l-4 border-yellow-900">
+            <div class="mr-4 mb-4 md:mb-0">
+                <i class="fas fa-wind text-yellow-900 text-3xl"></i>
+            </div>
+            <div>
+                <h2 class="text-2xl font-bold mb-2 pb-2 border-b-2 border-gray-200">Does barre incorporate breath work?</h2>
+                <p>Barre classes often incorporate elements of breath work to enhance focus and improve the effectiveness of the exercises. Proper breathing helps maintain rhythm and increases oxygen flow to the muscles, enhancing the overall workout experience.</p>
+            </div>
+        </div>
+        <!-- Card 27 -->
+        <div class="bg-white p-6 rounded-lg shadow-lg flex flex-col md:flex-row border-l-4 border-red-900">
+            <div class="mr-4 mb-4 md:mb-0">
+                <i class="fas fa-tshirt text-red-900 text-3xl"></i>
+            </div>
+            <div>
+                <h2 class="text-2xl font-bold mb-2 pb-2 border-b-2 border-gray-200">What should I wear and bring to a barre class?</h2>
+                <p>For a barre class, you should wear comfortable, form-fitting clothing that allows for a full range of motion. Most people wear leggings and a tank top or T-shirt. It’s also common to wear grip socks to prevent slipping. You should bring a water bottle, and some studios may require you to bring your own mat for floor work, though many provide all necessary equipment.</p>
+            </div>
+        </div>
+        <!-- Card 28 -->
+        <div class="bg-white p-6 rounded-lg shadow-lg flex flex-col md:flex-row border-l-4 border-green-900">
+            <div class="mr-4 mb-4 md:mb-0">
+                <i class="fas fa-exchange-alt text-green-900 text-3xl"></i>
+            </div>
+            <div>
+                <h2 class="text-2xl font-bold mb-2 pb-2 border-b-2 border-gray-200">Can I cross-train with Physique 57?</h2>
+                <p>Yes, Physique 57 can be effectively combined with other fitness routines. It complements various types of workouts by building core strength, flexibility, and endurance, which can enhance performance in other sports or physical activities.</p>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<div class="faq-content space-y-4 mr-20 ml-20">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <!-- Card 1 (Horizontal and Full Width) -->
+        <div class="bg-white p-6 rounded-lg shadow-lg flex flex-col md:flex-row border-l-4 border-blue-500 w-full md:col-span-2">
+            <div class="mr-4 mb-4 md:mb-0">
+                <i class="fas fa-dumbbell text-blue-500 text-3xl"></i>
+            </div>
+            <div>
+                <h2 class="text-2xl font-bold mb-2 pb-2 border-b-2 border-gray-200">What is Physique 57?</h2>
+                <p>Physique 57 is a 57 minute (or less) series of exercises that strengthens and stretches every muscle group in the body in under 1 hour.</p>
+                <p>Using a combination of:</p>
+                <ul class="list-disc list-inside">
+                    <li>Isometric (small) and isotonic (large) movements</li>
+                    <li>A ballet barre</li>
+                    <li>Light weights</li>
+                    <li>Your own body weight for resistance</li>
+                </ul>
+                <p>Your muscles will become strong, lean and limber.</p>
+            </div>
+        </div>
+        <!-- Card 2 -->
+        <div class="bg-white p-6 rounded-lg shadow-lg flex flex-col md:flex-row border-l-4 border-green-500 w-full md:col-span-2">
+            <div class="mr-4 mb-4 md:mb-0">
+                <i class="fas fa-heartbeat text-green-500 text-3xl"></i>
+            </div>
+            <div>
+                <h2 class="text-2xl font-bold mb-2 pb-2 border-b-2 border-gray-200">Is Physique 57 Safe?</h2>
+                <p>For several reasons, physicians all over the world have accredited, approved and recommended this method to patients of all kinds, including those:</p>
+                <ul class="list-disc list-inside">
+                    <li>Recovering from injuries</li>
+                    <li>Dealing with chronic injuries</li>
+                    <li>In their perinatal phase of life</li>
+                </ul>
+                <p>This method is low-impact with varying levels of intensity. At no point do two feet leave the ground simultaneously (with the exception of our HIIT format), and the workout is done on imported protective mat flooring meeting global standards of cushioning for joints.</p>
+                <p>Additionally, given the amount of resistance and weight-bearing exercise this method incorporates, physicians deem this method as one of the safest and most effective exercise techniques in the global fitness industry.</p>
+                <p>It is important to note that ALL of our exercises can be modified and customised to a client’s individual physical restrictions. We are known to leave our clients feeling empowered, energised and stronger after each class, as opposed to other techniques which can tend to overwhelm joints and induce injuries from overuse.</p>
+            </div>
+        </div>
+        <!-- Card 3 -->
+        <div class="bg-white p-6 rounded-lg shadow-lg flex flex-col md:flex-row border-l-4 border-red-500">
+            <div class="mr-4 mb-4 md:mb-0">
+                <i class="fas fa-running text-red-500 text-3xl"></i>
+            </div>
+            <div>
+                <h2 class="text-2xl font-bold mb-2 pb-2 border-b-2 border-gray-200">What do you do in a Physique 57 Class?</h2>
+                <p>The class begins with a warm up and sequence of upper-body exercises which includes:</p>
+                <ul class="list-disc list-inside">
+                    <li>Free weights</li>
+                    <li>Push-ups</li>
+                    <li>Plank positions</li>
+                    <li>Specific exercises that target the bicep, tricep, shoulder, chest and back muscles</li>
+                </ul>
+                <p>Core muscles are engaged through over 80% of the 57 minutes, and the abdominal wall is also strengthened through a series of “C-Curve” exercises.</p>
+                <p>Thighs and glutes compose the longest sequences of class, ensuring a thorough workout of the largest muscle groups in the body, thereby resulting in maximum caloric burn and cardio intensity which in turn helps with resetting one’s metabolism to work faster at rest.</p>
+                <p>Our movements are used to tone muscles which are then fully stretched after each set of exercises. Instructors offer personalised attention to perfect posture and body alignment and encourage clients to work at their optimal level. Lively and fun music helps clients stay focused and work even harder.</p>
+            </div>
+        </div>
+        <!-- Card 4 -->
+        <div class="bg-white p-6 rounded-lg shadow-lg flex flex-col md:flex-row border-l-4 border-yellow-500">
+            <div class="mr-4 mb-4 md:mb-0">
+                <i class="fas fa-star text-yellow-500 text-3xl"></i>
+            </div>
+            <div>
+                <h2 class="text-2xl font-bold mb-2 pb-2 border-b-2 border-gray-200">Will Physique 57 Help Me Lose Weight?</h2>
+                <p>If you attend Physique 57 classes 3-4 times per week and maintain a healthy diet then yes, you will become slimmer. Our system of exercises focuses on strengthening and lengthening the muscles.</p>
+                <p>The more muscle one has in proportion to fat, the more calories one will burn throughout the day, even at rest. Remember, muscle tissue burns about 15 times as many calories as fat, even when you’re not exercising!</p>
+                <p>Exercise will help you accomplish more than just weight loss. Exercise has been proven to reduce:</p>
+                <ul class="list-disc list-inside">
+                    <li>Heart disease</li>
+                    <li>Diabetes</li>
+                    <li>Depression</li>
+                </ul>
+                <p>Studies also show that regular exercise promotes life expectancy and cognitive function.</p>
+            </div>
+        </div>
+        <!-- Card 5 -->
+        <div class="bg-white p-6 rounded-lg shadow-lg flex flex-col md:flex-row border-l-4 border-purple-500 w-full md:col-span-2">
+            <div class="mr-4 mb-4 md:mb-0">
+                <i class="fas fa-thumbs-up text-purple-500 text-3xl"></i>
+            </div>
+            <div>
+                <h2 class="text-2xl font-bold mb-2 pb-2 border-b-2 border-gray-200">How Often Should I Attend a Physique 57 Class?</h2>
+                <p>To see significant results, we recommend that clients take class 3-4 times a week. Beginners are encouraged to take class often to gain a better understanding of the positions to build muscle memory and efficiency.</p>
+                <p>Clients experiencing soreness are also encouraged to attend class often, even on consecutive days. Muscle soreness and stiffness usually happens to people who are just beginning an exercise program or to those who work the same set of muscles in a new and different way.</p>
+                <p>Because of the large variety of strength and stamina building variations at Physique 57, clients are apt to feel some muscle soreness after every class. Sore muscles will have ample opportunity to be stretched and relaxed during class because of the method’s emphasis on musculoskeletal and rehabilitative stretching.</p>
+            </div>
+        </div>
+        <!-- Card 6 -->
+        <div class="bg-white p-6 rounded-lg shadow-lg flex flex-col md:flex-row border-l-4 border-pink-500">
+            <div class="mr-4 mb-4 md:mb-0">
+                <i class="fas fa-sync-alt text-pink-500 text-3xl"></i>
+            </div>
+            <div>
+                <h2 class="text-2xl font-bold mb-2 pb-2 border-b-2 border-gray-200">Does Physique 57 Shape the Body?</h2>
+                <p>Physique 57 works muscles to their fullest potential and then stretches and elongates that same muscle group. This routine causes muscles to rapidly change shape.</p>
+                <p>Our clients see the transformative effects of the method such as:</p>
+                <ul class="list-disc list-inside">
+                    <li>Smaller waistlines</li>
+                    <li>Shapely thighs</li>
+                    <li>A more rounded seat</li>
+                    <li>Stronger, flatter abdominals</li>
+                </ul>
+            </div>
+        </div>
+        <!-- Card 7 -->
+        <div class="bg-white p-6 rounded-lg shadow-lg flex flex-col md:flex-row border-l-4 border-indigo-500">
+            <div class="mr-4 mb-4 md:mb-0">
+                <i class="fas fa-calendar-alt text-indigo-500 text-3xl"></i>
+            </div>
+            <div>
+                <h2 class="text-2xl font-bold mb-2 pb-2 border-b-2 border-gray-200">Is Physique 57 Aerobic?</h2>
+                <p>Yes, Physique 57 is much like interval training. In each class, clients alternate between sprints of intensive aerobic exercise and slow, recovery activity such as stretches.</p>
+                <p>This sequencing helps build muscle efficiently and strengthens the heart muscle. Overall, interval training leads to improved performance particularly within the cardiovascular system. Interval training also helps prevent the injuries often associated with repetitive endurance exercise.</p>
+            </div>
+        </div>
+        <!-- Card 8 -->
+        <div class="bg-white p-6 rounded-lg shadow-lg flex flex-col md:flex-row border-l-4 border-teal-500">
+            <div class="mr-4 mb-4 md:mb-0">
+                <i class="fas fa-laptop text-teal-500 text-3xl"></i>
+            </div>
+            <div>
+                <h2 class="text-2xl font-bold mb-2 pb-2 border-b-2 border-gray-200">How Are the Benefits of Physique 57 Different from Yoga?</h2>
+                <p>The right yoga class can help tone your muscles and beginners can make significant strength gains. But as you get stronger, you would need to work your muscles harder to see results.</p>
+                <p>Physique 57 delivers lasting results because clients are continually challenged to increase their strength and stamina with different variations of strength building exercises.</p>
+                <p>Physique 57’s stretching and strengthening movements are accessible to everyone so injuries can be avoided. The movements are less taxing on joints and the alignment is easier for clients to obtain.</p>
+            </div>
+        </div>
+        <!-- Card 9 -->
+        <div class="bg-white p-6 rounded-lg shadow-lg flex flex-col md:flex-row border-l-4 border-orange-500">
+            <div class="mr-4 mb-4 md:mb-0">
+                <i class="fas fa-heart text-orange-500 text-3xl"></i>
+            </div>
+            <div>
+                <h2 class="text-2xl font-bold mb-2 pb-2 border-b-2 border-gray-200">How Are the Benefits of Physique 57 Different from Pilates?</h2>
+                <p>Pilates exercises are usually done while lying on the floor to target the abdominal and back muscles. Physique 57 also uses this position to work these important muscles.</p>
+                <p>However, Physique 57 offers many standing, weight-bearing exercises that effectively strengthen muscles while helping to increase bone density. Our system offers a greater variety of exercises to target all of the major muscle groups.</p>
+            </div>
+        </div>
+        <!-- Card 10 -->
+        <div class="bg-white p-6 rounded-lg shadow-lg flex flex-col md:flex-row border-l-4 border-gray-500">
+            <div class="mr-4 mb-4 md:mb-0">
+                <i class="fas fa-bolt text-gray-500 text-3xl"></i>
+            </div>
+            <div>
+                <h2 class="text-2xl font-bold mb-2 pb-2 border-b-2 border-gray-200">What is So Important About Elongated, Flexible Muscles?</h2>
+                <p>Flexibility offers several benefits such as:</p>
+                <ul class="list-disc list-inside">
+                    <li>Decreased risk of injury</li>
+                    <li>Improved posture</li>
+                    <li>Improved gait</li>
+                    <li>Increased functional movement</li>
+                    <li>Reduced muscle soreness</li>
+                    <li>Decreased risk of lower back pain</li>
+                </ul>
+                <p>Additionally, a stretched, flexible muscle is considerably stronger than a tight muscle. Lastly, flexibility helps relax the mind and body and makes you look and feel better.</p>
+            </div>
+        </div>
+        <!-- Card 11 -->
+        <div class="bg-white p-6 rounded-lg shadow-lg flex flex-col md:flex-row border-l-4 border-blue-700">
+            <div class="mr-4 mb-4 md:mb-0">
+                <i class="fas fa-stretch text-blue-700 text-3xl"></i>
+            </div>
+            <div>
+                <h2 class="text-2xl font-bold mb-2 pb-2 border-b-2 border-gray-200">Why is it Important to Stretch and Strengthen the Back?</h2>
+                <p>Most people at one time or another have experienced back pain. By keeping your postural muscles strong and flexible, you can greatly reduce the risk of herniated discs and other back related issues.</p>
+                <p>Plus, there are many other health benefits to having a strong “back-bone”, such as better respiration and digestion.</p>
+            </div>
+        </div>
+        <!-- Card 12 -->
+        <div class="bg-white p-6 rounded-lg shadow-lg flex flex-col md:flex-row border-l-4 border-green-700 w-full md:col-span-2">
+            <div class="mr-4 mb-4 md:mb-0">
+                <i class="fas fa-tools text-green-700 text-3xl"></i>
+            </div>
+            <div>
+                <h2 class="text-2xl font-bold mb-2 pb-2 border-b-2 border-gray-200">Why Does Physique 57 Use a Ballet Barre?</h2>
+                <p>The ballet barre helps to balance and properly position the body. As a result, clients can better target all major muscle groups. The ballet barre allows clients to build resistance and strength unlike any other exercise apparatus.</p>
+                <p>The philosophy to avoid machines is important, because machines are designed to help us with our movement. By taking away the assistance that machines provide, we increase our strength rapidly.</p>
+            </div>
+        </div>
+        <!-- Card 13 -->
+        <div class="bg-white p-6 rounded-lg shadow-lg flex flex-col md:flex-row border-l-4 border-pink-700 w-full md:col-span-2">
+            <div class="mr-4 mb-4 md:mb-0">
+                <i class="fas fa-male text-pink-700 text-3xl"></i>
+            </div>
+            <div>
+                <h2 class="text-2xl font-bold mb-2 pb-2 border-b-2 border-gray-200">How Does Physique 57 Increase Bone Density? And Why is That Good for You?</h2>
+                <p>Research shows that Indians face decreased bone density compared to other global populations due to a number of lifestyle factors including diet, sunlight exposure and genetic factors.</p>
+                <p>To counteract this predisposition, low-impact workouts that incorporate strength training including weight-bearing exercises are critical. Strength and Resistance Training are an integral part of the Physique 57 method which aids in building bone density.</p>
+                <br><p>Our exercises are low impact and the exercise sequences are crafted in a way that puts the correct amount of strain on bones thus recruiting bone building mechanisms. After the age of 35, our bone density decreases by less than a percent every year. While we don't claim to treat conditions like osteoporosis and osteopenia, we definitely slow the progression via our safe and sustainable movement methodology.</p>
+            </div>
+        </div>
+        <!-- Card 14 -->
+        <div class="bg-white p-6 rounded-lg shadow-lg flex flex-col md:flex-row border-l-4 border-yellow-700">
+            <div class="mr-4 mb-4 md:mb-0">
+                <i class="fas fa-baby text-yellow-700 text-3xl"></i>
+            </div>
+            <div>
+                <h2 class="text-2xl font-bold mb-2 pb-2 border-b-2 border-gray-200">Why Does Physique 57 Emphasise the Abdominal Muscles?</h2>
+                <p>Besides reducing your waistline, building a strong core improves posture and lessens back pain. Strong abdominal muscles will help you stand tall which make you look slimmer and more confident.</p>
+                <p>Physique 57 does not include traditional sit ups because they do not work the correct abdominal muscles. Physique 57 uses the “C-Curve” which incorporates hollowing, bracing, and slow measured movements which are proven to be the most effective mix for strengthening all four abdominal muscle groups.</p>
+            </div>
+        </div>
+        <!-- Card 15 -->
+        <div class="bg-white p-6 rounded-lg shadow-lg flex flex-col md:flex-row border-l-4 border-red-700 w-full md:col-span-2">
+            <div class="mr-4 mb-4 md:mb-0">
+                <i class="fas fa-ballet text-red-700 text-3xl"></i>
+            </div>
+            <div>
+                <h2 class="text-2xl font-bold mb-2 pb-2 border-b-2 border-gray-200">Can I Take a Class if I am Pregnant?</h2>
+                <p>Moderate exercise during pregnancy has profound short-term and long-term benefits. Every perinatal client, without exception has asserted that this system of exercise helped them enjoy a smooth pregnancy and eased recovery after delivery.</p>
+                <p>If you have no serious medical problems and you have an uncomplicated pregnancy, it is safe and necessary to exercise. For Physique 57 expecting moms, we developed Prenatal Physique, a unique trimester based program that combines cardiovascular activity, strength training and stretching exercises.</p>
+                <p>Prenatal Physique was created with recommendations from medically trained professionals and closely follows the guidelines of the American College of Obstetricians and Gynecologists. Pregnant women must present written consent from their doctor before they can take class.</p>
+            </div>
+        </div>
+        <!-- Card 16 -->
+        <div class="bg-white p-6 rounded-lg shadow-lg flex flex-col md:flex-row border-l-4 border-green-800">
+            <div class="mr-4 mb-4 md:mb-0">
+                <i class="fas fa-check-circle text-green-800 text-3xl"></i>
+            </div>
+            <div>
+                <h2 class="text-2xl font-bold mb-2 pb-2 border-b-2 border-gray-200">Can I Come to Class if I am Injured?</h2>
+                <p>Yes, the method was developed to rehabilitate the body. Many of the stretches and strengthening exercises have been suggested by globally renowned sports medicine physicians and orthopedists.</p>
+                <p>It is recommended that injured clients consult with their doctors before beginning any new exercise method. Also, please speak with your Physique 57 instructor about your injury before class begins.</p>
+            </div>
+        </div>
+        <!-- Card 17 -->
+        <div class="bg-white p-6 rounded-lg shadow-lg flex flex-col md:flex-row border-l-4 border-blue-800">
+            <div class="mr-4 mb-4 md:mb-0">
+                <i class="fas fa-weight text-blue-800 text-3xl"></i>
+            </div>
+            <div>
+                <h2 class="text-2xl font-bold mb-2 pb-2 border-b-2 border-gray-200">Why is Physique 57 Good for Athletes?</h2>
+                <p>Physique 57 workouts are designed to target not only large muscle groups but also deeper and smaller muscle fibres, which help support the larger bones and muscles in our body.</p>
+                <p>Our choreography recruits both slow twitch and fast twitch muscle fibres that are necessary for athletes to develop as they enhance power, strength and endurance.</p>
+                <p>The best part is that our high intensity exercises are still low impact which means they are safe to perform and address imbalances caused due to repeated action and overuse of dominant muscles.</p>
+                <p>While some of the movement is an extension of rehabilitative exercises, they effectively strengthen the muscles without straining the joints and ligaments.</p>
+            </div>
+        </div>
+        <!-- Card 18 -->
+        <div class="bg-white p-6 rounded-lg shadow-lg flex flex-col md:flex-row border-l-4 border-purple-800">
+            <div class="mr-4 mb-4 md:mb-0">
+                <i class="fas fa-dumbbell text-purple-800 text-3xl"></i>
+            </div>
+            <div>
+                <h2 class="text-2xl font-bold mb-2 pb-2 border-b-2 border-gray-200">What is the Impact of Physique 57 on PCOS?</h2>
+                <p>PCOS is generally associated with insulin resistance along with lifestyle and diet. Resistance training helps regulate blood sugar levels in the body.</p>
+                <p>At Physique 57, exercises can be tailored to suit low to moderate intensities, which is recommended for anyone with PCOS vs extreme high intensity exercises which can cause a rise in cortisol levels, creating further hormonal imbalances.</p>
+            </div>
+        </div>
+        <!-- Card 19 -->
+        <div class="bg-white p-6 rounded-lg shadow-lg flex flex-col md:flex-row border-l-4 border-pink-800">
+            <div class="mr-4 mb-4 md:mb-0">
+                <i class="fas fa-dance text-pink-800 text-3xl"></i>
+            </div>
+            <div>
+                <h2 class="text-2xl font-bold mb-2 pb-2 border-b-2 border-gray-200">What is the Impact of Physique 57 on Thyroid?</h2>
+                <p>Physique 57 exercises are a combination of strength training and cardiovascular movement. Our method is backed by science which blends interval training with muscle overload which not only increases your lean body mass but also increases your strength, power and gives definition to your muscles.</p>
+                <p>Muscles burn more calories than fat even while at rest. Increasing muscle mass while losing body fat boosts metabolism and thereby burns more calories.</p>
+            </div>
+        </div>
+        <!-- Card 20 -->
+        <div class="bg-white p-6 rounded-lg shadow-lg flex flex-col md:flex-row border-l-4 border-yellow-800 w-full md:col-span-2">
+            <div class="mr-4 mb-4 md:mb-0">
+                <i class="fas fa-ballet text-yellow-800 text-3xl"></i>
+            </div>
+            <div>
+                <h2 class="text-2xl font-bold mb-2 pb-2 border-b-2 border-gray-200">What is the Impact of Physique 57 on Menopause?</h2>
+                <p>During menopause, estrogen levels fluctuate severely in the body. With high estrogen levels, your body is likely to store more fat while low estrogen impacts metabolism. As a result of this it is very common for women to gain weight (especially around the belly) during menopause.</p>
+                <p>Research also shows that muscle cells reduce with a decline in estrogen thereby also reducing bone strength (particularly hips, spine and arms). Low estrogen also increases risk of more lifestyle diseases such as Type 2 diabetes.</p>
+                <p>The Physique 57 method combines isometric with isotonic movement choreographed to be different sequences and moves in each class, which leads to a healthy amount of muscle confusion. This muscle confusion and versatility in low-impact movement helps ensure women sculpt muscle when they most need it.</p>
+                <p>Physique 57 offers a variety of classes that meet you no matter where you are in your journey as a woman. Due to its mind-body nature (along with all the benefits of strength training) our method helps you connect with your body through mindful movement, improving stability, strength and balance (also targeted pelvic floor exercises) as you navigate through your body's changing needs, in a kind and encouraging manner.</p>
+            </div>
+        </div>
+        <!-- Card 21 -->
+        <div class="bg-white p-6 rounded-lg shadow-lg flex flex-col md:flex-row border-l-4 border-red-800">
+            <div class="mr-4 mb-4 md:mb-0">
+                <i class="fas fa-beginner text-red-800 text-3xl"></i>
+            </div>
+            <div>
+                <h2 class="text-2xl font-bold mb-2 pb-2 border-b-2 border-gray-200">Why are Group Workouts Beneficial to Those That May Have Specific Physical Needs?</h2>
+                <p>The benefits of group exercise have been proven time and again, partly explained by what we know as the Kohler Effect. According to this phenomenon, performance is enhanced for tasks attempted in a group setting due to our inherent inclination toward competition. In other words, no one wants to be the weakest link in a group.</p>
+                <p>As a result, group workouts tend to bring out optimised performance in individuals - combined with the motivation, support and endorphin rush people might experience by being surrounded by others attempting the same tasks.</p>
+                <p>Our instructors at Physique 57 have been trained extensively to provide a personalised workout experience within a group class setting, and have been trained to provide personalised modifications as required, while maintaining the energy a group class needs, thereby ensuring that clients feel safe and supported.</p>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<footer class="bg-gray-800 text-white py-1 mt-auto">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+     <div class="flex justify-between items-center">
+      <p class="text-sm">
+       © 2025 Physique 57 India. All rights reserved.
+      </p>
+      <div class="flex space-x-4">
+       <a class="text-white hover:text-gray-400" href="https://facebook.com/physique57india">
+        <i class="fab fa-facebook-f">
+        </i>
+       </a>
+       <a class="text-white hover:text-gray-400" href="https://twitter.com/physique57india">
+        <i class="fab fa-twitter">
+        </i>
+       </a>
+       <a class="text-white hover:text-gray-400" href="https://instagram.com/physique57india">
+        <i class="fab fa-instagram">
+        </i>
+       </a>
+      </div>
+     </div>
+    </div>
+   </footer>    
+    </div>
+<script>
+    function toggleAnswer(element) {
+        const allCards = document.querySelectorAll('.faq-card');
+        allCards.forEach(card => {
+            if (card !== element) {
+                card.classList.remove('expanded');
+                card.querySelector('p').classList.add('hidden');
+            }
+        });
+        element.classList.toggle('expanded');
+        element.querySelector('p').classList.toggle('hidden');
+    }
+
+    document.addEventListener("DOMContentLoaded", function() {
+        fetch('navbar.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('navbar-container').innerHTML = data;
+                // Assuming the navbar has a toggle button with id 'navbar-toggle'
+                const navbarToggle = document.getElementById('navbar-toggle');
+                const faqContent = document.querySelector('.faq-content');
+                const navbar = document.getElementById('navbar-container');
+
+                navbarToggle.addEventListener('click', function() {
+                    const navbarWidth = navbar.offsetWidth;
+                    if (navbar.classList.contains('expanded')) {
+                        faqContent.style.marginLeft = '0';
+                        navbar.classList.remove('expanded');
+                    } else {
+                        faqContent.style.marginLeft = `${navbarWidth}px`;
+                        navbar.classList.add('expanded');
+                    }
+                });
+            })
+            .catch(error => console.error('Error loading the navbar:', error));
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,429 @@
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Physique 57: A Journey of Transformation</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.0/css/all.min.css" integrity="sha512-9xKTRVabjVeZmc+GUW8GgSmcREDunMM+Dt/GrzchfN8tkwHizc5RP4Ok/MXFFy5rIjJjzhndFScTceq5e6GvVQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet"/>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f9fafb;
+            color: #333;
+            transition: margin-left 0.3s;
+        }
+
+        .hero-section {
+            background: linear-gradient(120deg, #007bff, #000608);
+            padding: 0px 10px;
+            color: #fff;
+            text-align: left;
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            max-height: 80px;
+            transition: margin-left 0.3s;
+        }
+
+        .hero-section h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            letter-spacing: 0.5rem;
+            animation: fadeInDown 1.5s ease-in-out;
+            margin-left: 30px;
+        }
+
+        .hero-section i {
+            font-size: 2.5rem;
+            margin-right: 1px;
+            margin-left: 40px;
+            animation: fadeInDown 1.5s ease-in-out;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-section h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-section i {
+                font-size: 2.5rem;
+            }
+        }
+    
+        @media (max-width: 768px) {
+            .hero-section h1 {
+                font-size: 2.5rem;
+            }
+            .hero-section i {
+                font-size: 2.5rem;
+            }
+        }
+
+        .animate-character {
+            text-transform: uppercase;
+            background-image: linear-gradient(
+                -225deg,
+                #000000 0%,
+                #00ff04 29%,
+                #f40ebe 67%,
+                #ffffff 100%
+            );
+            background-size: 200% auto;            
+            color: transparent; /* Set text color to transparent */
+            background-clip: text;            
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent; /* Ensure text fill is transparent */
+            animation: textclip 2s linear infinite, marquee 15s linear infinite;
+            display: inline-block;            
+            white-space: nowrap;            
+            letter-spacing: 1rem;
+        }
+
+        @keyframes textclip {
+            to {
+                background-position: 200% center;
+            }
+        }
+
+        .card {
+            background-color: #fff;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .card img {
+            width: 100%;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .card img:hover {
+            transform: scale(1.05);
+        }
+
+        .quote {
+            font-size: 1.5rem;
+            font-style: italic;
+            color: #007bff;
+            margin-top: 30px;
+            animation: fadeInText 2.5s ease-in-out;
+        }
+
+        .quote-author {
+            font-size: 1rem;
+            color: #555;
+            margin-top: 10px;
+            animation: fadeInText 2.5s ease-in-out;
+        }
+
+        @keyframes fadeInText {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .icon-list {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            gap: 10px;
+        }
+
+        .icon-list i {
+            color: #a80000;
+            font-size: 1.5rem;
+        }
+
+        .pdf-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+        }
+
+        .pdf-card {
+            background-color: #fff;
+            border: 2px solid #000000;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            height: 450px;
+            padding: 10px;
+            transition: transform 0.3s;
+            cursor: pointer;
+        }
+
+        .pdf-card:hover {
+            transform: scale(1.05);
+        }
+
+        .pdf-card i {
+            font-size: 20px;
+            color: #7c0000;
+        }
+
+        .pdf-title {
+            margin-top: 10px;
+            font-weight: bold;
+            font-size: 20px;
+            text-transform: uppercase;
+        }
+
+        .main-menu {
+            transition: width 0.3s, transform 0.3s;
+            box-shadow: 2px 0 15px rgba(0, 0, 0, 0.1);
+            overflow-y: auto;
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100%;
+            background-color: white;
+            z-index: 1000;
+        }
+
+        .main-menu ul li a .nav-text {
+            display: none;
+            transition: opacity 0.3s;
+        }
+
+        .main-menu:hover ul li a .nav-text {
+            display: inline;
+            opacity: 1;
+        }
+
+        .main-menu ul li a {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            color: black;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+
+        .main-menu ul li a:hover {
+            background-color: rgba(0, 0, 0, 0.1);
+        }
+
+        .main-menu ul li a .nav-icon {
+            margin-right: 10px;
+            font-size: 1.5rem;
+        }
+
+        .submenu {
+            display: none;
+        }
+
+        .has-subnav:hover .submenu {
+            display: block;
+        }
+
+        .submenu li a {
+            background-color: #f0f0f0;
+        }
+
+        .submenu li a:hover {
+            background-color: #e0e0e0;
+        }
+
+        .main-menu ul {
+            padding-left: 0;
+        }
+
+        .main-menu ul li {
+            list-style: none;
+        }
+
+        .main-menu ul li a {
+            justify-content: center;
+        }
+
+        .main-menu:hover ul li a {
+            justify-content: flex-start;
+        }
+
+        .main-menu:hover ~ .hero-section h1 i {
+            margin-left: 0;
+
+        }
+
+        .main-menu:hover ~ .container,
+        .main-menu:hover ~ .hero-section {
+            margin-left: 14rem;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 font-roboto">
+    <div id="navbar-container" class="main-menu w-16 hover:w-64"></div> <!-- This is where the navbar will be loaded -->           
+    <!-- Hero Section -->
+    <div class="container mx-auto max-w-full pb-3 pt-2 bg-gradient-to-r from-gray-900 to-gray-900 text-white text-left shadow-lg">
+        <div class="container mx-auto flex items-end space-x-1">
+            <i class="fa-solid fa-timeline fa-fade fa-3x mr-4"></i>
+            <h1 class="animate-character text-5xl uppercase">Dates to Remember</h1>
+        </div>        
+    </div>
+
+        <!-- Main Content -->   
+        <div class="container mx-auto max-w-full mr-36 pr-20 p-6 content">                 
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-white p-8 rounded-lg shadow-lg">
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-hand-holding-heart text-4xl text-blue-500 mr-4"></i>
+                        <h2 class="text-2xl font-bold text-gray-800">Our Promise</h2>
+                    </div>
+                    <p class="text-gray-600 text-lg">To always go above and beyond to deliver an extraordinary and unique client experience.</p>
+                </div>
+    
+                <div class="bg-white p-8 rounded-lg shadow-lg">
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-bullseye text-4xl text-green-500 mr-4"></i>
+                        <h2 class="text-2xl font-bold text-gray-800">Our Vision</h2>
+                    </div>
+                    <p class="text-gray-600 text-lg">To become the premier barre brand in the global fitness industry.</p>
+                </div>
+    
+                <div class="bg-white p-8 rounded-lg shadow-lg">
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-lightbulb text-4xl text-yellow-500 mr-4"></i>
+                        <h2 class="text-2xl font-bold text-gray-800">Our Purpose</h2>
+                    </div>
+                    <p class="text-gray-600 text-lg">To unleash the unlimited potential in those we touch.</p>
+                </div>
+    
+                <div class="bg-white p-8 rounded-lg shadow-lg col-span-1 md:col-span-2 lg:col-span-3">
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-heart text-4xl text-red-500 mr-4"></i>
+                        <h2 class="text-2xl font-bold text-gray-800">Embodying Core Values</h2>
+                    </div>
+                    <ul class="list-disc list-inside text-gray-600 text-lg">
+                        <li>Establish eye contact immediately to convey attention and respect.</li>
+                        <li>Always wear a warm smile to foster a welcoming atmosphere.</li>
+                        <li>Adopt open and approachable body language.</li>
+                        <li>Modulate your tone and volume to match the client’s comfort.</li>
+                        <li>Strive to be relatable and approachable in all interactions.</li>
+                        <li>Keep the environment light and enjoyable.</li>
+                    </ul>
+                </div>
+    
+                <div class="bg-white p-8 rounded-lg shadow-lg col-span-1 md:col-span-2 lg:col-span-3">
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-handshake text-4xl text-purple-500 mr-4"></i>
+                        <h2 class="text-2xl font-bold text-gray-800">Client Greetings</h2>
+                    </div>
+                    <ul class="list-disc list-inside text-gray-600 text-lg">
+                        <li>Treat every client as a top priority, ensuring they feel valued and welcomed.</li>
+                        <li>Greet each client naturally as you would a new acquaintance, ensuring the approach is genuine and not overpowering.</li>
+                        <li>Proactively introduce yourself; don't wait for clients to make the first move.</li>
+                    </ul>
+                </div>
+    
+                <div class="bg-white p-8 rounded-lg shadow-lg col-span-1 md:col-span-2 lg:col-span-3">
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-user-tag text-4xl text-teal-500 mr-4"></i>
+                        <h2 class="text-2xl font-bold text-gray-800">Importance of Learning Client Names</h2>
+                    </div>
+                    <ul class="list-disc list-inside text-gray-600 text-lg">
+                        <li>Remembering a client’s name personalizes the experience, showing care and commitment.</li>
+                        <li>Familiarity helps in building enduring relationships with regular clients, enhancing the community feel of Physique 57.</li>
+                        <li>These personal connections distinguish our service, contributing significantly to the client's overall experience.</li>
+                    </ul>
+                </div>
+    
+                <div class="bg-white p-8 rounded-lg shadow-lg col-span-1 md:col-span-2 lg:col-span-3">
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-lightbulb text-4xl text-orange-500 mr-4"></i>
+                        <h2 class="text-2xl font-bold text-gray-800">Physique Tip for Recalling Names</h2>
+                    </div>
+                    <ul class="list-disc list-inside text-gray-600 text-lg">
+                        <li>“Hi there! How are you today? Remind me of your name?”</li>
+                        <li>“Hello! I don’t believe we’ve met yet, could I have your name?”</li>
+                        <li>“Thank you! You’re in studio X with X today—enjoy your class!”</li>
+                    </ul>
+                </div>
+    
+                <div class="bg-white p-8 rounded-lg shadow-lg col-span-1 md:col-span-2 lg:col-span-3">
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-star text-4xl text-pink-500 mr-4"></i>
+                        <h2 class="text-2xl font-bold text-gray-800">Additional Values</h2>
+                    </div>
+                    <ul class="list-disc list-inside text-lg text-gray-700">
+                        <li><strong>Be Humble:</strong> We stay grounded, recognizing our strengths while remaining open to growth and learning.</li>
+                        <li><strong>Aspire to Grow and Learn:</strong> We embrace a mindset of continual improvement, always seeking new knowledge and skills.</li>
+                        <li><strong>Aim High, Think Big, Take Risks:</strong> We set ambitious goals, think outside the box, and fearlessly pursue innovative solutions.</li>
+                        <li><strong>Have Grit:</strong> We demonstrate resilience and determination in overcoming challenges, never giving up on our goals.</li>
+                        <li><strong>Challenge the Organization to Improve and Evolve:</strong> We foster a culture of innovation and continuous improvement, constantly pushing boundaries to enhance our impact.</li>
+                        <li><strong>Be Adventurous, Creative, and Open-Minded:</strong> We encourage curiosity, creativity, and a willingness to explore new ideas and approaches.</li>
+                        <li><strong>Deliver an Outstanding Client Experience Every Day:</strong> We prioritize exceeding expectations and delivering exceptional service to our clients, every single day.</li>
+                        <li><strong>Celebrate Success and Each Other's Accomplishments:</strong> We recognize and celebrate both individual and collective achievements, fostering a supportive and inclusive community.</li>
+                        <li><strong>Be Influential, Make an Impact:</strong> We leverage our expertise and passion to drive meaningful change, positively impacting the lives of those we serve and the world around us.</li>
+                    </ul>
+                </div>
+            </div>            
+        </div>    
+        <footer class="bg-gray-800 text-white py-1 mt-auto">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+             <div class="flex justify-between items-center">
+              <p class="text-sm">
+               © 2025 Physique 57 India. All rights reserved.
+              </p>
+              <div class="flex space-x-4">
+               <a class="text-white hover:text-gray-400" href="https://facebook.com/physique57india">
+                <i class="fab fa-facebook-f">
+                </i>
+               </a>
+               <a class="text-white hover:text-gray-400" href="https://twitter.com/physique57india">
+                <i class="fab fa-twitter">
+                </i>
+               </a>
+               <a class="text-white hover:text-gray-400" href="https://instagram.com/physique57india">
+                <i class="fab fa-instagram">
+                </i>
+               </a>
+              </div>
+             </div>
+            </div>
+           </footer>
+           <script>
+        // Load the navbar from navbar.html
+        fetch('navbar.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('navbar-container').innerHTML = data;
+                initNavbar(); // Initialize the navbar functionality after loading
+            })
+            .catch(error => console.error('Error loading navbar:', error));
+        
+        function openPDF(pdfUrl) {
+            const newWindow = window.open(pdfUrl, '_blank');
+            newWindow.focus();
+        }
+
+        let timeout;
+        const navbar = document.getElementById('navbar');        
+           </script>    
+</body>
+</html>

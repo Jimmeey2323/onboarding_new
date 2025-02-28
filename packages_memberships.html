@@ -1,0 +1,2044 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Physique 57: A Journey of Transformation</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet"/>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f9fafb;
+            color: #333;
+        }
+
+        .hero-section {
+            background: linear-gradient(120deg, #007bff, #000608);
+            color: #fff;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: slideIn 1.5s ease-out forwards;
+        }
+    
+        .hero-section h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin: 0;
+            opacity: 0;
+            transform: translateY(-20px);
+            animation: fadeIn 1s ease-in-out 0.5s forwards;
+        }
+    
+        .hero-section i {
+            font-size: 3rem;
+            margin-right: 10px;
+            animation: bounceIn 1s ease-in-out 1s forwards;
+        }
+    
+        /* Keyframes */
+        @keyframes slideIn {
+            0% {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+    
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    
+        @keyframes bounceIn {
+            0%,
+            20%,
+            40%,
+            60%,
+            80%,
+            100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+    
+        @media (max-width: 768px) {
+            .hero-section h1 {
+                font-size: 2.5rem;
+            }
+            .hero-section i {
+                font-size: 2.5rem;
+            }
+        }
+
+        .animate-character {
+            text-transform: uppercase;
+            background-image: linear-gradient(
+                -225deg,
+                #000000 0%,
+                #00ff04 29%,
+                #f40ebe 67%,
+                #ffffff 100%
+            );
+            background-size: 200% auto;            
+            color: transparent; /* Set text color to transparent */
+            background-clip: text;            
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent; /* Ensure text fill is transparent */
+            animation: textclip 2s linear infinite, marquee 15s linear infinite;
+            display: inline-block;            
+            white-space: nowrap;            
+            letter-spacing: 0.4rem;
+        }
+
+        @keyframes textclip {
+            to {
+                background-position: 200% center;
+            }
+        }
+
+        .card {
+            background-color: #fff;
+            border-radius: 32px 12px 0 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            padding: 0;
+            transition: transform 0.3s, box-shadow 0.3s;
+            perspective: 1000px;
+            border-left: 8px solid #007bff;
+            height: 250px;
+            width: 300px;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+        }
+
+        .card.flipped .card-inner {
+            transform: rotateY(180deg);
+        }
+
+        .card-front, .card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 12px;
+        }
+
+        .card-back {
+            background-color: #f8f8f8;
+            transform: rotateY(180deg);
+            padding: 20px;
+        }
+
+        .card-header {
+            background-color: #1a202c;
+            color: #fff;
+            padding: 10px;
+            border-radius: 0px 12px 0 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            animation: slideIn 0.5s ease-in-out;
+            margin: 0;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateX(-100%);
+            }
+            to {
+                transform: translateX(0);
+            }
+        }
+
+        .card img {
+            width: 100%;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .card img:hover {
+            transform: scale(1.05);
+        }
+
+        .quote {
+            font-size: 1.5rem;
+            font-style: italic;
+            color: #007bff;
+            margin-top: 30px;
+            animation: fadeInText 2.5s ease-in-out;
+        }
+
+        .quote-author {
+            font-size: 1rem;
+            color: #555;
+            margin-top: 10px;
+            animation: fadeInText 2.5s ease-in-out;
+        }
+
+        @keyframes fadeInText {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .icon-list {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            gap: 10px;
+        }
+
+        .icon-list i {
+            color: #a80000;
+            font-size: 1.5rem;
+        }
+
+        .pdf-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .pdf-card {
+            background-color: #fff;
+            border: 2px solid #000000;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 200px;
+            height: 250px;
+            padding: 10px;
+            transition: transform 0.3s;
+            cursor: pointer;
+        }
+
+        .pdf-card:hover {
+            transform: scale(1.05);
+        }
+
+        .pdf-card i {
+            font-size: 50px;
+            color: #7c0000;
+        }
+
+        .pdf-title {
+            margin-top: 10px;
+            font-weight: bold;
+            font-size: 20px;
+        }
+        .table-container {
+            overflow-x: auto;
+            margin: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 0.9em;
+            min-width: 1000px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+
+        table thead tr {
+            background-color: #f1f5f9;
+            color: #333;
+            text-align: left;
+            border-bottom: 2px solid #e2e8f0;
+        }
+
+        table th, table td {
+            padding: 12px 15px;
+            border: 1px solid #e2e8f0;
+            white-space: nowrap;
+        }
+
+        table tbody tr {
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        table tbody tr:nth-of-type(even) {
+            background-color: #f9fafb;
+        }
+
+        table tbody tr:last-of-type {
+            border-bottom: 2px solid #e2e8f0;
+        }
+
+        .icon {
+            margin-right: 8px;
+        }
+        .tab-content {
+            display: none;
+        }
+        .tab-content.active {
+            display: block;
+        }
+    </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            fetch('navbar.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('navbar-container').innerHTML = data;
+                })
+                .catch(error => console.error('Error loading the navbar:', error));
+
+            document.querySelectorAll('.card').forEach(card => {
+                card.addEventListener('click', function() {
+                    this.classList.toggle('flipped');
+                });
+            });
+        });
+
+        function openPDF(pdfUrl) {
+            const newWindow = window.open(pdfUrl, '_blank');
+            newWindow.focus();
+        }
+        document.addEventListener('DOMContentLoaded', function () {
+            const tabButtons = document.querySelectorAll('.tab-button');
+            const tabContents = document.querySelectorAll('.tab-content');
+
+            tabButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    tabButtons.forEach(btn => btn.classList.remove('text-blue-500', 'border-blue-500'));
+                    tabContents.forEach(content => content.classList.remove('active'));
+
+                    button.classList.add('text-blue-500', 'border-blue-500');
+                    document.getElementById(`content-${button.id.split('-')[1]}`).classList.add('active');
+                });
+            });
+
+            // Activate the first tab by default
+            tabButtons[0].click();
+        });
+    </script>
+</head>
+<body class="bg-gray-100 font-roboto">
+    <!-- Hero Section -->
+    <div class="bg-gradient-to-r from-gray-900 to-gray-900 text-white text-center py-3 shadow-lg">
+        <div class="container mx-auto flex items-end space-x-4">
+            <i class="fa-solid fa-layer-group fa-fade fa-3x mr-2"></i>
+            <h1 class="animate-character text-5xl uppercase">Packages, Memberships & Privates</h1>
+        </div>        
+    </div>
+
+    <div class="container mx-auto max-w-full pb-0 pl-40 pr-20 pt-0">
+        <div id="navbar-container"></div> <!-- This is where the navbar will be loaded -->  
+        <div class="flex justify-center border-b">
+            <button class="tab-button w-1/2 py-4 text-gray-600 hover:text-blue-500 focus:outline-none focus:text-blue-500 border-b-4 border-transparent focus:border-blue-500" id="tab-mumbai">
+             Mumbai
+            </button>
+            <button class="tab-button w-1/2 py-4 text-gray-600 hover:text-blue-500 focus:outline-none focus:text-blue-500 border-b-4 border-transparent focus:border-blue-500" id="tab-bangalore">
+             Bangalore
+            </button>
+           </div>         
+        <!-- Memberships Section -->
+<div class="tab-content p-4" id="content-mumbai">
+<div class="mb-12">
+    <h2 class="text-4xl bg-white pt-4 pb-0 text-blue-500 mt-10 border-b-4 border-blue-500 mb-4 uppercase">Memberships</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Studio 2 Week Unlimited Membership -->
+        <div class="bg-white rounded-lg shadow-lg card border-blue-500 cursor-pointer">
+            <div class="card-inner">
+                <div class="card-front">
+                    <div class="card-header">
+                        <div class="flex items-center">
+                            <i class="fas fa-calendar-check text-blue-500 text-2xl mr-4"></i>
+                            <h3 class="text-lg font-semibold">Studio 2 Week Unlimited Membership</h3>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <p class="text-gray-700 mb-2">Duration: 2 weeks</p>
+                        <p class="text-gray-700 mb-2">Events: 9999</p>
+                        <p class="text-gray-700 mb-2">Price: ₹8500</p>
+                        <p class="text-gray-700 font-bold">Price (including tax): ₹10030</p>
+                    </div>
+                </div>
+                <div class="card-back">
+                    <h3 class="text-lg font-semibold border-b border-blue-500 mb-4">Additional Information</h3>
+                    <ul class="list-disc pl-5">
+                        <li class="text-gray-700 mb-2"><span class="font-bold">No of Freeze Attempts:</span> 0</li>
+                        <li class="text-gray-700 mb-2"><span class="font-bold">Freeze Period:</span> N/A</li>
+                        <li class="text-gray-700 mb-2"><span class="font-bold">Discounts Applicable:</span> 0%</li>
+                        <li class="text-gray-700 mb-2"><span class="font-bold">T & Cs:</span> Terms and conditions apply.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- Studio 1 Month Unlimited Membership -->
+        <div class="bg-white rounded-lg shadow-lg card border-blue-500 cursor-pointer">
+            <div class="card-inner">
+                <div class="card-front">
+                    <div class="card-header">
+                        <div class="flex items-center">
+                            <i class="fas fa-calendar-check text-blue-500 text-2xl mr-4"></i>
+                            <h3 class="text-lg font-semibold">Studio 1 Month Unlimited Membership</h3>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <p class="text-gray-700 mb-2">Duration: 1 month</p>
+                        <p class="text-gray-700 mb-2">Events: 9999</p>
+                        <p class="text-gray-700 mb-2">Price: ₹15250</p>
+                        <p class="text-gray-700 font-bold">Price (including tax): ₹17995</p>
+                    </div>
+                </div>
+                <div class="card-back">
+                    <h3 class="text-lg font-semibold border-b border-blue-500 mb-4">Additional Information</h3>
+                    <ul class="list-disc pl-5">
+                        <li class="text-gray-700 mb-2"><span class="font-bold">No of Freeze Attempts:</span> 1</li>
+                        <li class="text-gray-700 mb-2"><span class="font-bold">Freeze Period:</span> 30 Days</li>
+                        <li class="text-gray-700 mb-2"><span class="font-bold">Discounts Applicable:</span> 0%</li>
+                        <li class="text-gray-700 mb-2"><span class="font-bold">T & Cs:</span> Terms and conditions apply.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- Studio 3 Month Unlimited Membership -->
+        <div class="bg-white rounded-lg shadow-lg card border-blue-500 cursor-pointer">
+            <div class="card-inner">
+                <div class="card-front">
+                    <div class="card-header">
+                        <div class="flex items-center">
+                            <i class="fas fa-calendar-check text-blue-500 text-2xl mr-4"></i>
+                            <h3 class="text-lg font-semibold">Studio 3 Month Unlimited Membership</h3>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <p class="text-gray-700 mb-2">Duration: 3 months</p>
+                        <p class="text-gray-700 mb-2">Events: 9999</p>
+                        <p class="text-gray-700 mb-2">Price: ₹43500</p>
+                        <p class="text-gray-700 font-bold">Price (including tax): ₹51330</p>
+                    </div>
+                </div>
+                <div class="card-back">
+                    <h3 class="text-lg font-semibold border-b border-blue-500 mb-4">Additional Information</h3>
+                    <ul class="list-disc pl-5">
+                        <li class="text-gray-700 mb-2"><span class="font-bold">No of Freeze Attempts:</span> 3</li>
+                        <li class="text-gray-700 mb-2"><span class="font-bold">Freeze Period:</span> 30 Days</li>
+                        <li class="text-gray-700 mb-2"><span class="font-bold">Discounts Applicable:</span> 0%</li>
+                        <li class="text-gray-700 mb-2"><span class="font-bold">T & Cs:</span> Terms and conditions apply.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- Studio 6 Month Unlimited Membership -->
+        <div class="bg-white rounded-lg shadow-lg card border-blue-500 cursor-pointer">
+            <div class="card-inner">
+                <div class="card-front">
+                    <div class="card-header">
+                        <div class="flex items-center">
+                            <i class="fas fa-calendar-check text-blue-500 text-2xl mr-4"></i>
+                            <h3 class="text-lg font-semibold">Studio 6 Month Unlimited Membership</h3>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <p class="text-gray-700 mb-2">Duration: 6 months</p>
+                        <p class="text-gray-700 mb-2">Events: 9999</p>
+                        <p class="text-gray-700 mb-2">Price: ₹85500</p>
+                        <p class="text-gray-700 font-bold">Price (including tax): ₹100890</p>
+                    </div>
+                </div>
+                <div class="card-back">
+                    <h3 class="text-lg font-semibold border-b border-blue-500 mb-4">Additional Information</h3>
+                    <ul class="list-disc pl-5">
+                        <li class="text-gray-700 mb-2"><span class="font-bold">No of Freeze Attempts:</span> 6</li>
+                        <li class="text-gray-700 mb-2"><span class="font-bold">Freeze Period:</span> 30 Days</li>
+                        <li class="text-gray-700 mb-2"><span class="font-bold">Discounts Applicable:</span> 10%</li>
+                        <li class="text-gray-700 mb-2"><span class="font-bold">T & Cs:</span> Terms and conditions apply.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- Studio Annual Unlimited Membership -->
+        <div class="bg-white rounded-lg shadow-lg card border-blue-500 cursor-pointer">
+            <div class="card-inner">
+                <div class="card-front">
+                    <div class="card-header">
+                        <div class="flex items-center">
+                            <i class="fas fa-calendar-check text-blue-500 text-2xl mr-4"></i>
+                            <h3 class="text-lg font-semibold">Studio Annual Unlimited Membership</h3>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <p class="text-gray-700 mb-2">Duration: 12 months</p>
+                        <p class="text-gray-700 mb-2">Events: 9999</p>
+                        <p class="text-gray-700 mb-2">Price: ₹165000</p>
+                        <p class="text-gray-700 font-bold">Price (including tax): ₹194700</p>
+                    </div>
+                </div>
+                <div class="card-back">
+                    <h3 class="text-lg font-semibold border-b border-blue-500 mb-4">Additional Information</h3>
+                    <ul class="list-disc pl-5">
+                        <li class="text-gray-700 mb-2"><span class="font-bold">No of Freeze Attempts:</span> 12</li>
+                        <li class="text-gray-700 mb-2"><span class="font-bold">Freeze Period:</span> 30 Days</li>
+                        <li class="text-gray-700 mb-2"><span class="font-bold">Discounts Applicable:</span> 15%</li>
+                        <li class="text-gray-700 mb-2"><span class="font-bold">T & Cs:</span> Terms and conditions apply.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Packages Section -->
+<div class="mb-12">
+    <h2 class="text-4xl bg-white pt-4 pb-0 text-green-500 mt-10 border-b-4 border-green-500 mb-4 uppercase">Packages</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Studio Single Class -->
+        <div class="bg-white rounded-lg shadow-lg card border-green-500 cursor-pointer">
+            <div class="card-inner">
+                <div class="card-front">
+                    <div class="card-header">
+                        <div class="flex items-center">
+                            <i class="fas fa-box-open text-green-500 text-2xl mr-4"></i>
+                            <h3 class="text-lg font-semibold">Studio Single Class</h3>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <p class="text-gray-700 mb-2">Duration: 7 days</p>
+                        <p class="text-gray-700 mb-2">Events: 1</p>
+                        <p class="text-gray-700 mb-2">Price: ₹1500</p>
+                        <p class="text-gray-700 font-bold">Price (including tax): ₹1770</p>
+                    </div>
+                </div>
+                <div class="card-back">
+                    <h3 class="text-lg font-semibold border-b border-green-500 mb-4">Additional Information</h3>
+                    <ul class="list-disc pl-5">
+                        <li class="text-gray-700 mb-2"><span class="font-bold">No of Freeze Attempts:</span> 0</li>
+                        <li class="text-gray-700 mb-2"><span class="font-bold">Freeze Period:</span> N/A</li>
+                        <li class="text-gray-700 mb-2"><span class="font-bold">Discounts Applicable:</span> 0%</li>
+                        <li class="text-gray-700 mb-2"><span class="font-bold">T & Cs:</span> Terms and conditions apply.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- Newcomers 2 For 1 Price -->
+        <div class="bg-white rounded-lg shadow-lg card border-green-500 cursor-pointer">
+            <div class="card-inner">
+                <div class="card-front">
+                    <div class="card-header">
+                        <div class="flex items-center">
+                            <i class="fas fa-box-open text-green-500 text-2xl mr-4"></i>
+                            <h3 class="text-lg font-semibold">Newcomers 2 For 1 Price</h3>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <p class="text-gray-700 mb-2">Duration: 14 days</p>
+                        <p class="text-gray-700 mb-2">Events: 2</p>
+                        <p class="text-gray-700 mb-2">Price: ₹1500</p>
+                        <p class="text-gray-700 font-bold">Price (including tax): ₹1770</p>
+                    </div>
+                </div>
+                <div class="card-back">
+                    <h3 class="text-lg font-semibold border-b border-green-500 mb-4">Additional Information</h3>
+                    <ul class="list-disc pl-5">
+                        <li class="text-gray-700 mb-2"><span class="font-bold">No of Freeze Attempts:</span> 0</li>
+                        <li class="text-gray-700 mb-2"><span class="font-bold">Freeze Period:</span> N/A</li>
+                        <li class="text-gray-700 mb-2"><span class="font-bold">Discounts Applicable:</span> 0%</li>
+                        <li class="text-gray-700 mb-2"><span class="font-bold">T & Cs:</span> Terms and conditions apply.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- Studio 4 Class Package -->
+        <div class="bg-white rounded-lg shadow-lg card border-green-500 cursor-pointer">
+            <div class="card-inner">
+                <div class="card-front">
+                    <div class="card-header">
+                        <div class="flex items-center">
+                            <i class="fas fa-box-open text-green-500 text-2xl mr-4"></i>
+                            <h3 class="text-lg font-semibold">Studio 4 Class Package</h3>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <p class="text-gray-700 mb-2">Duration: 14 days</p>
+                        <p class="text-gray-700 mb-2">Events: 4</p>
+                        <p class="text-gray-700 mb-2">Price: ₹5350</p>
+                        <p class="text-gray-700 font-bold">Price (including tax): ₹6313</p>
+                    </div>
+                </div>
+                <div class="card-back">
+                    <h3 class="text-lg font-semibold border-b border-green-500 mb-4">Additional Information</h3>
+                    <ul class="list-disc pl-5">
+                        <li class="text-gray-700 mb-2"><span class="font-bold">No of Freeze Attempts:</span> 0</li>
+                        <li class="text-gray-700 mb-2"><span class="font-bold">Freeze Period:</span> N/A</li>
+                        <li class="text-gray-700 mb-2"><span class="font-bold">Discounts Applicable:</span> 0%</li>
+                        <li class="text-gray-700 mb-2"><span class="font-bold">T & Cs:</span> Terms and conditions apply.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- Studio 8 Class Package -->
+        <div class="bg-white rounded-lg shadow-lg card border-green-500 cursor-pointer">
+            <div class="card-inner">
+                <div class="card-front">
+                    <div class="card-header">
+                        <div class="flex items-center">
+                            <i class="fas fa-box-open text-green-500 text-2xl mr-4"></i>
+                            <h3 class="text-lg font-semibold">Studio 8 Class Package</h3>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <p class="text-gray-700 mb-2">Duration: 30 days</p>
+                        <p class="text-gray-700 mb-2">Events: 8</p>
+                        <p class="text-gray-700 mb-2">Price: ₹10200</p>
+                        <p class="text-gray-700 font-bold">Price (including tax): ₹12036</p>
+                    </div>
+                </div>
+                <div class="card-back">
+                    <h3 class="text-lg font-semibold border-b border-green-500 mb-4">Additional Information</h3>
+                    <ul class="list-disc pl-5">
+                        <li class="text-gray-700 mb-2"><span class="font-bold">No of Freeze Attempts:</span> 1</li>
+                        <li class="text-gray-700 mb-2"><span class="font-bold">Freeze Period:</span> 30 Days</li>
+                        <li class="text-gray-700 mb-2"><span class="font-bold">Discounts Applicable:</span> 0%</li>
+                        <li class="text-gray-700 mb-2"><span class="font-bold">T & Cs:</span> Terms and conditions apply.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- Studio 12 Class Package -->
+        <div class="bg-white rounded-lg shadow-lg card border-green-500 cursor-pointer">
+            <div class="card-inner">
+                <div class="card-front">
+                    <div class="card-header">
+                        <div class="flex items-center">
+                            <i class="fas fa-box-open text-green-500 text-2xl mr-4"></i>
+                            <h3 class="text-lg font-semibold">Studio 12 Class Package</h3>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <p class="text-gray-700 mb-2">Duration: 45 days</p>
+                        <p class="text-gray-700 mb-2">Events: 12</p>
+                        <p class="text-gray-700 mb-2">Price: ₹15050</p>
+                        <p class="text-gray-700 font-bold">Price (including tax): ₹17759</p>
+                    </div>
+                </div>
+                <div class="card-back">
+                    <h3 class="text-lg font-semibold border-b border-green-500 mb-4">Additional Information</h3>
+                    <ul class="list-disc pl-5">
+                        <li class="text-gray-700 mb-2"><span class="font-bold">No of Freeze Attempts:</span> 1</li>
+                        <li class="text-gray-700 mb-2"><span class="font-bold">Freeze Period:</span> 30 Days</li>
+                        <li class="text-gray-700 mb-2"><span class="font-bold">Discounts Applicable:</span> 0%</li>
+                        <li class="text-gray-700 mb-2"><span class="font-bold">T & Cs:</span> Terms and conditions apply.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Privates Section -->
+<div class="mb-12">
+    <h2 class="text-4xl bg-white pt-4 pb-0 text-red-500 mt-10 border-b-4 border-red-500 mb-4 uppercase">Privates</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Studio Private Class X 10 -->
+        <div class="bg-white rounded-lg shadow-lg card border-red-500 cursor-pointer">
+            <div class="card-inner">
+                <div class="card-front">
+                    <div class="card-header">
+                        <div class="flex items-center">
+                            <i class="fas fa-user-lock text-red-500 text-2xl mr-4"></i>
+                            <h3 class="text-lg font-semibold">Studio Private Class X 10</h3>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <p class="text-gray-700 mb-2">Duration: 70 days</p>
+                        <p class="text-gray-700 mb-2">Events: 10</p>
+                        <p class="text-gray-700 mb-2">Price: ₹50000</p>
+                        <p class="text-gray-700 font-bold">Price (including tax): ₹59000</p>
+                    </div>
+                </div>
+                <div class="card-back">
+                    <h3 class="text-lg font-semibold border-b border-red-500 mb-4">Additional Information</h3>
+                    <ul class="list-disc pl-5">
+                        <li class="text-gray-700 mb-2"><span class="font-bold">No of Freeze Attempts:</span> 2</li>
+                        <li class="text-gray-700 mb-2"><span class="font-bold">Freeze Period:</span> 30 Days</li>
+                        <li class="text-gray-700 mb-2"><span class="font-bold">Discounts Applicable:</span> 0%</li>
+                        <li class="text-gray-700 mb-2"><span class="font-bold">T & Cs:</span> Terms and conditions apply.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- Virtual Private Class X 10 -->
+        <div class="bg-white rounded-lg shadow-lg card border-red-500 cursor-pointer">
+            <div class="card-inner">
+                <div class="card-front">
+                    <div class="card-header">
+                        <div class="flex items-center">
+                            <i class="fas fa-user-lock text-red-500 text-2xl mr-4"></i>
+                            <h3 class="text-lg font-semibold">Virtual Private Class X 10</h3>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <p class="text-gray-700 mb-2">Duration: 70 days</p>
+                        <p class="text-gray-700 mb-2">Events: 10</p>
+                        <p class="text-gray-700 mb-2">Price: ₹45000</p>
+                        <p class="text-gray-700 font-bold">Price (including tax): ₹53100</p>
+                    </div>
+                </div>
+                <div class="card-back">
+                    <h3 class="text-lg font-semibold border-b border-red-500 mb-4">Additional Information</h3>
+                    <ul class="list-disc pl-5">
+                        <li class="text-gray-700 mb-2"><span class="font-bold">No of Freeze Attempts:</span> 2</li>
+                        <li class="text-gray-700 mb-2"><span class="font-bold">Freeze Period:</span> 30 Days</li>
+                        <li class="text-gray-700 mb-2"><span class="font-bold">Discounts Applicable:</span> 0%</li>
+                        <li class="text-gray-700 mb-2"><span class="font-bold">T & Cs:</span> Terms and conditions apply.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- Studio Private Class -->
+        <div class="bg-white rounded-lg shadow-lg card border-red-500 cursor-pointer">
+            <div class="card-inner">
+                <div class="card-front">
+                    <div class="card-header">
+                        <div class="flex items-center">
+                            <i class="fas fa-user-lock text-red-500 text-2xl mr-4"></i>
+                            <h3 class="text-lg font-semibold">Studio Private Class</h3>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <p class="text-gray-700 mb-2">Duration: 7 days</p>
+                        <p class="text-gray-700 mb-2">Events: 1</p>
+                        <p class="text-gray-700 mb-2">Price: ₹5000</p>
+                        <p class="text-gray-700 font-bold">Price (including tax): ₹5900</p>
+                    </div>
+                </div>
+                <div class="card-back">
+                    <h3 class="text-lg font-semibold border-b border-red-500 mb-4">Additional Information</h3>
+                    <ul class="list-disc pl-5">
+                        <li class="text-gray-700 mb-2"><span class="font-bold">No of Freeze Attempts:</span> 0</li>
+                        <li class="text-gray-700 mb-2"><span class="font-bold">Freeze Period:</span> N/A</li>
+                        <li class="text-gray-700 mb-2"><span class="font-bold">Discounts Applicable:</span> 0%</li>
+                        <li class="text-gray-700 mb-2"><span class="font-bold">T & Cs:</span> Terms and conditions apply.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- Virtual Private Class -->
+        <div class="bg-white rounded-lg shadow-lg card border-red-500 cursor-pointer">
+            <div class="card-inner">
+                <div class="card-front">
+                    <div class="card-header">
+                        <div class="flex items-center">
+                            <i class="fas fa-user-lock text-red-500 text-2xl mr-4"></i>
+                            <h3 class="text-lg font-semibold">Virtual Private Class</h3>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <p class="text-gray-700 mb-2">Duration: 7 days</p>
+                        <p class="text-gray-700 mb-2">Events: 1</p>
+                        <p class="text-gray-700 mb-2">Price: ₹4500</p>
+                        <p class="text-gray-700 font-bold">Price (including tax): ₹5310</p>
+                    </div>
+                </div>
+                <div class="card-back">
+                    <h3 class="text-lg font-semibold border-b border-red-500 mb-4">Additional Information</h3>
+                    <ul class="list-disc pl-5">
+                        <li class="text-gray-700 mb-2"><span class="font-bold">No of Freeze Attempts:</span> 0</li>
+                        <li class="text-gray-700 mb-2"><span class="font-bold">Freeze Period:</span> N/A</li>
+                        <li class="text-gray-700 mb-2"><span class="font-bold">Discounts Applicable:</span> 0%</li>
+                        <li class="text-gray-700 mb-2"><span class="font-bold">T & Cs:</span> Terms and conditions apply.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- Studio Happy Hour Private -->
+        <div class="bg-white rounded-lg shadow-lg card border-red-500 cursor-pointer">
+            <div class="card-inner">
+                <div class="card-front">
+                    <div class="card-header">
+                        <div class="flex items-center">
+                            <i class="fas fa-user-lock text-red-500 text-2xl mr-4"></i>
+                            <h3 class="text-lg font-semibold">Studio Happy Hour Private</h3>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <p class="text-gray-700 mb-2">Duration: 7 days</p>
+                        <p class="text-gray-700 mb-2">Events: 1</p>
+                        <p class="text-gray-700 mb-2">Price: ₹4500</p>
+                        <p class="text-gray-700 font-bold">Price (including tax): ₹5310</p>
+                    </div>
+                </div>
+                <div class="card-back">
+                    <h3 class="text-lg font-semibold border-b border-red-500 mb-4">Additional Information</h3>
+                    <ul class="list-disc pl-5">
+                        <li class="text-gray-700 mb-2"><span class="font-bold">No of Freeze Attempts:</span> 0</li>
+                        <li class="text-gray-700 mb-2"><span class="font-bold">Freeze Period:</span> N/A</li>
+                        <li class="text-gray-700 mb-2"><span class="font-bold">Discounts Applicable:</span> 0%</li>
+                        <li class="text-gray-700 mb-2"><span class="font-bold">T & Cs:</span> Only between 1pm - 4pm</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+        <div class="mb-12">
+        <h2 class="text-4xl bg-white pt-4 pb-0 text-gray-900 mt-10 border-b-4 border-gray-900 mb-4 uppercase">Comparison Table</h2>
+    <!-- Table Section -->
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Offering</th>
+                    <th>Price Before Tax</th>
+                    <th>Price After Tax</th>
+                    <th>Validity</th>
+                    <th>No of Sessions</th>
+                    <th>Price Per Day</th>
+                    <th>Price Per Session</th>
+                    <th>No of Freezes</th>
+                    <th>Each Freeze Duration</th>
+                    <th>Total Freeze Duration</th>
+                    <th>Price Inclusive of Tax</th>
+                    <th>Discount Percentage</th>
+                    <th>Discount Amount</th>
+                    <th>Amount After Tax and Discounts</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><i class="fas fa-calendar-check icon text-blue-500"></i> Studio Newcomers 2 Week Unlimited Membership</td>
+                    <td>₹8500</td>
+                    <td>₹10030</td>
+                    <td>2 weeks</td>
+                    <td>1</td>
+                    <td>₹607</td>
+                    <td>₹8500</td>
+                    <td>0</td>
+                    <td>N/A</td>
+                    <td>0 days</td>
+                    <td>₹10030</td>
+                    <td>0%</td>
+                    <td>₹0</td>
+                    <td>₹10030</td>
+                </tr>
+                <tr>
+                    <td><i class="fas fa-calendar-check icon text-blue-500"></i> Studio 2 Week Unlimited Membership</td>
+                    <td>₹8500</td>
+                    <td>₹10030</td>
+                    <td>2 weeks</td>
+                    <td>1</td>
+                    <td>₹607</td>
+                    <td>₹8500</td>
+                    <td>0</td>
+                    <td>N/A</td>
+                    <td>0 days</td>
+                    <td>₹10030</td>
+                    <td>0%</td>
+                    <td>₹0</td>
+                    <td>₹10030</td>
+                </tr>
+                <tr>
+                    <td><i class="fas fa-calendar-check icon text-blue-500"></i> Studio 1 Month Unlimited Membership</td>
+                    <td>₹15000</td>
+                    <td>₹17700</td>
+                    <td>1 month</td>
+                    <td>1</td>
+                    <td>₹500</td>
+                    <td>₹15000</td>
+                    <td>1</td>
+                    <td>30 days</td>
+                    <td>30 days</td>
+                    <td>₹17700</td>
+                    <td>0%</td>
+                    <td>₹0</td>
+                    <td>₹17700</td>
+                </tr>
+                <tr>
+                    <td><i class="fas fa-calendar-check icon text-blue-500"></i> Studio 3 Month Unlimited Membership</td>
+                    <td>₹43500</td>
+                    <td>₹51330</td>
+                    <td>3 months</td>
+                    <td>4</td>
+                    <td>₹483</td>
+                    <td>₹10875</td>
+                    <td>3</td>
+                    <td>30 days</td>
+                    <td>90 days</td>
+                    <td>₹51330</td>
+                    <td>0%</td>
+                    <td>₹0</td>
+                    <td>₹51330</td>
+                </tr>
+                <tr>
+                    <td><i class="fas fa-calendar-check icon text-blue-500"></i> Studio 3 Month U/L Monthly Installment</td>
+                    <td>₹15000</td>
+                    <td>₹17700</td>
+                    <td>3 months</td>
+                    <td>1</td>
+                    <td>₹500</td>
+                    <td>₹15000</td>
+                    <td>1/Month</td>
+                    <td>30 days</td>
+                    <td>90 days</td>
+                    <td>₹17700</td>
+                    <td>0%</td>
+                    <td>₹0</td>
+                    <td>₹17700</td>
+                </tr>
+                <tr>
+                    <td><i class="fas fa-calendar-check icon text-blue-500"></i> Studio 6 Month Unlimited Membership</td>
+                    <td>₹85500
+</td>
+                    <td>₹100890</td>
+                    <td>6 months</td>
+                    <td>10</td>
+                    <td>₹475</td>
+                    <td>₹8550</td>
+                    <td>6</td>
+                    <td>30 days</td>
+                    <td>180 days</td>
+                    <td>₹100890</td>
+                    <td>10%</td>
+                    <td>₹8550</td>
+                    <td>₹76950</td>
+                </tr>
+                <tr>
+                    <td><i class="fas fa-calendar-check icon text-blue-500"></i> Studio Annual Unlimited Membership</td>
+                    <td>₹165000</td>
+                    <td>₹194700</td>
+                    <td>12 months</td>
+                    <td>10</td>
+                    <td>₹452</td>
+                    <td>₹16500</td>
+                    <td>12</td>
+                    <td>30 days</td>
+                    <td>360 days</td>
+                    <td>₹194700</td>
+                    <td>15%</td>
+                    <td>₹24750</td>
+                    <td>₹140250</td>
+                </tr>
+                <tr>
+                    <td><i class="fas fa-calendar-check icon text-blue-500"></i> Studio Annual Membership - Monthly Installment</td>
+                    <td>₹13250</td>
+                    <td>₹15635</td>
+                    <td>12 months</td>
+                    <td>1</td>
+                    <td>₹442</td>
+                    <td>₹13250</td>
+                    <td>1/Month</td>
+                    <td>30 days</td>
+                    <td>360 days</td>
+                    <td>₹15635</td>
+                    <td>0%</td>
+                    <td>₹0</td>
+                    <td>₹15635</td>
+                </tr>
+                <tr>
+                    <td><i class="fas fa-box-open icon text-green-500"></i> Studio Single Class</td>
+                    <td>₹1500</td>
+                    <td>₹1770</td>
+                    <td>7 days</td>
+                    <td>1</td>
+                    <td>₹1500</td>
+                    <td>₹1500</td>
+                    <td>0</td>
+                    <td>N/A</td>
+                    <td>0 days</td>
+                    <td>₹1770</td>
+                    <td>0%</td>
+                    <td>₹0</td>
+                    <td>₹1500</td>
+                </tr>
+                <tr>
+                    <td><i class="fas fa-box-open icon text-green-500"></i> Newcomers 2 For 1 Price</td>
+                    <td>₹1500</td>
+                    <td>₹1770</td>
+                    <td>14 days</td>
+                    <td>2</td>
+                    <td>₹750</td>
+                    <td>₹750</td>
+                    <td>0</td>
+                    <td>N/A</td>
+                    <td>0 days</td>
+                    <td>₹1770</td>
+                    <td>0%</td>
+                    <td>₹0</td>
+                    <td>₹1500</td>
+                </tr>
+                <tr>
+                    <td><i class="fas fa-box-open icon text-green-500"></i> Studio 4 Class Package</td>
+                    <td>₹5350</td>
+                    <td>₹6313</td>
+                    <td>14 days</td>
+                    <td>4</td>
+                    <td>₹1338</td>
+                    <td>₹1338</td>
+                    <td>0</td>
+                    <td>N/A</td>
+                    <td>0 days</td>
+                    <td>₹6313</td>
+                    <td>0%</td>
+                    <td>₹0</td>
+                    <td>₹5350</td>
+                </tr>
+                <tr>
+                    <td><i class="fas fa-box-open icon text-green-500"></i> Studio FLEX 4 Class</td>
+                    <td>₹5350</td>
+                    <td>₹6313</td>
+                    <td>14 days</td>
+                    <td>4</td>
+                    <td>₹1338</td>
+                    <td>₹1338</td>
+                    <td>1</td>
+                    <td>3 days</td>
+                    <td>3 days</td>
+                    <td>₹6313</td>
+                    <td>5%</td>
+                    <td>₹267.5</td>
+                    <td>₹5045</td>
+                </tr>
+                <tr>
+                    <td><i class="fas fa-box-open icon text-green-500"></i> Studio 8 Class Package</td>
+                    <td>₹10200</td>
+                    <td>₹12036</td>
+                    <td>30 days</td>
+                    <td>8</td>
+                    <td>₹1275</td>
+                    <td>₹1275</td>
+                    <td>1</td>
+                    <td>30 days</td>
+                    <td>30 days</td>
+                    <td>₹12036</td>
+                    <td>0%</td>
+                    <td>₹0</td>
+                    <td>₹10200</td>
+                </tr>
+                <tr>
+                    <td><i class="fas fa-box-open icon text-green-500"></i> Studio 12 Class Package</td>
+                    <td>₹15050</td>
+                    <td>₹17759</td>
+                    <td>45 days</td>
+                    <td>12</td>
+                    <td>₹1254</td>
+                    <td>₹1254</td>
+                    <td>1</td>
+                    <td>30 days</td>
+                    <td>30 days</td>
+                    <td>₹17759</td>
+                    <td>0%</td>
+                    <td>₹0</td>
+                    <td>₹15050</td>
+                </tr>
+                <tr>
+                    <td><i class="fas fa-box-open icon text-green-500"></i> Studio 10 Single Class Pack</td>
+                    <td>₹15000</td>
+                    <td>₹17700</td>
+                    <td>70 days</td>
+                    <td>10</td>
+                    <td>₹1500</td>
+                    <td>₹1500</td>
+                    <td>2</td>
+                    <td>30 days</td>
+                    <td>60 days</td>
+                    <td>₹17700</td>
+                    <td>10%</td>
+                    <td>₹1500</td>
+                    <td>₹13500</td>
+                </tr>
+                <tr>
+                    <td><i class="fas fa-box-open icon text-green-500"></i> Studio 20 Single Class Pack</td>
+                    <td>₹30000</td>
+                    <td>₹35400</td>
+                    <td>105 days</td>
+                    <td>20</td>
+                    <td>₹1500</td>
+                    <td>₹1500</td>
+                    <td>3</td>
+                    <td>30 days</td>
+                    <td>90 days</td>
+                    <td>₹35400</td>
+                    <td>10%</td>
+                    <td>₹3000</td>
+                    <td>₹27000</td>
+                </tr>
+                <tr>
+                    <td><i class="fas fa-box-open icon text-green-500"></i> Studio 30 Single Class Pack</td>
+                    <td>₹45000</td>
+                    <td>₹53100</td>
+                    <td>140 days</td>
+                    <td>30</td>
+                    <td>₹1500</td>
+                    <td>₹1500</td>
+                    <td>4</td>
+                    <td>30 days</td>
+                    <td>120 days</td>
+                    <td>₹53100</td>
+                    <td>10%</td>
+                    <td>₹4500</td>
+                    <td>₹40500</td>
+                </tr>
+                <tr>
+                    <td><i class="fas fa-user-lock icon text-red-500"></i> Studio Private Class X 10</td>
+                    <td>₹50000</td>
+                    <td>₹59000</td>
+                    <td>70 days</td>
+                    <td>10</td>
+                    <td>₹5000</td>
+                    <td>₹5000</td>
+                    <td>2</td>
+                    <td>30 days</td>
+                    <td>60 days</td>
+                    <td>₹59000</td>
+                    <td>0%</td>
+                    <td>₹0</td>
+                    <td>₹50000</td>
+                </tr>
+                <tr>
+                    <td><i class="fas fa-user-lock icon text-red-500"></i> Virtual Private Class X 10</td>
+                    <td>₹45000</td>
+                    <td>₹53100</td>
+                    <td>70 days</td>
+                    <td>10</td>
+                    <td>₹4500</td>
+                    <td>₹4500</td>
+                    <td>2</td>
+                    <td>30 days</td>
+                    <td>60 days</td>
+                    <td>₹53100</td>
+                    <td>0%</td>
+                    <td>₹0</td>
+                    <td>₹45000</td>
+                </tr>
+                <tr>
+                    <td><i class="fas fa-user-lock icon text-red-500"></i> Studio Private Class</td>
+                    <td>₹5000</td>
+                    <td>₹5900</td>
+                    <td>7 days</td>
+                    <td>1</td>
+                    <td>₹5000</td>
+                    <td>₹5000</td>
+                    <td>0</td>
+                    <td>N/A</td>
+                    <td>0 days</td>
+                    <td>₹5900</td>
+                    <td>0%</td>
+                    <td>₹0</td>
+                    <td>₹5000</td>
+                </tr>
+                <tr>
+                    <td><i class="fas fa-user-lock icon text-red-500"></i> Virtual Private Class</td>
+                    <td>₹4500</td>
+                    <td>₹5310</td>
+                    <td>7 days</td>
+                    <td>1</td>
+                    <td>₹4500</td>
+                    <td>₹4500</td>
+                    <td>0</td>
+                    <td>N/A</td>
+                    <td>0 days</td>
+                    <td>₹5310</td>
+                    <td>0%</td>
+                    <td>₹0</td>
+                    <td>₹4500</td>
+                </tr>
+                <tr>
+                    <td><i class="fas fa-user-lock icon text-red-500"></i> Studio Happy Hour Private</td>
+                    <td>₹4500</td>
+                    <td>₹5310</td>
+                    <td>7 days</td>
+                    <td>1</td>
+                    <td>₹4500</td>
+                    <td>₹4500</td>
+                    <td>0</td>
+                    <td>N/A</td>
+                    <td>0 days</td>
+                    <td>₹5310</td>
+                    <td>0%</td>
+                    <td>₹0</td>
+                    <td>₹4500</td>
+                </tr>                
+            </tbody>
+        </table>
+    </div>
+</div>
+</div>
+</div>
+
+<div class="container mx-auto max-w-full pb-0 pl-40 pr-20 pt-0">    
+    <!-- Memberships Section -->
+    <div class="tab-content p-4" id="content-bangalore">
+        <div class="mb-12">
+            <h2 class="text-4xl bg-white pt-4 pb-0 text-blue-500 mt-10 border-b-4 border-blue-500 mb-4 uppercase">Memberships</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Studio Newcomers 2 Week Unlimited -->
+                <div class="bg-white rounded-lg shadow-lg card border-blue-500 cursor-pointer">
+                    <div class="card-inner">
+                        <div class="card-front">
+                            <div class="card-header">
+                                <div class="flex items-center">
+                                    <i class="fas fa-calendar-check text-blue-500 text-2xl mr-4"></i>
+                                    <h3 class="text-lg font-semibold">Studio Newcomers 2 Week Unlimited</h3>
+                                </div>
+                            </div>
+                            <div class="p-4">
+                                <p class="text-gray-700 mb-2">Duration: 7 days</p>
+                                <p class="text-gray-700 mb-2">Events: 1</p>
+                                <p class="text-gray-700 mb-2">Price: ₹5750</p>
+                                <p class="text-gray-700 font-bold">Price (including tax): ₹6785</p>
+                            </div>
+                        </div>
+                        <div class="card-back">
+                            <h3 class="text-lg font-semibold border-b border-blue-500 mb-4">Additional Information</h3>
+                            <ul class="list-disc pl-5">
+                                <li class="text-gray-700 mb-2"><span class="font-bold">No of Freeze Attempts:</span> 0</li>
+                                <li class="text-gray-700 mb-2"><span class="font-bold">Freeze Period:</span> N/A</li>
+                                <li class="text-gray-700 mb-2"><span class="font-bold">Discounts Applicable:</span> 0%</li>
+                                <li class="text-gray-700 mb-2"><span class="font-bold">T & Cs:</span> Terms and conditions apply.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- Studio 2 Week Unlimited Membership -->
+                <div class="bg-white rounded-lg shadow-lg card border-blue-500 cursor-pointer">
+                    <div class="card-inner">
+                        <div class="card-front">
+                            <div class="card-header">
+                                <div class="flex items-center">
+                                    <i class="fas fa-calendar-check text-blue-500 text-2xl mr-4"></i>
+                                    <h3 class="text-lg font-semibold">Studio 2 Week Unlimited Membership</h3>
+                                </div>
+                            </div>
+                            <div class="p-4">
+                                <p class="text-gray-700 mb-2">Duration: 14 days</p>
+                                <p class="text-gray-700 mb-2">Events: 9999</p>
+                                <p class="text-gray-700 mb-2">Price: ₹7200</p>
+                                <p class="text-gray-700 font-bold">Price (including tax): ₹8496</p>
+                            </div>
+                        </div>
+                        <div class="card-back">
+                            <h3 class="text-lg font-semibold border-b border-blue-500 mb-4">Additional Information</h3>
+                            <ul class="list-disc pl-5">
+                                <li class="text-gray-700 mb-2"><span class="font-bold">No of Freeze Attempts:</span> 0</li>
+                                <li class="text-gray-700 mb-2"><span class="font-bold">Freeze Period:</span> N/A</li>
+                                <li class="text-gray-700 mb-2"><span class="font-bold">Discounts Applicable:</span> 0%</li>
+                                <li class="text-gray-700 mb-2"><span class="font-bold">T & Cs:</span> Terms and conditions apply.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- Studio 1 Month Unlimited Membership -->
+                <div class="bg-white rounded-lg shadow-lg card border-blue-500 cursor-pointer">
+                    <div class="card-inner">
+                        <div class="card-front">
+                            <div class="card-header">
+                                <div class="flex items-center">
+                                    <i class="fas fa-calendar-check text-blue-500 text-2xl mr-4"></i>
+                                    <h3 class="text-lg font-semibold">Studio 1 Month Unlimited Membership</h3>
+                                </div>
+                            </div>
+                            <div class="p-4">
+                                <p class="text-gray-700 mb-2">Duration: 30 days</p>
+                                <p class="text-gray-700 mb-2">Events: 9999</p>
+                                <p class="text-gray-700 mb-2">Price: ₹13900</p>
+                                <p class="text-gray-700 font-bold">Price (including tax): ₹16402</p>
+                            </div>
+                        </div>
+                        <div class="card-back">
+                            <h3 class="text-lg font-semibold border-b border-blue-500 mb-4">Additional Information</h3>
+                            <ul class="list-disc pl-5">
+                                <li class="text-gray-700 mb-2"><span class="font-bold">No of Freeze Attempts:</span> 1</li>
+                                <li class="text-gray-700 mb-2"><span class="font-bold">Freeze Period:</span> 30 Days</li>
+                                <li class="text-gray-700 mb-2"><span class="font-bold">Discounts Applicable:</span> 0%</li>
+                                <li class="text-gray-700 mb-2"><span class="font-bold">T & Cs:</span> Terms and conditions apply.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- Studio 3 Month Unlimited Membership -->
+                <div class="bg-white rounded-lg shadow-lg card border-blue-500 cursor-pointer">
+                    <div class="card-inner">
+                        <div class="card-front">
+                            <div class="card-header">
+                                <div class="flex items-center">
+                                    <i class="fas fa-calendar-check text-blue-500 text-2xl mr-4"></i>
+                                    <h3 class="text-lg font-semibold">Studio 3 Month Unlimited Membership</h3>
+                                </div>
+                            </div>
+                            <div class="p-4">
+                                <p class="text-gray-700 mb-2">Duration: 90 days</p>
+                                <p class="text-gray-700 mb-2">Events: 9999</p>
+                                <p class="text-gray-700 mb-2">Price: ₹40200</p>
+                                <p class="text-gray-700 font-bold">Price (including tax): ₹47436</p>
+                            </div>
+                        </div>
+                        <div class="card-back">
+                            <h3 class="text-lg font-semibold border-b border-blue-500 mb-4">Additional Information</h3>
+                            <ul class="list-disc pl-5">
+                                <li class="text-gray-700 mb-2"><span class="font-bold">No of Freeze Attempts:</span> 3</li>
+                                <li class="text-gray-700 mb-2"><span class="font-bold">Freeze Period:</span> 30 Days</li>
+                                <li class="text-gray-700 mb-2"><span class="font-bold">Discounts Applicable:</span> 0%</li>
+                                <li class="text-gray-700 mb-2"><span class="font-bold">T & Cs:</span> Terms and conditions apply.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- Studio 6 Month Unlimited Membership -->
+                <div class="bg-white rounded-lg shadow-lg card border-blue-500 cursor-pointer">
+                    <div class="card-inner">
+                        <div class="card-front">
+                            <div class="card-header">
+                                <div class="flex items-center">
+                                    <i class="fas fa-calendar-check text-blue-500 text-2xl mr-4"></i>
+                                    <h3 class="text-lg font-semibold">Studio 6 Month Unlimited Membership</h3>
+                                </div>
+                            </div>
+                            <div class="p-4">
+                                <p class="text-gray-700 mb-2">Duration: 180 days</p>
+                                <p class="text-gray-700 mb-2">Events: 9999</p>
+                                <p class="text-gray-700 mb-2">Price: ₹78300</p>
+                                <p class="text-gray-700 font-bold">Price (including tax): ₹92394</p>
+                            </div>
+                        </div>
+                        <div class="card-back">
+                            <h3 class="text-lg font-semibold border-b border-blue-500 mb-4">Additional Information</h3>
+                            <ul class="list-disc pl-5">
+                                <li class="text-gray-700 mb-2"><span class="font-bold">No of Freeze Attempts:</span> 6</li>
+                                <li class="text-gray-700 mb-2"><span class="font-bold">Freeze Period:</span> 30 Days</li>
+                                <li class="text-gray-700 mb-2"><span class="font-bold">Discounts Applicable:</span> 10%</li>
+                                <li class="text-gray-700 mb-2"><span class="font-bold">T & Cs:</span> Terms and conditions apply.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- Studio Annual Unlimited Membership -->
+                <div class="bg-white rounded-lg shadow-lg card border-blue-500 cursor-pointer">
+                    <div class="card-inner">
+                        <div class="card-front">
+                            <div class="card-header">
+                                <div class="flex items-center">
+                                    <i class="fas fa-calendar-check text-blue-500 text-2xl mr-4"></i>
+                                    <h3 class="text-lg font-semibold">Studio Annual Unlimited Membership</h3>
+                                </div>
+                            </div>
+                            <div class="p-4">
+                                <p class="text-gray-700 mb-2">Duration: 365 days</p>
+                                <p class="text-gray-700 mb-2">Events: 9999</p>
+                                <p class="text-gray-700 mb-2">Price: ₹148800</p>
+                                <p class="text-gray-700 font-bold">Price (including tax): ₹175584</p>
+                            </div>
+                        </div>
+                        <div class="card-back">
+                            <h3 class="text-lg font-semibold border-b border-blue-500 mb-4">Additional Information</h3>
+                            <ul class="list-disc pl-5">
+                                <li class="text-gray-700 mb-2"><span class="font-bold">No of Freeze Attempts:</span> 12</li>
+                                <li class="text-gray-700 mb-2"><span class="font-bold">Freeze Period:</span> 30 Days</li>
+                                <li class="text-gray-700 mb-2"><span class="font-bold">Discounts Applicable:</span> 15%</li>
+                                <li class="text-gray-700 mb-2"><span class="font-bold">T & Cs:</span> Terms and conditions apply.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Packages Section -->
+        <div class="mb-12">
+            <h2 class="text-4xl bg-white pt-4 pb-0 text-green-500 mt-10 border-b-4 border-green-500 mb-4 uppercase">Packages</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Studio Single Class -->
+                <div class="bg-white rounded-lg shadow-lg card border-green-500 cursor-pointer">
+                    <div class="card-inner">
+                        <div class="card-front">
+                            <div class="card-header">
+                                <div class="flex items-center">
+                                    <i class="fas fa-box-open text-green-500 text-2xl mr-4"></i>
+                                    <h3 class="text-lg font-semibold">Studio Single Class</h3>
+                                </div>
+                            </div>
+                            <div class="p-4">
+                                <p class="text-gray-700 mb-2">Duration: 7 days</p>
+                                <p class="text-gray-700 mb-2">Events: 1</p>
+                                <p class="text-gray-700 mb-2">Price: ₹1200</p>
+                                <p class="text-gray-700 font-bold">Price (including tax): ₹1416</p>
+                            </div>
+                        </div>
+                        <div class="card-back">
+                            <h3 class="text-lg font-semibold border-b border-green-500 mb-4">Additional Information</h3>
+                            <ul class="list-disc pl-5">
+                                <li class="text-gray-700 mb-2"><span class="font-bold">No of Freeze Attempts:</span> 0</li>
+                                <li class="text-gray-700 mb-2"><span class="font-bold">Freeze Period:</span> N/A</li>
+                                <li class="text-gray-700 mb-2"><span class="font-bold">Discounts Applicable:</span> 0%</li>
+                                <li class="text-gray-700 mb-2"><span class="font-bold">T & Cs:</span> Terms and conditions apply.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- Newcomers 2 For 1 Price -->
+                <div class="bg-white rounded-lg shadow-lg card border-green-500 cursor-pointer">
+                    <div class="card-inner">
+                        <div class="card-front">
+                            <div class="card-header">
+                                <div class="flex items-center">
+                                    <i class="fas fa-box-open text-green-500 text-2xl mr-4"></i>
+                                    <h3 class="text-lg font-semibold">Newcomers 2 For 1 Price</h3>
+                                </div>
+                            </div>
+                            <div class="p-4">
+                                <p class="text-gray-700 mb-2">Duration: 14 days</p>
+                                <p class="text-gray-700 mb-2">Events: 2</p>
+                                <p class="text-gray-700 mb-2">Price: ₹1200</p>
+                                <p class="text-gray-700 font-bold">Price (including tax): ₹1416</p>
+                            </div>
+                        </div>
+                        <div class="card-back">
+                            <h3 class="text-lg font-semibold border-b border-green-500 mb-4">Additional Information</h3>
+                            <ul class="list-disc pl-5">
+                                <li class="text-gray-700 mb-2"><span class="font-bold">No of Freeze Attempts:</span> 0</li>
+                                <li class="text-gray-700 mb-2"><span class="font-bold">Freeze Period:</span> N/A</li>
+                                <li class="text-gray-700 mb-2"><span class="font-bold">Discounts Applicable:</span> 0%</li>
+                                <li class="text-gray-700 mb-2"><span class="font-bold">T & Cs:</span> Terms and conditions apply.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- Studio 4 Class Package -->
+                <div class="bg-white rounded-lg shadow-lg card border-green-500 cursor-pointer">
+                    <div class="card-inner">
+                        <div class="card-front">
+                            <div class="card-header">
+                                <div class="flex items-center">
+                                    <i class="fas fa-box-open text-green-500 text-2xl mr-4"></i>
+                                    <h3 class="text-lg font-semibold">Studio 4 Class Package</h3>
+                                </div>
+                            </div>
+                            <div class="p-4">
+                                <p class="text-gray-700 mb-2">Duration: 14 days</p>
+                                <p class="text-gray-700 mb-2">Events: 4</p>
+                                <p class="text-gray-700 mb-2">Price: ₹4450</p>
+                                <p class="text-gray-700 font-bold">Price (including tax): ₹5251</p>
+                            </div>
+                        </div>
+                        <div class="card-back">
+                            <h3 class="text-lg font-semibold border-b border-green-500 mb-4">Additional Information</h3>
+                            <ul class="list-disc pl-5">
+                                <li class="text-gray-700 mb-2"><span class="font-bold">No of Freeze Attempts:</span> 0</li>
+                                <li class="text-gray-700 mb-2"><span class="font-bold">Freeze Period:</span> N/A</li>
+                                <li class="text-gray-700 mb-2"><span class="font-bold">Discounts Applicable:</span> 0%</li>
+                                <li class="text-gray-700 mb-2"><span class="font-bold">T & Cs:</span> Terms and conditions apply.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- Studio 8 Class Package -->
+                <div class="bg-white rounded-lg shadow-lg card border-green-500 cursor-pointer">
+                    <div class="card-inner">
+                        <div class="card-front">
+                            <div class="card-header">
+                                <div class="flex items-center">
+                                    <i class="fas fa-box-open text-green-500 text-2xl mr-4"></i>
+                                    <h3 class="text-lg font-semibold">Studio 8 Class Package</h3>
+                                </div>
+                            </div>
+                            <div class="p-4">
+                                <p class="text-gray-700 mb-2">Duration: 30 days</p>
+                                <p class="text-gray-700 mb-2">Events: 8</p>
+                                <p class="text-gray-700 mb-2">Price: ₹8300</p>
+                                <p class="text-gray-700 font-bold">Price (including tax): ₹9794</p>
+                            </div>
+                        </div>
+                        <div class="card-back">
+                            <h3 class="text-lg font-semibold border-b border-green-500 mb-4">Additional Information</h3>
+                            <ul class="list-disc pl-5">
+                                <li class="text-gray-700 mb-2"><span class="font-bold">No of Freeze Attempts:</span> 1</li>
+                                <li class="text-gray-700 mb-2"><span class="font-bold">Freeze Period:</span> 30 Days</li>
+                                <li class="text-gray-700 mb-2"><span class="font-bold">Discounts Applicable:</span> 0%</li>
+                                <li class="text-gray-700 mb-2"><span class="font-bold">T & Cs:</span> Terms and conditions apply.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- Studio 12 Class Package -->
+                <div class="bg-white rounded-lg shadow-lg card border-green-500 cursor-pointer">
+                    <div class="card-inner">
+                        <div class="card-front">
+                            <div class="card-header">
+                                <div class="flex items-center">
+                                    <i class="fas fa-box-open text-green-500 text-2xl mr-4"></i>
+                                    <h3 class="text-lg font-semibold">Studio 12 Class Package</h3>
+                                </div>
+                            </div>
+                            <div class="p-4">
+                                <p class="text-gray-700 mb-2">Duration: 45 days</p>
+                                <p class="text-gray-700 mb-2">Events: 12</p>
+                                <p class="text-gray-700 mb-2">Price: ₹12500</p>
+                                <p class="text-gray-700 font-bold">Price (including tax): ₹14750</p>
+                            </div>
+                        </div>
+                        <div class="card-back">
+                            <h3 class="text-lg font-semibold border-b border-green-500 mb-4">Additional Information</h3>
+                            <ul class="list-disc pl-5">
+                                <li class="text-gray-700 mb-2"><span class="font-bold">No of Freeze Attempts:</span> 1</li>
+                                <li class="text-gray-700 mb-2"><span class="font-bold">Freeze Period:</span> 30 Days</li>
+                                <li class="text-gray-700 mb-2"><span class="font-bold">Discounts Applicable:</span> 0%</li>
+                                <li class="text-gray-700 mb-2"><span class="font-bold">T & Cs:</span> Terms and conditions apply.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Privates Section -->
+        <div class="mb-12">
+            <h2 class="text-4xl bg-white pt-4 pb-0 text-red-500 mt-10 border-b-4 border-red-500 mb-4 uppercase">Privates</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Studio Private Class X 10 -->
+                <div class="bg-white rounded-lg shadow-lg card border-red-500 cursor-pointer">
+                    <div class="card-inner">
+                        <div class="card-front">
+                            <div class="card-header">
+                                <div class="flex items-center">
+                                    <i class="fas fa-user-lock text-red-500 text-2xl mr-4"></i>
+                                    <h3 class="text-lg font-semibold">Studio Private Class X 10</h3>
+                                </div>
+                            </div>
+                            <div class="p-4">
+                                <p class="text-gray-700 mb-2">Duration: 70 days</p>
+                                <p class="text-gray-700 mb-2">Events: 10</p>
+                                <p class="text-gray-700 mb-2">Price: ₹39250</p>
+                                <p class="text-gray-700 font-bold">Price (including tax): ₹46315</p>
+                            </div>
+                        </div>
+                        <div class="card-back">
+                            <h3 class="text-lg font-semibold border-b border-red-500 mb-4">Additional Information</h3>
+                            <ul class="list-disc pl-5">
+                                <li class="text-gray-700 mb-2"><span class="font-bold">No of Freeze Attempts:</span> 2</li>
+                                <li class="text-gray-700 mb-2"><span class="font-bold">Freeze Period:</span> 30 Days</li>
+                                <li class="text-gray-700 mb-2"><span class="font-bold">Discounts Applicable:</span> 0%</li>
+                                <li class="text-gray-700 mb-2"><span class="font-bold">T & Cs:</span> Terms and conditions apply.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- Virtual Private Class X 10 -->
+                <div class="bg-white rounded-lg shadow-lg card border-red-500 cursor-pointer">
+                    <div class="card-inner">
+                        <div class="card-front">
+                            <div class="card-header">
+                                <div class="flex items-center">
+                                    <i class="fas fa-user-lock text-red-500 text-2xl mr-4"></i>
+                                    <h3 class="text-lg font-semibold">Virtual Private Class X 10</h3>
+                                </div>
+                            </div>
+                            <div class="p-4">
+                                <p class="text-gray-700 mb-2">Duration: 70 days</p>
+                                <p class="text-gray-700 mb-2">Events: 10</p>
+                                <p class="text-gray-700 mb-2">Price: ₹34250</p>
+                                <p class="text-gray-700 font-bold">Price (including tax): ₹40415</p>
+                            </div>
+                        </div>
+                        <div class="card-back">
+                            <h3 class="text-lg font-semibold border-b border-red-500 mb-4">Additional Information</h3>
+                            <ul class="list-disc pl-5">
+                                <li class="text-gray-700 mb-2"><span class="font-bold">No of Freeze Attempts:</span> 2</li>
+                                <li class="text-gray-700 mb-2"><span class="font-bold">Freeze Period:</span> 30 Days</li>
+                                <li class="text-gray-700 mb-2"><span class="font-bold">Discounts Applicable:</span> 0%</li>
+                                <li class="text-gray-700 mb-2"><span class="font-bold">T & Cs:</span> Terms and conditions apply.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- Studio Private Class -->
+                <div class="bg-white rounded-lg shadow-lg card border-red-500 cursor-pointer">
+                    <div class="card-inner">
+                        <div class="card-front">
+                            <div class="card-header">
+                                <div class="flex items-center">
+                                    <i class="fas fa-user-lock text-red-500 text-2xl mr-4"></i>
+                                    <h3 class="text-lg font-semibold">Studio Private Class</h3>
+                                </div>
+                            </div>
+                            <div class="p-4">
+                                <p class="text-gray-700 mb-2">Duration: 7 days</p>
+                                <p class="text-gray-700 mb-2">Events: 1</p>
+                                <p class="text-gray-700 mb-2">Price: ₹3925</p>
+                                <p class="text-gray-700 font-bold">Price (including tax): ₹4631.5</p>
+                            </div>
+                        </div>
+                        <div class="card-back">
+                            <h3 class="text-lg font-semibold border-b border-red-500 mb-4">Additional Information</h3>
+                            <ul class="list-disc pl-5">
+                                <li class="text-gray-700 mb-2"><span class="font-bold">No of Freeze Attempts:</span> 0</li>
+                                <li class="text-gray-700 mb-2"><span class="font-bold">Freeze Period:</span> N/A</li>
+                                <li class="text-gray-700 mb-2"><span class="font-bold">Discounts Applicable:</span> 0%</li>
+                                <li class="text-gray-700 mb-2"><span class="font-bold">T & Cs:</span> Terms and conditions apply.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- Virtual Private Class -->
+                <div class="bg-white rounded-lg shadow-lg card border-red-500 cursor-pointer">
+                    <div class="card-inner">
+                        <div class="card-front">
+                            <div class="card-header">
+                                <div class="flex items-center">
+                                    <i class="fas fa-user-lock text-red-500 text-2xl mr-4"></i>
+                                    <h3 class="text-lg font-semibold">Virtual Private Class</h3>
+                                </div>
+                            </div>
+                            <div class="p-4">
+                                <p class="text-gray-700 mb-2">Duration: 7 days</p>
+                                <p class="text-gray-700 mb-2">Events: 1</p>
+                                <p class="text-gray-700 mb-2">Price: ₹3425</p>
+                                <p class="text-gray-700 font-bold">Price (including tax): ₹4041.5</p>
+                            </div>
+                        </div>
+                        <div class="card-back">
+                            <h3 class="text-lg font-semibold border-b border-red-500 mb-4">Additional Information</h3>
+                            <ul class="list-disc pl-5">
+                                <li class="text-gray-700 mb-2"><span class="font-bold">No of Freeze Attempts:</span> 0</li>
+                                <li class="text-gray-700 mb-2"><span class="font-bold">Freeze Period:</span> N/A</li>
+                                <li class="text-gray-700 mb-2"><span class="font-bold">Discounts Applicable:</span> 0%</li>
+                                <li class="text-gray-700 mb-2"><span class="font-bold">T & Cs:</span> Terms and conditions apply.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    <div class="mb-12">
+    <h2 class="text-4xl bg-white pt-4 pb-0 text-gray-900 mt-10 border-b-4 border-gray-900 mb-4 uppercase">Comparison Table</h2>
+<!-- Table Section -->
+<div class="table-container">
+    <table>
+        <thead>
+            <tr>
+                <th>Offering</th>
+                <th>Price Before Tax</th>
+                <th>Price After Tax</th>
+                <th>Validity</th>
+                <th>No of Sessions</th>
+                <th>Price Per Day</th>
+                <th>Price Per Session</th>
+                <th>No of Freezes</th>
+                <th>Each Freeze Duration</th>
+                <th>Total Freeze Duration</th>
+                <th>Price Inclusive of Tax</th>
+                <th>Discount Percentage</th>
+                <th>Discount Amount</th>
+                <th>Amount After Tax and Discounts</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><i class="fas fa-calendar-check icon text-blue-500"></i> Studio Newcomers 2 Week Unlimited</td>
+                <td>₹5750</td>
+                <td>₹6785</td>
+                <td>7 days</td>
+                <td>1</td>
+                <td>₹5750</td>
+                <td>₹5750</td>
+                <td>0</td>
+                <td>N/A</td>
+                <td>0 days</td>
+                <td>₹6785</td>
+                <td>0%</td>
+                <td>₹0</td>
+                <td>₹4500</td>
+            </tr>
+            <tr>
+                <td><i class="fas fa-calendar-check icon text-blue-500"></i> Studio 2 Week Unlimited Membership</td>
+                <td>₹7200</td>
+                <td>₹8496</td>
+                <td>14 days</td>
+                <td>9999</td>
+                <td>₹514</td>
+                <td>₹514</td>
+                <td>0</td>
+                <td>N/A</td>
+                <td>0 days</td>
+                <td>₹8496</td>
+                <td>0%</td>
+                <td>₹0</td>
+                <td>₹7200</td>
+            </tr>
+            <tr>
+                <td><i class="fas fa-calendar-check icon text-blue-500"></i> Studio 1 Month Unlimited Membership</td>
+                <td>₹13900</td>
+                <td>₹16402</td>
+                <td>30 days</td>
+                <td>9999</td>
+                <td>₹463</td>
+                <td>₹463</td>
+                <td>1</td>
+                <td>30 days</td>
+                <td>30 days</td>
+                <td>₹16402</td>
+                <td>0%</td>
+                <td>₹0</td>
+                <td>₹15250</td>
+            </tr>
+            <tr>
+                <td><i class="fas fa-calendar-check icon text-blue-500"></i> Studio 3 Month Unlimited Membership</td>
+                <td>₹40200</td>
+                <td>₹47436</td>
+                <td>90 days</td>
+                <td>9999</td>
+                <td>₹447</td>
+                <td>₹447</td>
+                <td>3</td>
+                <td>30 days</td>
+                <td>90 days</td>
+                <td>₹47436</td>
+                <td>0%</td>
+                <td>₹0</td>
+                <td>₹43500</td>
+            </tr>
+            <tr>
+                <td><i class="fas fa-calendar-check icon text-blue-500"></i> Studio 3 Month U/L Monthly Installment</td>
+                <td>₹13400</td>
+                <td>₹15812</td>
+                <td>30 days</td>
+                <td>9999</td>
+                <td>₹447</td>
+                <td>₹447</td>
+                <td>1</td>
+                <td>30 days</td>
+                <td>30 days</td>
+                <td>₹17110</td>
+                <td>0%</td>
+                <td>₹0</td>
+                <td>₹14500</td>
+            </tr>
+            <tr>
+                <td><i class="fas fa-calendar-check icon text-blue-500"></i> Studio 6 Month Unlimited Membership</td>
+                <td>₹78300</td>
+                <td>₹92394</td>
+                <td>180 days</td>
+                <td>9999</td>
+                <td>₹435</td>
+                <td>₹435</td>
+                <td>6</td>
+                <td>30 days</td>
+                <td>180 days</td>
+                <td>₹100890</td>
+                <td>10%</td>
+                <td>₹7830</td>
+                <td>₹70470</td>
+            </tr>
+            <tr>
+                <td><i class="fas fa-calendar-check icon text-blue-500"></i> Studio Annual Unlimited Membership</td>
+                <td>₹148800</td>
+                <td>₹175584</td>
+                <td>365 days</td>
+                <td>9999</td>
+                <td>₹408</td>
+                <td>₹408</td>
+                <td>12</td>
+                <td>30 days</td>
+                <td>360 days</td>
+                <td>₹194700</td>
+                <td>15%</td>
+                <td>₹22320</td>
+                <td>₹126480</td>
+            </tr>
+            <tr>
+                <td><i class="fas fa-calendar-check icon text-blue-500"></i> Studio Annual Membership - Monthly Installment</td>
+                <td>₹12400</td>
+                <td>₹14632</td>
+                <td>30 days</td>
+                <td>9999</td>
+                <td>₹413</td>
+                <td>₹413</td>
+                <td>1</td>
+                <td>30 days</td>
+                <td>30 days</td>
+                <td>₹16225</td>
+                <td>0%</td>
+                <td>₹0</td>
+                <td>₹13750</td>
+            </tr>
+            <tr>
+                <td><i class="fas fa-box-open icon text-green-500"></i> Studio Single Class</td>
+                <td>₹1200</td>
+                <td>₹1416</td>
+                <td>7 days</td>
+                <td>1</td>
+                <td>₹1200</td>
+                <td>₹1200</td>
+                <td>0</td>
+                <td>N/A</td>
+                <td>0 days</td>
+                <td>₹1416</td>
+                <td>0%</td>
+                <td>₹0</td>
+                <td>₹1500</td>
+            </tr>
+            <tr>
+                <td><i class="fas fa-box-open icon text-green-500"></i> Newcomers 2 For 1 Price</td>
+                <td>₹1200</td>
+                <td>₹1416</td>
+                <td>14 days</td>
+                <td>2</td>
+                <td>₹600</td>
+                <td>₹600</td>
+                <td>0</td>
+                <td>N/A</td>
+                <td>0 days</td>
+                <td>₹1416</td>
+                <td>0%</td>
+                <td>₹0</td>
+                <td>₹1500</td>
+            </tr>
+            <tr>
+                <td><i class="fas fa-box-open icon text-green-500"></i> Studio 4 Class Package</td>
+                <td>₹4450</td>
+                <td>₹5251</td>
+                <td>14 days</td>
+                <td>4</td>
+                <td>₹1113</td>
+                <td>₹1113</td>
+                <td>0</td>
+                <td>N/A</td>
+                <td>0 days</td>
+                <td>₹5251</td>
+                <td>0%</td>
+                <td>₹0</td>
+                <td>₹5350</td>
+            </tr>
+            <tr>
+                <td><i class="fas fa-box-open icon text-green-500"></i> Studio FLEX 4 Class</td>
+                <td>₹4450</td>
+                <td>₹5251</td>
+                <td>14 days</td>
+                <td>4</td>
+                <td>₹1113</td>
+                <td>₹1113</td>
+                <td>0</td>
+                <td>N/A</td>
+                <td>0 days</td>
+                <td>₹5251</td>
+                <td>0%</td>
+                <td>₹0</td>
+                <td>₹5350</td>
+            </tr>
+            <tr>
+                <td><i class="fas fa-box-open icon text-green-500"></i> Studio 8 Class Package</td>
+                <td>₹8300</td>
+                <td>₹9794</td>
+                <td>30 days</td>
+                <td>8</td>
+                <td>₹1038</td>
+                <td>₹1038</td>
+                <td>1</td>
+                <td>30 days</td>
+                <td>30 days</td>
+                <td>₹9794</td>
+                <td>0%</td>
+                <td>₹0</td>
+                <td>₹10200</td>
+            </tr>
+            <tr>
+                <td><i class="fas fa-box-open icon text-green-500"></i> Studio 12 Class Package</td>
+                <td>₹15050</td>
+                <td>₹17759</td>
+                <td>45 days</td>
+                <td>12</td>
+                <td>₹1254</td>
+                <td>₹1254</td>
+                <td>1</td>
+                <td>30 days</td>
+                <td>30 days</td>
+                <td>₹17759</td>
+                <td>0%</td>
+                <td>₹0</td>
+                <td>₹15050</td>
+            </tr>
+            <tr>
+                <td><i class="fas fa-box-open icon text-green-500"></i> Studio 10 Single Class Pack</td>
+                <td>₹12000</td>
+                <td>₹14160</td>
+                <td>70 days</td>
+                <td>10</td>
+                <td>₹1200</td>
+                <td>₹1200</td>
+                <td>2</td>
+                <td>30 days</td>
+                <td>60 days</td>
+                <td>₹14160</td>
+                <td>10%</td>
+                <td>₹1200</td>
+                <td>₹10800</td>
+            </tr>
+            <tr>
+                <td><i class="fas fa-box-open icon text-green-500"></i> Studio 20 Single Class Pack</td>
+                <td>₹24000</td>
+                <td>₹28320</td>
+                <td>105 days</td>
+                <td>20</td>
+                <td>₹1200</td>
+                <td>₹1200</td>
+                <td>3</td>
+                <td>30 days</td>
+                <td>90 days</td>
+                <td>₹28320</td>
+                <td>10%</td>
+                <td>₹2400</td>
+                <td>₹21600</td>
+            </tr>
+            <tr>
+                <td><i class="fas fa-box-open icon text-green-500"></i> Studio 30 Single Class Pack</td>
+                <td>₹36000</td>
+                <td>₹42480</td>
+                <td>140 days</td>
+                <td>30</td>
+                <td>₹1200</td>
+                <td>₹1200</td>
+                <td>4</td>
+                <td>30 days</td>
+                <td>120 days</td>
+                <td>₹42480</td>
+                <td>10%</td>
+                <td>₹3600</td>
+                <td>₹32400</td>
+            </tr>
+            <tr>
+                <td><i class="fas fa-user-lock icon text-red-500"></i> Studio Private Class X 10</td>
+                <td>₹39250</td>
+                <td>₹46315</td>
+                <td>70 days</td>
+                <td>10</td>
+                <td>₹3925</td>
+                <td>₹3925</td>
+                <td>2</td>
+                <td>30 days</td>
+                <td>60 days</td>
+                <td>₹46315</td>
+                <td>0%</td>
+                <td>₹0</td>
+                <td>₹39250</td>
+            </tr>
+            <tr>
+                <td><i class="fas fa-user-lock icon text-red-500"></i> Virtual Private Class X 10</td>
+                <td>₹34250</td>
+                <td>₹40415</td>
+                <td>70 days</td>
+                <td>10</td>
+                <td>₹3425</td>
+                <td>₹3425</td>
+                <td>2</td>
+                <td>30 days</td>
+                <td>60 days</td>
+                <td>₹40415</td>
+                <td>0%</td>
+                <td>₹0</td>
+                <td>₹34250</td>
+            </tr>
+            <tr>
+                <td><i class="fas fa-user-lock icon text-red-500"></i> Studio Private Class</td>
+                <td>₹3925</td>
+                <td>₹4631.5</td>
+                <td>7 days</td>
+                <td>1</td>
+                <td>₹3925</td>
+                <td>₹3925</td>
+                <td>0</td>
+                <td>N/A</td>
+                <td>0 days</td>
+                <td>₹4631.5</td>
+                <td>0%</td>
+                <td>₹0</td>
+                <td>₹3925</td>
+            </tr>
+            <tr>
+                <td><i class="fas fa-user-lock icon text-red-500"></i> Virtual Private Class</td>
+                <td>₹3425</td>
+                <td>₹4041.5</td>
+                <td>7 days</td>
+                <td>1</td>
+                <td>₹3425</td>
+                <td>₹3425</td>
+                <td>0</td>
+                <td>N/A</td>
+                <td>0 days</td>
+                <td>₹4041.5</td>
+                <td>0%</td>
+                <td>₹0</td>
+                <td>₹3425</td>
+            </tr>
+            <tr>
+                <td><i class="fas fa-user-lock icon text-red-500"></i> Studio Happy Hour Private</td>
+                <td>₹4500</td>
+                <td>₹5310</td>
+                <td>7 days</td>
+                <td>1</td>
+                <td>₹4500</td>
+                <td>₹4500</td>
+                <td>0</td>
+                <td>N/A</td>
+                <td>0 days</td>
+                <td>₹5310</td>
+                <td>0%</td>
+                <td>₹0</td>
+                <td>₹4500</td>
+            </tr>                
+        </tbody>
+    </table>
+    </div>
+    </div>
+    </div>
+    </div>
+        <footer class="bg-gray-800 text-white py-1 mt-auto">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+             <div class="flex justify-between items-center">
+              <p class="text-sm">
+               © 2025 Physique 57 India. All rights reserved.
+              </p>
+              <div class="flex space-x-4">
+               <a class="text-white hover:text-gray-400" href="https://facebook.com/physique57india">
+                <i class="fab fa-facebook-f">
+                </i>
+               </a>
+               <a class="text-white hover:text-gray-400" href="https://twitter.com/physique57india">
+                <i class="fab fa-twitter">
+                </i>
+               </a>
+               <a class="text-white hover:text-gray-400" href="https://instagram.com/physique57india">
+                <i class="fab fa-instagram">
+                </i>
+               </a>
+              </div>
+             </div>
+            </div>
+           </footer>        
+</body>
+</html>

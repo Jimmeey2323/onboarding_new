@@ -1,0 +1,377 @@
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Physique 57: A Journey of Transformation</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet"/>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f9fafb;
+            color: #333;
+        }
+    
+        .hero-section {
+            background: linear-gradient(120deg, #007bff, #000608);
+            color: #fff;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: slideIn 1.5s ease-out forwards;
+        }
+    
+        .hero-section h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin: 0;
+            opacity: 0;
+            transform: translateY(-20px);
+            animation: fadeIn 1s ease-in-out 0.5s forwards;
+        }
+    
+        .hero-section i {
+            font-size: 3rem;
+            margin-right: 10px;
+            animation: bounceIn 1s ease-in-out 1s forwards;
+        }
+    
+        /* Keyframes */
+        @keyframes slideIn {
+            0% {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+    
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    
+        @keyframes bounceIn {
+            0%,
+            20%,
+            40%,
+            60%,
+            80%,
+            100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+    
+        @media (max-width: 768px) {
+            .hero-section h1 {
+                font-size: 2.5rem;
+            }
+            .hero-section i {
+                font-size: 2.5rem;
+            }
+        }
+    
+        .timeline {
+            position: relative;
+            margin: 0 auto;
+            padding: 20px 0;
+            max-width: 800px;
+            min-height: 100vh;
+            overflow-y: auto;
+        }
+    
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            background-color: #1e3a8a;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -3px;
+        }
+    
+        .timeline-item {
+            display: flex;
+            justify-content: flex-end;
+            position: relative;
+            width: 100%;
+            padding: 10px 0;
+        }
+    
+        .timeline-item:nth-child(odd) {
+            justify-content: flex-start;
+        }
+    
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            background-color: #1e3a8a;
+            border: 4px solid white;
+            top: 15px;
+            left: 50%;
+            margin-left: -12px;
+            border-radius: 50%;
+            z-index: 1;
+        }
+    
+        .timeline-content {
+            background-color: white;
+            padding: 20px;
+            border-radius: 6px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            width: 45%;
+            transition: transform 0.3s ease-in-out;
+        }
+    
+        .timeline-content:hover {
+            transform: scale(1.05);
+        }
+    
+        .timeline-item:nth-child(odd) .timeline-content {
+            margin-left: 0;
+            margin-right: auto;
+        }
+    
+        .timeline-item:nth-child(even) .timeline-content {
+            margin-left: auto;
+            margin-right: 0;
+        }
+    
+        .date {
+            background-color: #ff4081;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 4px;
+            position: absolute;
+            top: 0;
+            right: 0;
+        }
+    
+        .icon {
+            font-size: 2rem;
+            color: #1e3a8a;
+            margin-bottom: 10px;
+        }
+        .animate-character {
+            text-transform: uppercase;
+            background-image: linear-gradient(
+                -225deg,
+                #000000 0%,
+                #00ff04 29%,
+                #f40ebe 67%,
+                #ffffff 100%
+            );
+            background-size: 200% auto;            
+            color: transparent; /* Set text color to transparent */
+            background-clip: text;            
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent; /* Ensure text fill is transparent */
+            animation: textclip 2s linear infinite, marquee 15s linear infinite;
+            display: inline-block;            
+            white-space: nowrap;            
+            letter-spacing: 1rem;
+        }
+
+        @keyframes textclip {
+            to {
+                background-position: 200% center;
+            }
+        }
+    </style>    
+</head>
+<body class="bg-gray-100 font-roboto">
+    <!-- Hero Section -->
+    <div class="bg-gradient-to-r from-gray-900 to-gray-900 text-white text-center py-3 shadow-lg">
+        <div class="container mx-auto flex items-end space-x-4">
+            <i class="fa-solid fa-timeline fa-fade fa-3x mr-2"></i>
+            <h1 class="animate-character text-5xl uppercase">Dates to Remember</h1>
+        </div>        
+    </div>
+
+    <div class="container mx-auto max-w-full pb-0 pt-0">
+        <div id="navbar-container"></div> <!-- This is where the navbar will be loaded -->           
+    <section class="timeline py-20">
+        <div class="container mx-auto relative">
+            <div class="timeline-item mb-10 flex items-center w-full">
+                <div class="timeline-content bg-white p-6 rounded-lg shadow-lg relative">
+                    <div class="date">2005</div>
+                    <h2 class="text-2xl font-bold mb-2"><i class="fas fa-building"></i> Founding</h2>
+                    <p>Jennifer Maanavi partners with Tanya Becker, to create Physique 57.</p>
+                </div>
+            </div>
+            <div class="timeline-item mb-10 flex items-center w-full">
+                <div class="timeline-content bg-white p-6 rounded-lg shadow-lg relative">
+                    <div class="date">2006</div>
+                    <h2 class="text-2xl font-bold mb-2"><i class="fas fa-map-marker-alt"></i> First Location</h2>
+                    <p>Physique 57 opens its first location at 24 W. 57th Street, NYC.</p>
+                </div>
+            </div>
+            <div class="timeline-item mb-10 flex items-center w-full">
+                <div class="timeline-content bg-white p-6 rounded-lg shadow-lg relative">
+                    <div class="date">2007</div>
+                    <h2 class="text-2xl font-bold mb-2"><i class="fas fa-map-marker-alt"></i> Soho Location</h2>
+                    <p>The Soho, NY location opens in the Butterick Building.</p>
+                </div>
+            </div>
+            <div class="timeline-item mb-10 flex items-center w-full">
+                <div class="timeline-content bg-white p-6 rounded-lg shadow-lg relative">
+                    <div class="date">2009</div>
+                    <h2 class="text-2xl font-bold mb-2"><i class="fas fa-dumbbell"></i> Workout Series</h2>
+                    <p>Workout Series Volume1 DVDs are released.</p>
+                </div>
+            </div>
+            <div class="timeline-item mb-10 flex items-center w-full">
+                <div class="timeline-content bg-white p-6 rounded-lg shadow-lg relative">
+                    <div class="date">2012</div>
+                    <h2 class="text-2xl font-bold mb-2"><i class="fas fa-video"></i> Video On Demand</h2>
+                    <p>Physique 57 launches its Video On Demand.</p>
+                </div>
+            </div>
+            <div class="timeline-item mb-10 flex items-center w-full">
+                <div class="timeline-content bg-white p-6 rounded-lg shadow-lg relative">
+                    <div class="date">2013</div>
+                    <h2 class="text-2xl font-bold mb-2"><i class="fas fa-map-marker-alt"></i> Dubai Location</h2>
+                    <p>Physique 57 Dubai opens.</p>
+                </div>
+            </div>
+            <div class="timeline-item mb-10 flex items-center w-full">
+                <div class="timeline-content bg-white p-6 rounded-lg shadow-lg relative">
+                    <div class="date">2015</div>
+                    <h2 class="text-2xl font-bold mb-2"><i class="fas fa-map-marker-alt"></i> Bangkok Location</h2>
+                    <p>Physique 57 Bangkok opens.</p>
+                </div>
+            </div>
+            <div class="timeline-item mb-10 flex items-center w-full">
+                <div class="timeline-content bg-white p-6 rounded-lg shadow-lg relative">
+                    <div class="date">2015</div>
+                    <h2 class="text-2xl font-bold mb-2"><i class="fas fa-map-marker-alt"></i> Second Dubai Location</h2>
+                    <p>Physique 57 opens second Dubai location.</p>
+                </div>
+            </div>
+            <div class="timeline-item mb-10 flex items-center w-full">
+                <div class="timeline-content bg-white p-6 rounded-lg shadow-lg relative">
+                    <div class="date">2017</div>
+                    <h2 class="text-2xl font-bold mb-2"><i class="fas fa-map-marker-alt"></i> Second Bangkok Location</h2>
+                    <p>Physique 57 opens second Bangkok location.</p>
+                </div>
+            </div>
+            <div class="timeline-item mb-10 flex items-center w-full">
+                <div class="timeline-content bg-white p-6 rounded-lg shadow-lg relative">
+                    <div class="date">2018</div>
+                    <h2 class="text-2xl font-bold mb-2"><i class="fas fa-map-marker-alt"></i> Mumbai Location</h2>
+                    <p>Physique 57 Mumbai opens.</p>
+                </div>
+            </div>
+            <div class="timeline-item mb-10 flex items-center w-full">
+                <div class="timeline-content bg-white p-6 rounded-lg shadow-lg relative">
+                    <div class="date">2018</div>
+                    <h2 class="text-2xl font-bold mb-2"><i class="fas fa-map-marker-alt"></i> Manila Location</h2>
+                    <p>Physique 57 Manila opens.</p>
+                </div>
+            </div>
+            <div class="timeline-item mb-10 flex items-center w-full">
+                <div class="timeline-content bg-white p-6 rounded-lg shadow-lg relative">
+                    <div class="date">2020</div>
+                    <h2 class="text-2xl font-bold mb-2"><i class="fas fa-laptop"></i> Virtual Platform</h2>
+                    <p>Physique India’s Virtual Platform Launched.</p>
+                </div>
+            </div>
+            <div class="timeline-item mb-10 flex items-center w-full">
+                <div class="timeline-content bg-white p-6 rounded-lg shadow-lg relative">
+                    <div class="date">2022</div>
+                    <h2 class="text-2xl font-bold mb-2"><i class="fas fa-map-marker-alt"></i> Flagship Studio</h2>
+                    <p>Flagship studio at Kwality House, Kemps Corner</p>
+                </div>
+            </div>
+            <div class="timeline-item mb-10 flex items-center w-full">
+                <div class="timeline-content bg-white p-6 rounded-lg shadow-lg relative">
+                    <div class="date">2022</div>
+                    <h2 class="text-2xl font-bold mb-2"><i class="fas fa-map-marker-alt"></i> Pop-up Studio</h2>
+                    <p>Pop-up Studio at ‘The Space’ in Juhu.</p>
+                </div>
+            </div>
+            <div class="timeline-item mb-10 flex items-center w-full">
+                <div class="timeline-content bg-white p-6 rounded-lg shadow-lg relative">
+                    <div class="date">2022</div>
+                    <h2 class="text-2xl font-bold mb-2"><i class="fas fa-map-marker-alt"></i> Pop-up at Taj Wellington Mews</h2>
+                    <p>Pop-up at Taj Wellington Mews, Colaba.</p>
+                </div>
+            </div>
+            <div class="timeline-item mb-10 flex items-center w-full">
+                <div class="timeline-content bg-white p-6 rounded-lg shadow-lg relative">
+                    <div class="date">2023</div>
+                    <h2 class="text-2xl font-bold mb-2"><i class="fas fa-map-marker-alt"></i> Bengaluru Location</h2>
+                    <p>Opened Doors to Physique 57, Bengaluru.</p>
+                </div>
+            </div>
+            <div class="timeline-item mb-10 flex items-center w-full">
+                <div class="timeline-content bg-white p-6 rounded-lg shadow-lg relative">
+                    <div class="date">2024</div>
+                    <h2 class="text-2xl font-bold mb-2"><i class="fas fa-map-marker-alt"></i> Bandra Launch</h2>
+                    <p>Launch scheduled for Physique 57, Bandra.</p>
+                </div>
+            </div>
+            <div class="timeline-item mb-10 flex items-center w-full">
+                <div class="timeline-content bg-white p-6 rounded-lg shadow-lg relative">
+                    <div class="date">2024</div>
+                    <h2 class="text-2xl font-bold mb-2"><i class="fas fa-bicycle"></i> Physique Spin</h2>
+                    <p>Launch Scheduled for Physique Spin.</p>
+                </div>
+            </div>        
+        </div>
+    </section>
+        <footer class="bg-gray-800 text-white py-1 mt-auto">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+             <div class="flex justify-between items-center">
+              <p class="text-sm">
+               © 2025 Physique 57 India. All rights reserved.
+              </p>
+              <div class="flex space-x-4">
+               <a class="text-white hover:text-gray-400" href="https://facebook.com/physique57india">
+                <i class="fab fa-facebook-f">
+                </i>
+               </a>
+               <a class="text-white hover:text-gray-400" href="https://twitter.com/physique57india">
+                <i class="fab fa-twitter">
+                </i>
+               </a>
+               <a class="text-white hover:text-gray-400" href="https://instagram.com/physique57india">
+                <i class="fab fa-instagram">
+                </i>
+               </a>
+              </div>
+             </div>
+            </div>
+           </footer>        
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            fetch('navbar.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('navbar-container').innerHTML = data;
+                })
+                .catch(error => console.error('Error loading the navbar:', error));
+        });
+    </script>
+</body>
+</html>
